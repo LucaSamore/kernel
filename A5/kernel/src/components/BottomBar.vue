@@ -20,7 +20,7 @@ const setActiveTab = (tabId: string) => {
 </script>
 
 <template>
-  <div class="bg-white border-b border-gray-200 w-full h-[10vh]">
+  <div class="bg-white border-b border-gray-200 w-full h-[8vh]">
     <div class="flex w-full h-full">
       <button
         v-for="tab in tabsData"
