@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DocumentIcon, MapPinIcon } from '@heroicons/vue/24/outline'
+import { DocumentIcon, MapPinIcon, TagIcon } from '@heroicons/vue/24/outline'
 
 export interface Document {
   id: string
@@ -36,17 +36,18 @@ defineProps<Props>()
         </h3>
 
         <!-- Description -->
-        <p class="text-sm text-gray-600 mb-4">
+        <p class="text-sm text-gray-600">
           {{ document.description }}
         </p>
 
         <!-- Tags -->
-        <div class="flex flex-wrap gap-2 mb-4">
+        <div class="tags-container">
           <span
             v-for="tag in document.tags"
             :key="tag"
-            class="px-3 py-1 bg-gray-100 text-gray-700 text-xs"
+            class="tag-badge"
           >
+            <TagIcon class="w-3 h-3" />
             {{ tag }}
           </span>
         </div>
@@ -103,5 +104,25 @@ defineProps<Props>()
   display: flex;
   align-items: start;
   gap: 1.5rem;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #1f2937;
 }
 </style>
