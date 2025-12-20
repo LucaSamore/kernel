@@ -1,0 +1,26 @@
+{
+  "app": {
+    "title": "Nucleo"
+  },
+  "topbar": {
+    "notifications": "Notifiche",
+    "user": "Main User"
+  },
+  "userMenu": {
+    "profile": "Profilo",
+    "settings": "Impostazioni",
+    "logout": "Esci"
+  },
+  "tabs": {
+    "home": "Home",
+    "documents": "Documenti",
+    "health": "Salute",
+    "calendar": "Calendario",
+    "settings": "Impostazioni"
+  },
+  "tags": {
+    "all": "Tutti",
+    "toRead": "Da leggere",
+    "folder": "Cartella"
+  }
+}
