@@ -22,5 +22,16 @@
     "all": "Tutti",
     "toRead": "Da leggere",
     "folder": "Cartella"
+  },
+  "documents": {
+    "title": "Archivio documenti",
+    "subtitle": "15 documenti",
+    "searchPlaceholder": "Cerca documenti, sintomi, medici...",
+    "noResults": "Nessun documento trovato",
+    "tags": {
+      "all": "Tutti",
+      "toRead": "Da leggere",
+      "cardiology": "Cardiologia"
+    }
   }
 }
