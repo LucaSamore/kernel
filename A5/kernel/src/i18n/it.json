@@ -33,5 +33,21 @@
       "toRead": "Da leggere",
       "cardiology": "Cardiologia"
     }
+  },
+  "calendar": {
+    "title": "Calendario",
+    "subtitle": "Calendario condiviso della tua famiglia",
+    "newAppointment": "Nuovo appuntamento",
+    "appointments": "Appuntamenti",
+    "noAppointments": "Nessun appuntamento trovato",
+    "today": "Oggi",
+    "month": "Mese",
+    "week": "Settimana",
+    "tags": {
+      "all": "Tutti",
+      "health": "Salute",
+      "work": "Lavoro",
+      "family": "Famiglia"
+    }
   }
 }
