@@ -3,9 +3,11 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import ProfileCard from '../components/ProfileCard.vue'
+import { useAuth } from '../composables/useAuth'
 
 const { t } = useI18n()
 const router = useRouter()
+const { login } = useAuth()
 
 interface Profile {
   id: string
@@ -14,27 +16,24 @@ interface Profile {
 }
 
 const profiles = ref<Profile[]>([
-  { id: '1', name: 'Marco', role: 'Titolare' },
-  { id: '2', name: 'Laura', role: 'Partner' },
+  { id: '1', name: 'Marco', role: 'Tu' },
+  { id: '2', name: 'Laura', role: 'Moglie' },
   { id: '3', name: 'Sofia', role: 'Figlia' },
-  { id: '4', name: 'Nonno Giulio', role: 'Genitore' }
+  { id: '4', name: 'Nonno Giulio', role: 'Padre' }
 ])
 
 const selectProfile = (profile: Profile) => {
-  // Qui potrai aggiungere la logica per salvare il profilo selezionato
-  console.log('Profilo selezionato:', profile)
+  login(profile)
   router.push('/home')
 }
 
 const addProfile = () => {
-  // Qui potrai aggiungere la logica per creare un nuovo profilo
   console.log('Aggiungi nuovo profilo')
 }
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col items-center justify-center gap-6 bg-gray-50">
-    <!-- Titolo con stile sketch -->
     <h1 class="text-6xl md:text-7xl font-bold mb-4 bottom-5 text-gray-900 relative">
       Nucleo
       <div 
@@ -45,9 +44,8 @@ const addProfile = () => {
     <p class="text-gray-600 text-xl font-medium">
       {{ t('login.subtitle') }}
     </p>
+
     
-    
-    <!-- Grid di profili -->
     <div class="flex flex-wrap justify-center gap-6 max-w-4xl">
       <ProfileCard
         v-for="profile in profiles"

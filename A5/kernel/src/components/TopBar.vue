@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { USERS } from '../constants/constants'
+import { useAuth } from '../composables/useAuth'
 
 const { t } = useI18n()
+const router = useRouter()
+const { currentUser, logout: authLogout } = useAuth()
 const showUserMenu = ref(false)
-const selectedUser = ref<typeof USERS[number]>(USERS[0])
 
 const toggleUserMenu = () => {
   showUserMenu.value = !showUserMenu.value
 }
 
-const selectUser = (user: typeof USERS[number]) => {
-  selectedUser.value = user
-  showUserMenu.value = false
-}
-
 const logout = () => {
-  console.log('Logout clicked')
+  authLogout()
   showUserMenu.value = false
+  router.push('/login')
 }
 </script>
 
@@ -50,7 +48,7 @@ const logout = () => {
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
             </svg>
           </div>
-          <span class="text-[clamp(0.75rem,2vw,0.875rem)] font-medium text-gray-900">{{ selectedUser.name }}</span>
+          <span class="text-[clamp(0.75rem,2vw,0.875rem)] font-medium text-gray-900">{{ currentUser?.name || 'User' }}</span>
           <svg class="text-gray-600 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
@@ -59,26 +57,19 @@ const logout = () => {
           v-if="showUserMenu" 
           class="absolute top-[calc(100%+0.5vh)] right-0 bg-white border border-gray-300 rounded-lg shadow-lg min-w-50 z-50 overflow-hidden"
         >
-          <!-- User Cards -->
-          <div class="py-1">
-            <button
-              v-for="user in USERS" 
-              :key="user.id"
-              class="w-full flex items-center gap-1 px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
-              :class="{ 'bg-gray-100': selectedUser.id === user.id }"
-              @click="selectUser(user)"
-            >
-              <div class="w-8 h-8 rounded-full flex items-center justify-center text-gray-600 shrink-0">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <div class="py-3 px-4 border-b border-gray-200">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
                 </svg>
               </div>
-              <span class="text-sm font-medium text-gray-900">{{ user.name }}</span>
-            </button>
+              <div>
+                <div class="text-sm font-semibold text-gray-900">{{ currentUser?.name }}</div>
+                <div class="text-xs text-gray-500">{{ currentUser?.role }}</div>
+              </div>
+            </div>
           </div>
-          
-          <!-- Separator -->
-          <div class="border-t border-gray-200"></div>
           
           <!-- Logout Button -->
           <button
