@@ -49,5 +49,14 @@
       "work": "Lavoro",
       "family": "Famiglia"
     }
+  },
+  "home": {
+    "uploadDocument": "Carica documento",
+    "newAppointment": "Prenota visita",
+    "upcomingAppointments": "Prossimi appuntamenti",
+    "noAppointments": "Nessun appuntamento in programma",
+    "recentDocuments": "Documenti recenti",
+    "searchHint": "Prova: \"esami del sangue di Marco\" o \"quando ho fatto l'ultima visita?\"",
+    "quickOverview": "I miei widget"
   }
 }
