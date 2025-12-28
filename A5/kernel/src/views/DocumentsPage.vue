@@ -189,7 +189,6 @@ const handleTagSelected = (tagId: string) => {
 .documents-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   position: relative;
   z-index: 1;
   animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
