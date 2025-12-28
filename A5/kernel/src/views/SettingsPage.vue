@@ -160,46 +160,90 @@ const handleItemClick = (item: string) => {
 <style scoped>
 .settings-page {
   width: 100%;
-  height: 100%;
-  padding: 1rem 2rem 2rem;
-  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  position: relative;
+}
+
+.settings-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.settings-header {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-title {
-  font-size: 24px;
+  font-size: 1.875rem;
   font-weight: 700;
-  color: #111827;
-  margin: 0 0 4px;
+  color: #171717;
+  margin: 0;
+  line-height: 1.25;
 }
 
 .settings-subtitle {
-  font-size: 13px;
-  color: #6b7280;
-  margin: 0;
+  font-size: 1rem;
+  color: #525252;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.5;
 }
 
 .settings-section {
-  margin-top: 32px;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+  animation-fill-mode: both;
 }
 
+.settings-section:nth-child(2) { animation-delay: 0.1s; }
+.settings-section:nth-child(3) { animation-delay: 0.15s; }
+.settings-section:nth-child(4) { animation-delay: 0.2s; }
+.settings-section:nth-child(5) { animation-delay: 0.25s; }
+.settings-section:nth-child(6) { animation-delay: 0.3s; }
+.settings-section:nth-child(7) { animation-delay: 0.35s; }
+
 .settings-section-header {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: #6b7280;
+  color: #404040;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 0 0 8px;
+  padding: 0 0 0.75rem;
+  margin-left: 0.5rem;
 }
 
 .settings-list {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.25rem;
   overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-list > * {
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .settings-list > *:last-child {
@@ -209,28 +253,43 @@ const handleItemClick = (item: string) => {
 .settings-account {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.settings-account:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .settings-account-avatar {
-  width: 48px;
-  height: 48px;
-  background-color: #e5e7eb;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.settings-account:hover .settings-account-avatar {
+  transform: scale(1.05);
 }
 
 .settings-account-avatar span {
-  font-size: 18px;
+  font-size: 1.375rem;
   font-weight: 600;
-  color: #6b7280;
+  color: #ffffff;
 }
 
 .settings-account-info {
@@ -238,40 +297,85 @@ const handleItemClick = (item: string) => {
 }
 
 .settings-account-name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #111827;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #171717;
+  line-height: 1.4;
 }
 
 .settings-account-role {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 2px;
+  font-size: 0.875rem;
+  color: #525252;
+  margin-top: 0.125rem;
+  line-height: 1.3;
 }
 
 .settings-account-button {
-  font-size: 13px;
-  color: #3b82f6;
-  background: none;
-  border: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 0.75rem;
   cursor: pointer;
-  padding: 0;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-account-button:hover {
-  color: #2563eb;
+  color: #ffffff;
+  background: rgba(14, 165, 233, 0.8);
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 .settings-footer {
   text-align: center;
-  padding: 24px 0;
-  font-size: 12px;
-  color: #9ca3af;
+  padding: 2rem 0;
+  font-size: 0.8125rem;
+  color: #737373;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
   .settings-page {
     padding: 1rem;
+  }
+  
+  .settings-header {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .settings-title {
+    font-size: 1.5rem;
+  }
+  
+  .settings-subtitle {
+    font-size: 0.875rem;
   }
 }
 </style>

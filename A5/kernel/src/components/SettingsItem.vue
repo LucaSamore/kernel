@@ -56,38 +56,64 @@ const handleClick = () => {
 .settings-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  position: relative;
+}
+
+.settings-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 165, 233, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
+  border-radius: inherit;
+}
+
+.settings-item:hover::before {
+  opacity: 1;
 }
 
 .settings-item:hover {
-  background-color: #1f2937;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
 }
 
 .settings-item__icon {
   width: 24px;
   height: 24px;
-  color: #6b7280;
+  color: #0ea5e9;
   flex-shrink: 0;
-  transition: color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(14, 165, 233, 0.2));
 }
 
 .settings-item:hover .settings-item__icon {
-  color: #ffffff;
+  color: #0284c7;
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.3));
 }
 
 .settings-item--danger .settings-item__icon {
   color: #ef4444;
+  filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.2));
+}
+
+.settings-item--danger::before {
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .settings-item--danger:hover {
-  background-color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
 }
 
 .settings-item--danger:hover .settings-item__icon {
-  color: #ffffff;
+  color: #dc2626;
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(239, 68, 68, 0.3));
 }
 
 .settings-item__content {
@@ -96,14 +122,15 @@ const handleClick = () => {
 }
 
 .settings-item__title {
-  font-size: 15px;
-  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #171717;
   line-height: 1.4;
-  transition: color 0.2s ease;
+  transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__title {
-  color: #ffffff;
+  color: #0a0a0a;
 }
 
 .settings-item--danger .settings-item__title {
@@ -111,30 +138,31 @@ const handleClick = () => {
 }
 
 .settings-item--danger:hover .settings-item__title {
-  color: #ffffff;
+  color: #dc2626;
 }
 
 .settings-item__subtitle {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 2px;
+  font-size: 0.875rem;
+  color: #525252;
+  margin-top: 0.25rem;
   line-height: 1.3;
-  transition: color 0.2s ease;
+  transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__subtitle {
-  color: #e5e7eb;
+  color: #404040;
 }
 
 .settings-item__chevron {
   width: 20px;
   height: 20px;
-  color: #9ca3af;
+  color: #a3a3a3;
   flex-shrink: 0;
-  transition: color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__chevron {
-  color: #ffffff;
+  color: #525252;
+  transform: translateX(4px);
 }
 </style>
