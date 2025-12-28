@@ -49,5 +49,66 @@
       "work": "Lavoro",
       "family": "Famiglia"
     }
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "subtitle": "Gestisci il tuo account e le preferenze",
+    "account": {
+      "title": "Account",
+      "owner": "Titolare dell'account",
+      "changeProfile": "Cambia profilo"
+    },
+    "profileFamily": {
+      "title": "Profilo e famiglia",
+      "myProfile": {
+        "title": "Il mio profilo",
+        "subtitle": "Anagrafica e stato dei servizi"
+      },
+      "familyManagement": {
+        "title": "Gestione famiglia",
+        "subtitle": "Aggiungi o modifica i conti dei familiari"
+      },
+      "permissions": {
+        "title": "Permessi e accessi",
+        "subtitle": "Chi può vedere i tuoi documenti"
+      }
+    },
+    "app": {
+      "title": "App",
+      "notifications": {
+        "title": "Notifiche",
+        "subtitle": "Promemoria appuntamenti e scadenze"
+      },
+      "privacy": {
+        "title": "Privacy e sicurezza",
+        "subtitle": "Face ID, biometria, blocco schermo"
+      },
+      "appearance": {
+        "title": "Aspetto",
+        "subtitle": "Tema, colori e aspetto, dimensione testo"
+      }
+    },
+    "dataPrivacy": {
+      "title": "Dati e privacy",
+      "exportData": {
+        "title": "Esporta i miei dati",
+        "subtitle": "Scarica tutti i tuoi documenti"
+      },
+      "terms": {
+        "title": "Termini e condizioni",
+        "subtitle": "Leggi i termini di servizio"
+      }
+    },
+    "support": {
+      "title": "Centro assistenza",
+      "helpCenter": {
+        "title": "Centro assistenza",
+        "subtitle": "FAQ, tutorial, contatti"
+      }
+    },
+    "logout": "Esci dall'account",
+    "footer": {
+      "version": "Nucleo v0.1 · Prototipo"
+    }
   }
 }
