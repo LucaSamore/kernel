@@ -129,15 +129,105 @@ const handleTagSelected = (tagId: string) => {
 <style scoped>
 .documents-page {
   width: 100%;
-  height: 100%;
-  padding: 1rem 2rem 2rem 2rem;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  position: relative;
+}
+
+.documents-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .page-header {
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #171717;
+  line-height: 1.25;
+}
+
+.page-header p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  color: #525252;
+  line-height: 1.5;
 }
 
 .section-spacing {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+}
+
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.text-center {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.125rem;
+  color: #737373;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
