@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import SearchBar from '../components/SearchBar.vue'
 import TagBar from '../components/TagBar.vue'
 import DocumentCard from '../components/DocumentCard.vue'
+import DocumentModal from '../components/DocumentModal.vue'
 import type { Tag } from '../components/TagBar.vue'
 import type { Document } from '../components/DocumentCard.vue'
 import { useI18n } from 'vue-i18n'
@@ -11,6 +12,8 @@ const { t } = useI18n()
 
 const searchQuery = ref('')
 const selectedTag = ref('tutti')
+const selectedDocument = ref<Document | null>(null)
+const isModalOpen = ref(false)
 
 const tags = computed<Tag[]>(() => [
   { id: 'tutti', label: t('documents.tags.all'), count: 15 },
@@ -50,7 +53,7 @@ const documents = ref<Document[]>([
     id: '4',
     title: 'Controllo pressione',
     description: 'Descrizione contenuto referto...',
-    tags: ['esami', 'Tag1'],
+    tags: ['esami', 'Cardiologia'],
     date: '15/03/2024',
     doctor: 'Dottore #2',
     hospital: 'Ospedale #1'
@@ -86,6 +89,18 @@ const handleSearch = (query: string) => {
 const handleTagSelected = (tagId: string) => {
   selectedTag.value = tagId
 }
+
+const handleDocumentClick = (document: Document) => {
+  selectedDocument.value = document
+  isModalOpen.value = true
+}
+
+const handleCloseModal = () => {
+  isModalOpen.value = false
+  setTimeout(() => {
+    selectedDocument.value = null
+  }, 300)
+}
 </script>
 
 <template>
@@ -107,23 +122,37 @@ const handleTagSelected = (tagId: string) => {
 
     <!-- Tag Bar -->
     <div class="section-spacing">
-      <TagBar :tags="tags" @tag-selected="handleTagSelected" />
+      <TagBar
+        :tags="tags"
+        :selected-tag="selectedTag"
+        @tag-selected="handleTagSelected"
+      />
     </div>
 
     <!-- Documents List -->
-    <div class="documents-list">
+    <div v-if="filteredDocuments.length" class="documents-list">
       <DocumentCard
         v-for="doc in filteredDocuments"
         :key="doc.id"
         :document="doc"
+        @click="handleDocumentClick(doc)"
       />
     </div>
 
     <!-- Empty State -->
-    <div v-if="filteredDocuments.length === 0" class="text-center py-12 text-gray-500">
+    <div v-else class="text-center py-12 text-gray-500">
       {{ $t('documents.noResults') }}
     </div>
   </div>
+
+  <!-- Document Modal (Teleported to body) -->
+  <Teleport to="body">
+    <DocumentModal
+      :document="selectedDocument"
+      :is-open="isModalOpen"
+      @close="handleCloseModal"
+    />
+  </Teleport>
 </template>
 
 <style scoped>

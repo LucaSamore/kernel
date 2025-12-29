@@ -63,6 +63,11 @@
     "searchHint": "Prova: \"esami del sangue di Marco\" o \"quando ho fatto l'ultima visita?\"",
     "quickOverview": "I miei widget"
   },
+  "documentModal": {
+    "descriptionLabel": "Descrizione contenuto referto:",
+    "download": "Scarica",
+    "share": "Condividi"
+  },
   "settings": {
     "title": "Impostazioni",
     "subtitle": "Gestisci il tuo account e le preferenze",
