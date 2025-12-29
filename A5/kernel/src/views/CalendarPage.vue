@@ -222,11 +222,29 @@ function parseDateToISO(dateString: string): string {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  padding: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  position: relative;
+}
+
+.calendar-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .header-section {
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .header-content {
@@ -234,19 +252,28 @@ function parseDateToISO(dateString: string): string {
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .page-title {
-  font-size: 2rem;
+  font-size: 1.875rem;
   font-weight: 700;
-  color: #111827;
+  color: #171717;
   margin: 0;
+  line-height: 1.25;
 }
 
 .page-subtitle {
   font-size: 1rem;
-  color: #6b7280;
-  margin-top: 0.25rem;
+  color: #525252;
+  margin-top: 0.5rem;
+  line-height: 1.5;
 }
 
 .new-appointment-btn {
@@ -254,22 +281,31 @@ function parseDateToISO(dateString: string): string {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background-color: #000;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
   color: white;
-  border: none;
-  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .new-appointment-btn:hover {
-  background-color: #1f2937;
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
 }
 
 .tag-bar-container {
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
 }
 
 .content-section {
@@ -278,6 +314,11 @@ function parseDateToISO(dateString: string): string {
   gap: 1.5rem;
   flex: 1;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
 }
 
 .calendar-container {
@@ -293,13 +334,25 @@ function parseDateToISO(dateString: string): string {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.appointments-container:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .appointments-title {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
+  color: #171717;
   margin-bottom: 1rem;
+  line-height: 1.25;
 }
 
 .appointments-list {
@@ -314,17 +367,18 @@ function parseDateToISO(dateString: string): string {
 }
 
 .appointments-list::-webkit-scrollbar-track {
-  background: #f3f4f6;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 
 .appointments-list::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  backdrop-filter: blur(8px);
 }
 
 .appointments-list::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .empty-state {
@@ -333,6 +387,12 @@ function parseDateToISO(dateString: string): string {
   align-items: center;
   padding: 3rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  color: #525252;
 }
 
 /* FullCalendar customization */
@@ -372,6 +432,26 @@ function parseDateToISO(dateString: string): string {
 
 :deep(.fc-daygrid-day.fc-day-today) {
   background-color: #fef3c7 !important;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Responsive Design */

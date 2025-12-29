@@ -10,7 +10,7 @@ export interface Appointment {
   tags?: string[]
   date: string
   time?: string
-  doctor?: string
+  user?: string
   location?: string
 }
 
@@ -34,8 +34,8 @@ const metadata = computed<CardMetadata[]>(() => {
     meta.push({ icon: ClockIcon, label: props.appointment.time })
   }
   
-  if (props.appointment.doctor) {
-    meta.push({ icon: UserIcon, label: props.appointment.doctor })
+  if (props.appointment.user) {
+    meta.push({ icon: UserIcon, label: props.appointment.user })
   }
   
   if (props.appointment.location) {
