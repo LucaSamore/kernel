@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DocumentPlusIcon, PlusIcon } from '@heroicons/vue/24/outline'
+import { COLORS } from '../constants/constants'
 
 const emit = defineEmits<{
   upload: []
@@ -34,7 +35,7 @@ const emit = defineEmits<{
   gap: 0.5rem;
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  color: #171717;
+  color: v-bind('COLORS.textPrimary');
   font-weight: 600;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);

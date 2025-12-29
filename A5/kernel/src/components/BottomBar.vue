@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { TABS } from '../constants/constants'
+import { TABS, COLORS } from '../constants/constants'
 import { 
   HomeIcon, 
   DocumentTextIcon, 
@@ -108,7 +108,7 @@ const setActiveTab = (tabId: string) => {
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  color: #525252;
+  color: v-bind('COLORS.textSecondary');
   position: relative;
 }
 

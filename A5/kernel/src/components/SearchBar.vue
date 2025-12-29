@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
+import { COLORS } from '../constants/constants'
 
 const searchQuery = ref('')
 
@@ -62,12 +63,12 @@ const handleSearch = () => {
   border: none;
   background: transparent;
   font-size: 1rem;
-  color: #171717;
+  color: v-bind('COLORS.textPrimary');
   font-weight: 500;
 }
 
 .search-input::placeholder {
-  color: #737373;
+  color: v-bind('COLORS.textSecondary');
 }
 
 .search-input:focus {
@@ -86,7 +87,7 @@ const handleSearch = () => {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #525252;
+  color: v-bind('COLORS.textSecondary');
 }
 
 .filter-button {
@@ -115,6 +116,6 @@ const handleSearch = () => {
 .filter-icon {
   width: 1.125rem;
   height: 1.125rem;
-  color: #525252;
+  color: v-bind('COLORS.textSecondary');
 }
 </style>

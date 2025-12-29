@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '../composables/useAuth'
+import { COLORS } from '../constants/constants'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -23,7 +24,7 @@ const logout = () => {
 <template>
   <div class="topbar-container">
     <div class="flex items-center">
-      <h1 class="text-[clamp(1rem,2.5vw,1.25rem)] font-semibold text-gray-900 m-0">{{ t('app.title') }}</h1>
+      <h1 class="text-[clamp(1rem,2.5vw,1.25rem)] font-semibold m-0" :style="{ color: COLORS.primary }">{{ t('app.title') }}</h1>
     </div>
     <div class="flex items-center gap-6">
       <button 
@@ -65,8 +66,8 @@ const logout = () => {
                 </svg>
               </div>
               <div>
-                <div class="text-sm font-semibold text-gray-900">{{ currentUser?.name }}</div>
-                <div class="text-xs text-gray-500">{{ currentUser?.role }}</div>
+                <div class="text-sm font-semibold" :style="{ color: COLORS.primary }">{{ currentUser?.name }}</div>
+                <div class="text-xs" :style="{ color: COLORS.textSecondary }">{{ currentUser?.role }}</div>
               </div>
             </div>
           </div>
@@ -83,7 +84,7 @@ const logout = () => {
                 <line x1="21" y1="12" x2="9" y2="12"/>
               </svg>
             </div>
-            <span class="text-sm font-medium text-gray-900">{{ t('userMenu.logout') }}</span>
+            <span class="text-sm font-medium" :style="{ color: COLORS.primary }">{{ t('userMenu.logout') }}</span>
           </button>
         </div>
       </div>

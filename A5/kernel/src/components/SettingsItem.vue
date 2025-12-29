@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ChevronRightIcon } from '@heroicons/vue/24/outline'
 import type { Component } from 'vue'
+import { COLORS } from '../constants/constants'
 
 interface Props {
   icon?: Component
@@ -124,13 +125,13 @@ const handleClick = () => {
 .settings-item__title {
   font-size: 1rem;
   font-weight: 500;
-  color: #171717;
+  color: v-bind('COLORS.textPrimary');
   line-height: 1.4;
   transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__title {
-  color: #0a0a0a;
+  color: v-bind('COLORS.primary');
 }
 
 .settings-item--danger .settings-item__title {
@@ -143,14 +144,14 @@ const handleClick = () => {
 
 .settings-item__subtitle {
   font-size: 0.875rem;
-  color: #525252;
+  color: v-bind('COLORS.textSecondary');
   margin-top: 0.25rem;
   line-height: 1.3;
   transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__subtitle {
-  color: #404040;
+  color: v-bind('COLORS.textPrimary');
 }
 
 .settings-item__chevron {

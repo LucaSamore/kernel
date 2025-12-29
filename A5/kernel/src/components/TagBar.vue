@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { COLORS } from '../constants/constants'
 
 export interface Tag {
   id: string
@@ -56,7 +57,7 @@ const selectTag = (tagId: string) => {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 0.75rem;
-  color: #171717;
+  color: v-bind('COLORS.textPrimary');
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;

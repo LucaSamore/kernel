@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { CalendarOptions, EventClickArg, DateSelectArg } from '@fullcalendar/core'
+import type { CalendarOptions, EventClickArg, DateSelectArg } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import TagBar, { type Tag } from '@/components/TagBar.vue'
-import AppointmentCard, { type Appointment } from '@/components/AppointmentCard.vue'
+import TagBar, { type Tag } from '../components/TagBar.vue'
+import AppointmentCard, { type Appointment } from '../components/AppointmentCard.vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
 
 // Mock data - appuntamenti di esempio
@@ -17,7 +17,6 @@ const appointments = ref<Appointment[]>([
     tags: ['Salute', 'Cuore'],
     date: '13 Gen 2024',
     time: '15:30',
-    doctor: 'Dr. Rossi',
     location: 'Ospedale San Marco'
   },
   {
@@ -36,7 +35,6 @@ const appointments = ref<Appointment[]>([
     tags: ['Salute', 'Riabilitazione'],
     date: '27 Gen 2024',
     time: '16:30',
-    doctor: 'Dr. Verdi',
     location: 'Centro Fisioterapia'
   },
   {
@@ -46,7 +44,6 @@ const appointments = ref<Appointment[]>([
     tags: ['Salute', 'Pediatria'],
     date: '1 Feb 2024',
     time: '10:00',
-    doctor: 'Dr. Bianchi',
     location: 'Ospedale Pediatrico'
   },
   {
@@ -151,10 +148,11 @@ function parseDateToISO(dateString: string): string {
   }
   
   const parts = dateString.split(' ')
-  if (parts.length === 3) {
-    const day = parseInt(parts[0])
-    const month = monthMap[parts[1]]
-    const year = parseInt(parts[2])
+  const [dayStr, monthStr, yearStr] = parts
+  if (dayStr && monthStr && yearStr) {
+    const day = parseInt(dayStr, 10)
+    const month = monthMap[monthStr]
+    const year = parseInt(yearStr, 10)
     
     if (!isNaN(day) && month !== undefined && !isNaN(year)) {
       const date = new Date(year, month, day)

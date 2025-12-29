@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue'
 import { TagIcon } from '@heroicons/vue/24/outline'
+import { COLORS } from '../constants/constants'
 
 export interface CardMetadata {
   icon: FunctionalComponent
@@ -39,12 +40,12 @@ const emit = defineEmits<{
       <!-- Content -->
       <div class="flex-1 min-w-0">
         <!-- Title -->
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">
+        <h3 class="text-lg font-semibold mb-2" :style="{ color: COLORS.primary }">
           {{ title }}
         </h3>
 
         <!-- Description -->
-        <p class="text-sm text-gray-700">
+        <p class="text-sm" :style="{ color: COLORS.textPrimary }">
           {{ description }}
         </p>
 
@@ -123,7 +124,7 @@ const emit = defineEmits<{
   padding: 0.25rem 0.625rem;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
-  color: #171717;
+  color: v-bind('COLORS.textPrimary');
   font-size: 0.75rem;
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
