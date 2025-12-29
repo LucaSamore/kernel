@@ -37,25 +37,46 @@ const handleSearch = () => {
 .search-bar-wrapper {
   position: relative;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0;
 }
 
 .search-bar-container {
   position: relative;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.search-bar-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .search-input {
   width: 100%;
-  padding: 0.625rem 1.5rem 0.625rem 3rem;
-  border: 2px solid #d1d5db;
-  border-radius: 0.5rem;
+  min-height: 44px;
+  padding: 0.75rem 3.5rem 0.75rem 3rem;
+  border: none;
+  background: transparent;
   font-size: 1rem;
+  color: #171717;
+  font-weight: 500;
+}
+
+.search-input::placeholder {
+  color: #737373;
 }
 
 .search-input:focus {
   outline: none;
-  ring: 2px;
-  ring-color: #9ca3af;
+}
+
+.search-bar-container:focus-within {
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
 }
 
 .search-icon {
@@ -65,32 +86,35 @@ const handleSearch = () => {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #9ca3af;
+  color: #525252;
 }
 
 .filter-button {
   position: absolute;
-  right: 0.75rem;
+  right: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: transparent;
-  border: none;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .filter-button:hover {
-  background-color: #f3f4f6;
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .filter-icon {
   width: 1.125rem;
   height: 1.125rem;
-  color: #9ca3af;
+  color: #525252;
 }
 </style>

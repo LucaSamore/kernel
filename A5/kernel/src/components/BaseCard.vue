@@ -31,8 +31,8 @@ const emit = defineEmits<{
     <div class="card-content">
       <!-- Icon -->
       <div class="shrink-0">
-        <div class="w-14 h-14 bg-gray-100 rounded-lg flex items-center justify-center">
-          <component :is="icon" class="w-7 h-7 text-gray-600" />
+        <div class="w-14 h-14 bg-white/30 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-lg">
+          <component :is="icon" class="w-7 h-7 text-gray-800" />
         </div>
       </div>
 
@@ -44,7 +44,7 @@ const emit = defineEmits<{
         </h3>
 
         <!-- Description -->
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-gray-700">
           {{ description }}
         </p>
 
@@ -78,25 +78,28 @@ const emit = defineEmits<{
 
 <style scoped>
 .base-card {
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(0.75rem);
-  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 1.25rem;
   padding: 1.5rem;
   margin: 0.75rem 0;
-  border: 2px solid #d1d5db;
-  box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .base-card:hover {
-  transform: translateY(-0.25rem);
-  box-shadow: 0 0.75rem 2.5rem rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
 .card-selected {
-  border-color: #000;
-  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .card-content {
@@ -118,12 +121,14 @@ const emit = defineEmits<{
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  background-color: #f3f4f6;
-  color: #374151;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  color: #171717;
   font-size: 0.75rem;
-  border-radius: 0.375rem;
-  border: 1px solid #1f2937;
-  font-weight: 500;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 640px) {

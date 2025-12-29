@@ -29,7 +29,7 @@ const logout = () => {
     </div>
     <div class="flex items-center gap-6">
       <button 
-        class="relative flex items-center justify-center w-[clamp(2rem,5vw,2.25rem)] h-[clamp(2rem,5vw,2.25rem)] border border-gray-300 rounded-md bg-white hover:bg-gray-50 transition-colors"
+        class="glass-button relative flex items-center justify-center w-[clamp(2rem,5vw,2.25rem)] h-[clamp(2rem,5vw,2.25rem)] rounded-md"
         :title="t('topbar.notifications')"
       >
         <svg class="w-[clamp(1rem,3vw,1.25rem)] h-[clamp(1rem,3vw,1.25rem)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -42,7 +42,7 @@ const logout = () => {
       </button>
       <div class="relative">
         <button 
-          class="flex items-center gap-2 px-3 py-1.5 border border-gray-300 rounded-md bg-white hover:bg-gray-50 transition-colors"
+          class="glass-button flex items-center gap-2 px-3 py-1.5 rounded-md"
           @click="toggleUserMenu"
         >
           <div class="w-[clamp(1.25rem,4vw,1.5rem)] h-[clamp(1.25rem,4vw,1.5rem)] rounded-full bg-gray-200 flex items-center justify-center text-gray-600">
@@ -57,7 +57,7 @@ const logout = () => {
         </button>
         <div 
           v-if="showUserMenu" 
-          class="absolute top-[calc(100%+0.5vh)] right-0 bg-white border border-gray-300 rounded-lg shadow-lg min-w-50 z-50 overflow-hidden"
+          class="glass-menu absolute top-[calc(100%+0.5vh)] right-0 rounded-lg min-w-50 z-50 overflow-hidden"
         >
           <!-- User Cards -->
           <div class="py-1">
@@ -105,11 +105,44 @@ const logout = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
   height: 8vh;
   width: 100%;
   padding-left: clamp(2rem, 1.5vw, 3rem);
   padding-right: clamp(2rem, 1.5vw, 3rem);
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1) !important;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+.glass-menu {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+.glass-menu button:hover {
+  background: rgba(14, 165, 233, 0.08) !important;
 }
 </style>
