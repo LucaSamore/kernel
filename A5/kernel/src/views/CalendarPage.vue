@@ -218,8 +218,7 @@ function parseDateToISO(dateString: string): string {
 .calendar-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
   padding: 2rem;
   background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
   position: relative;
@@ -310,13 +309,13 @@ function parseDateToISO(dateString: string): string {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  flex: 1;
-  overflow: hidden;
   position: relative;
   z-index: 1;
   animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
   animation-delay: 0.2s;
   animation-fill-mode: both;
+  margin-bottom: 2rem;
+  align-items: start;
 }
 
 .calendar-container {
@@ -324,14 +323,12 @@ function parseDateToISO(dateString: string): string {
   border-radius: 0.75rem;
   padding: 1.5rem;
   border: 2px solid #e5e7eb;
-  overflow: auto;
   box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.08);
 }
 
 .appointments-container {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -354,30 +351,12 @@ function parseDateToISO(dateString: string): string {
 }
 
 .appointments-list {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-/* Scrollbar personalizzata */
-.appointments-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.appointments-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-.appointments-list::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-}
-
-.appointments-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
-}
+/* Rimuovo regole scrollbar personalizzate non più necessarie */
 
 .empty-state {
   display: flex;
@@ -430,6 +409,18 @@ function parseDateToISO(dateString: string): string {
 
 :deep(.fc-daygrid-day.fc-day-today) {
   background-color: #fef3c7 !important;
+}
+
+/* Header sticky per i giorni della settimana */
+:deep(.fc-col-header) {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 2 !important;
+  background: white !important;
+}
+
+:deep(.fc-scrollgrid-sync-table) {
+  position: relative !important;
 }
 
 @keyframes slideInDown {

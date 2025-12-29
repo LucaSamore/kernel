@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import SettingsItem from '../components/SettingsItem.vue'
 import {
   UserCircleIcon,
@@ -15,9 +16,14 @@ import {
 } from '@heroicons/vue/24/outline'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const handleItemClick = (item: string) => {
   console.log('Clicked:', item)
+}
+
+const handleChangeProfile = () => {
+  router.push('/login')
 }
 </script>
 
@@ -41,7 +47,7 @@ const handleItemClick = (item: string) => {
           <div class="settings-account-name">Marco</div>
           <div class="settings-account-role">{{ t('settings.account.owner') }}</div>
         </div>
-        <button class="settings-account-button">
+        <button class="settings-account-button" @click="handleChangeProfile">
           {{ t('settings.account.changeProfile') }}
         </button>
       </div>

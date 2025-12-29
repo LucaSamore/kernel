@@ -19,9 +19,9 @@ const emit = defineEmits<{
     @click="emit('click')"
     :class="[
       'profile-card',
-      isAddCard ? 'border-dashed' : '',
+      { 'add-card': isAddCard },
       'w-36 h-44 flex flex-col items-center justify-center gap-3',
-      'rounded-lg border border-black',
+      'rounded-lg',
       'hover:shadow-lg hover:-translate-y-1',
     ]"
   >
@@ -40,8 +40,29 @@ const emit = defineEmits<{
 </template>
 
 <style scoped>
+.profile-card {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.add-card {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px dashed rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.add-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
 
 .profile-card:hover {
   transform: translateY(-4px) !important;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.65);
 }
 </style>
