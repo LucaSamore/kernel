@@ -69,3 +69,79 @@ const textClasses = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.p-4 {
+  padding: 1rem;
+}
+
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.border-l-4 {
+  border-left-width: 4px;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.bg-red-50 {
+  background: rgba(254, 226, 226, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.bg-red-50:hover {
+  background: rgba(254, 226, 226, 0.75);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.border-red-500 {
+  border-left-color: #ef4444;
+}
+
+.bg-yellow-50 {
+  background: rgba(254, 249, 195, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.bg-yellow-50:hover {
+  background: rgba(254, 249, 195, 0.75);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.border-yellow-500 {
+  border-left-color: #eab308;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+.text-red-700 {
+  color: #b91c1c;
+}
+
+.text-red-800 {
+  color: #991b1b;
+}
+
+.text-yellow-600 {
+  color: #ca8a04;
+}
+
+.text-yellow-700 {
+  color: #a16207;
+}
+
+.text-yellow-800 {
+  color: #854d0e;
+}
+</style>

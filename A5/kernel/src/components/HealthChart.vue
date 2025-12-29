@@ -110,10 +110,10 @@ const chartOptions = computed<ChartOptions<'line'>>(() => ({
 </script>
 
 <template>
-  <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+  <div class="chart-widget">
     <div class="mb-4">
       <h3 class="text-lg font-semibold text-gray-800">{{ title }}</h3>
-      <p v-if="normalRange" class="text-sm text-gray-500">
+      <p v-if="normalRange" class="text-sm text-gray-600">
         Range normale: {{ normalRange.min }}-{{ normalRange.max }} {{ unit }}
       </p>
     </div>
@@ -122,3 +122,20 @@ const chartOptions = computed<ChartOptions<'line'>>(() => ({
     </div>
   </div>
 </template>
+
+<style scoped>
+.chart-widget {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.chart-widget:hover {
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+</style>
