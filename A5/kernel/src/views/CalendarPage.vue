@@ -7,62 +7,17 @@ import interactionPlugin from '@fullcalendar/interaction'
 import TagBar, { type Tag } from '../components/TagBar.vue'
 import AppointmentCard, { type Appointment } from '../components/AppointmentCard.vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
+import { MOCK_APPOINTMENTS } from '../constants/mockData'
 
-// Mock data - appuntamenti di esempio
-const appointments = ref<Appointment[]>([
-  {
-    id: '1',
-    title: 'Visita cardiologica',
-    description: 'Controllo annuale dal cardiologo',
-    tags: ['Salute', 'Cuore'],
-    date: '13 Gen 2024',
-    time: '15:30',
-    location: 'Ospedale San Marco'
-  },
-  {
-    id: '2',
-    title: 'Esami del sangue',
-    description: 'Prelievo per emocromo completo',
-    tags: ['Salute', 'Analisi'],
-    date: '20 Gen 2024',
-    time: '08:00',
-    location: 'Laboratorio Medicon'
-  },
-  {
-    id: '3',
-    title: 'Fisioterapia',
-    description: 'Seduta di fisioterapia',
-    tags: ['Salute', 'Riabilitazione'],
-    date: '27 Gen 2024',
-    time: '16:30',
-    location: 'Centro Fisioterapia'
-  },
-  {
-    id: '4',
-    title: 'Visita pediatrica',
-    description: 'Controllo di crescita bambino',
-    tags: ['Salute', 'Pediatria'],
-    date: '1 Feb 2024',
-    time: '10:00',
-    location: 'Ospedale Pediatrico'
-  },
-  {
-    id: '5',
-    title: 'Ecografia',
-    description: 'Ecografia addominale',
-    tags: ['Salute', 'Diagnostica'],
-    date: '5 Feb 2024',
-    time: '14:00',
-    location: 'Centro Diagnostico'
-  }
-])
+// Appuntamenti centralizzati
+const appointments = ref<Appointment[]>(MOCK_APPOINTMENTS)
 
 // Tags per la TagBar
 const tags = ref<Tag[]>([
   { id: 'all', label: 'Tutti', count: appointments.value.length },
-  { id: 'salute', label: 'Salute', count: 5 },
-  { id: 'lavoro', label: 'Lavoro', count: 0 },
-  { id: 'famiglia', label: 'Famiglia', count: 0 }
+  { id: 'cardiologia', label: 'Cardiologia', count: appointments.value.filter(a => a.tags?.includes('Cardiologia')).length },
+  { id: 'analisi', label: 'Analisi', count: appointments.value.filter(a => a.tags?.includes('Analisi')).length },
+  { id: 'pediatria', label: 'Pediatria', count: appointments.value.filter(a => a.tags?.includes('Pediatria')).length }
 ])
 
 const selectedTag = ref('all')

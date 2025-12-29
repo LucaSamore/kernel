@@ -6,9 +6,7 @@ import DocumentCard from '../components/DocumentCard.vue'
 import DocumentModal from '../components/DocumentModal.vue'
 import type { Tag } from '../components/TagBar.vue'
 import type { Document } from '../components/DocumentCard.vue'
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { MOCK_DOCUMENTS } from '../constants/mockData'
 
 const searchQuery = ref('')
 const selectedTag = ref('tutti')
@@ -16,49 +14,13 @@ const selectedDocument = ref<Document | null>(null)
 const isModalOpen = ref(false)
 
 const tags = computed<Tag[]>(() => [
-  { id: 'tutti', label: t('documents.tags.all'), count: 15 },
-  { id: 'daLeggere', label: t('documents.tags.toRead'), count: 1 },
-  { id: 'cardiologia', label: t('documents.tags.cardiology'), count: 3 }
+  { id: 'tutti', label: 'Tutti', count: MOCK_DOCUMENTS.length },
+  { id: 'cardiologia', label: 'Cardiologia', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Cardiologia')).length },
+  { id: 'analisi', label: 'Analisi', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Analisi')).length },
+  { id: 'diagnostica', label: 'Diagnostica', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Diagnostica')).length }
 ])
 
-const documents = ref<Document[]>([
-  {
-    id: '1',
-    title: 'Referto ECG',
-    description: 'Descrizione contenuto referto...',
-    tags: ['esami', 'Tag2'],
-    date: '10/01/2025',
-    doctor: 'Dottore #1',
-    hospital: 'Ospedale #1'
-  },
-  {
-    id: '2',
-    title: 'Esame del sangue',
-    description: 'Descrizione contenuto referto...',
-    tags: ['esami', 'Tag2'],
-    date: '20/07/2024',
-    doctor: 'Dottore #1',
-    hospital: 'Ospedale #1'
-  },
-  {
-    id: '3',
-    title: 'Visita oculistica',
-    description: 'Descrizione contenuto referto...',
-    tags: ['visita', 'Tag3'],
-    date: '28/06/2024',
-    doctor: 'Dottore #3',
-    hospital: 'Ospedale #2'
-  },
-  {
-    id: '4',
-    title: 'Controllo pressione',
-    description: 'Descrizione contenuto referto...',
-    tags: ['esami', 'Cardiologia'],
-    date: '15/03/2024',
-    doctor: 'Dottore #2',
-    hospital: 'Ospedale #1'
-  }
-])
+const documents = ref<Document[]>(MOCK_DOCUMENTS)
 
 const filteredDocuments = computed(() => {
   let filtered = documents.value
@@ -75,8 +37,9 @@ const filteredDocuments = computed(() => {
 
   // Filter by tag
   if (selectedTag.value !== 'tutti') {
-    // Here you can implement tag-specific filtering logic
-    // For now, just showing all documents
+    filtered = filtered.filter(doc => 
+      doc.tags.some(tag => tag.toLowerCase() === selectedTag.value.toLowerCase())
+    )
   }
 
   return filtered

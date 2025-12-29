@@ -1,56 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import SearchBar from '../components/SearchBar.vue'
 import QuickActions from '../components/QuickActions.vue'
 import UpcomingAppointments from '../components/UpcomingAppointments.vue'
 import DocumentCard from '../components/DocumentCard.vue'
 import WidgetPanel from '../components/WidgetPanel.vue'
-import type { Appointment } from '../components/AppointmentCard.vue'
-import type { Document } from '../components/DocumentCard.vue'
+import { getRecentDocuments, getUpcomingAppointments } from '../constants/mockData'
 
 const searchQuery = ref('')
-const appointments = ref<Appointment[]>([
-  {
-    id: '1',
-    title: 'Visita cardiologica',
-    description: 'Controllo annuale',
-    date: '28 Dicembre 2025',
-    time: '10:30',
-    user: 'Marco',
-    location: 'Ospedale San Raffaele',
-    tags: ['Cardiologia', 'Controllo']
-  },
-  {
-    id: '2',
-    title: 'Analisi del sangue',
-    description: 'Esami di routine',
-    date: '5 Gennaio 2026',
-    time: '08:00',
-    user: 'Luca',
-    location: 'Laboratorio Centrale',
-    tags: ['Analisi']
-  }
-])
-const recentDocuments = ref<Document[]>([
-  {
-    id: '1',
-    title: 'Referto visita cardiologica',
-    description: 'Esito positivo. Cuore in buone condizioni, nessuna anomalia rilevata.',
-    date: '15 Dicembre 2025',
-    doctor: 'Dr. Rossi',
-    hospital: 'Ospedale San Raffaele',
-    tags: ['Cardiologia', 'Referto']
-  },
-  {
-    id: '2',
-    title: 'Esami del sangue - Controllo trimestrale',
-    description: 'Valori nella norma. Colesterolo leggermente alto, continuare dieta.',
-    date: '10 Dicembre 2025',
-    doctor: 'Dr. Bianchi',
-    hospital: 'Laboratorio Centrale',
-    tags: ['Analisi', 'Sangue']
-  }
-])
+const appointments = computed(() => getUpcomingAppointments(2))
+const recentDocuments = computed(() => getRecentDocuments(2))
 
 const handleSearch = (query: string) => {
   searchQuery.value = query
