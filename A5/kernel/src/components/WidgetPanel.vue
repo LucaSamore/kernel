@@ -50,11 +50,14 @@ const quickStats = ref([
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
   padding: 1.25rem;
-  box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .panel-header {
@@ -73,6 +76,16 @@ const quickStats = ref([
   height: 2.25rem;
   border-radius: 0.65rem;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #525252;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  position: relative;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
 }
 
 .widget-list {
@@ -82,27 +95,34 @@ const quickStats = ref([
 }
 
 .widget-card {
-  background-color: #f9fafb;
-  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
   padding: 0.875rem 1rem;
-  border: 1px solid #e5e7eb;
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .widget-card:hover {
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12);
-  transform: translateY(-0.1rem);
-  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .icon-pill {
   width: 2.5rem;
   height: 2.5rem;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 </style>

@@ -34,17 +34,20 @@ const emit = defineEmits<{
   gap: 0.5rem;
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  color: black;
+  color: #171717;
   font-weight: 600;
-  border-color: black;
-  border: 2px solid;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .quick-action-btn:hover {
-  transform: translateY(-0.125rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 </style>

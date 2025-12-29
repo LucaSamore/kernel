@@ -14,7 +14,6 @@ const emit = defineEmits<{
 
 <template>
   <div class="space-y-3">
-    <h3 class="text-2xl font-hand">{{ $t('home.upcomingAppointments') }}</h3>
     <div v-if="appointments.length === 0" class="text-gray-500 text-center py-8">
       {{ $t('home.noAppointments') }}
     </div>

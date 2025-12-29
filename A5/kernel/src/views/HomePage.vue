@@ -74,12 +74,12 @@ const handleAppointmentClick = (id: string) => {
       <div class="main-column">
         <div class="section-card space-y-3">
           <SearchBar @search="handleSearch" />
-          <p class="text-xs text-gray-500 font-hand text-center">
+          <p class="search-hint text-xs text-gray-500 font-hand text-center">
             {{ $t('home.searchHint') }}
           </p>
         </div>
 
-        <div class="section-card">
+        <div class="quick-actions">
           <QuickActions 
             @upload="handleUpload"
             @new-appointment="handleNewAppointment"
@@ -87,6 +87,7 @@ const handleAppointmentClick = (id: string) => {
         </div>
 
         <div class="section-card">
+          <h3 class="font-hand text-2xl">{{ $t('home.upcomingAppointments') }}</h3>
           <UpcomingAppointments 
             :appointments="appointments"
             @appointment-click="handleAppointmentClick"
@@ -121,6 +122,22 @@ const handleAppointmentClick = (id: string) => {
   gap: 1rem;
   min-height: 100%;
   padding: 1.5rem;
+  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  position: relative;
+}
+
+.home-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .content-grid {
@@ -129,6 +146,12 @@ const handleAppointmentClick = (id: string) => {
   gap: 1.5rem;
   width: 100%;
   align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.search-hint {
+  margin-top: 0.5rem;
 }
 
 .main-column {
@@ -139,6 +162,10 @@ const handleAppointmentClick = (id: string) => {
 
 .section-card {
   padding: 1.25rem;
+}
+
+.quick-actions {
+  margin: 1rem;
 }
 
 .widget-column {
