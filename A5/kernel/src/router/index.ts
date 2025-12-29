@@ -4,7 +4,15 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginPage.vue'),
+    meta: {
+      hideNavigation: true
+    }
   },
   {
     path: '/home',
