@@ -70,7 +70,7 @@ const categoryNames = {
         <div class="modal-header">
           <div>
             <h2 class="modal-title">Personalizza i tuoi widget</h2>
-            <p class="modal-subtitle">Scegli quali informazioni visualizzare nella sidebar</p>
+            <p class="modal-subtitle">Selezionati: {{ localSelection.length }} / {{ availableWidgets.length }}</p>
           </div>
           <button 
             class="close-button"
@@ -96,17 +96,22 @@ const categoryNames = {
                 :class="{ 'widget-selected': isSelected(widget.id) }"
                 @click="toggleWidget(widget.id)"
               >
-                <div class="widget-option-header">
-                  <div class="widget-icon">{{ widget.icon }}</div>
-                  <div class="checkbox" :class="{ 'checkbox-checked': isSelected(widget.id) }">
-                    <svg v-if="isSelected(widget.id)" class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
+                <div class="widget-option-main">
+                  <div class="widget-icon-large">{{ widget.icon }}</div>
+                  <div class="widget-option-content">
+                    <div class="widget-option-name">{{ widget.name }}</div>
+                    <div class="widget-option-description">{{ widget.description }}</div>
                   </div>
                 </div>
-                <div class="widget-option-content">
-                  <div class="widget-option-name">{{ widget.name }}</div>
-                  <div class="widget-option-description">{{ widget.description }}</div>
+                <div class="widget-option-footer">
+                  <div class="checkbox-wrapper">
+                    <div class="checkbox" :class="{ 'checkbox-checked': isSelected(widget.id) }">
+                      <svg v-if="isSelected(widget.id)" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <span class="checkbox-label">{{ isSelected(widget.id) ? 'Selezionato' : 'Seleziona' }}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -133,9 +138,9 @@ const categoryNames = {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.95) 0%, rgba(221, 214, 254, 0.95) 50%, rgba(252, 231, 243, 0.95) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(224, 242, 254, 0.10) 0%, rgba(221, 214, 254, 0.10) 50%, rgba(252, 231, 243, 0.10) 100%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,99 +249,134 @@ const categoryNames = {
 
 .widget-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.25rem;
 }
 
 .widget-option {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 1rem;
-  padding: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1.25rem;
+  padding: 0;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .widget-option:hover {
   background: rgba(255, 255, 255, 0.4);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .widget-selected {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  border-color: rgba(59, 130, 246, 0.7);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .widget-selected:hover {
-  background: rgba(59, 130, 246, 0.25);
-  border-color: rgba(59, 130, 246, 0.7);
-  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-.widget-option-header {
+.widget-option-main {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  flex: 1;
 }
 
-.widget-icon {
-  font-size: 1.75rem;
-  width: 3rem;
-  height: 3rem;
+.widget-icon-large {
+  font-size: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.widget-option-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.25rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.checkbox-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #525252;
+  transition: color 0.3s;
+}
+
+.widget-selected .checkbox-label {
+  color: #3b82f6;
 }
 
 .checkbox {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.2);
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2.5px solid rgba(209, 213, 219, 0.8);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
 }
 
 .checkbox-checked {
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   border-color: transparent;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .widget-option-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
 
 .widget-option-name {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: #171717;
-  margin-bottom: 0.25rem;
+  line-height: 1.3;
 }
 
 .widget-option-description {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: #737373;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .modal-footer {

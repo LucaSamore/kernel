@@ -214,7 +214,7 @@ export const HEALTH_ALERTS: HealthAlert[] = [
   },
 ]
 
-// Storico parametri per grafici
+// Widget storico parametri salute
 export const CHOLESTEROL_HISTORY: HealthMetricHistory = {
   parameterId: 'cholesterol',
   data: [
@@ -263,30 +263,6 @@ export const GLUCOSE_HISTORY: HealthMetricHistory = {
   ],
 }
 
-export const WEIGHT_HISTORY: HealthMetricHistory = {
-  parameterId: 'weight',
-  data: [
-    { date: '1 Nov', value: 73.2 },
-    { date: '8 Nov', value: 72.8 },
-    { date: '15 Nov', value: 72.5 },
-    { date: '22 Nov', value: 72.7 },
-    { date: '29 Nov', value: 72.3 },
-    { date: '6 Dic', value: 72.5 },
-  ],
-}
-
-export const BLOOD_PRESSURE_DIA_HISTORY: HealthMetricHistory = {
-  parameterId: 'blood-pressure-dia',
-  data: [
-    { date: '1 Nov', value: 78 },
-    { date: '8 Nov', value: 79 },
-    { date: '15 Nov', value: 81 },
-    { date: '22 Nov', value: 79 },
-    { date: '29 Nov', value: 80 },
-    { date: '6 Dic', value: 80 },
-  ],
-}
-
 // Helper per ottenere un parametro specifico
 export const getHealthParameter = (id: string): HealthParameter | undefined => {
   return HEALTH_PARAMETERS.find(p => p.id === id)
@@ -297,10 +273,8 @@ export const getHealthHistory = (id: string): HealthMetricHistory | undefined =>
   const histories: Record<string, HealthMetricHistory> = {
     'cholesterol': CHOLESTEROL_HISTORY,
     'blood-pressure-sys': BLOOD_PRESSURE_SYS_HISTORY,
-    'blood-pressure-dia': BLOOD_PRESSURE_DIA_HISTORY,
     'heart-rate': HEART_RATE_HISTORY,
     'glucose': GLUCOSE_HISTORY,
-    'weight': WEIGHT_HISTORY,
   }
   return histories[id]
 }
@@ -311,29 +285,12 @@ export const WIDGET_DATA = {
     medication: 'Vitamina D',
     time: '20:00',
     daysLeft: 0, // oggi
-  },
-  dailySteps: {
-    current: 8234,
-    goal: 10000,
-  },
-  sleepHours: {
-    lastNight: 7.5,
-    average: 7.2,
-    goal: 8,
-  },
-  waterIntake: {
-    glasses: 6,
-    goal: 8,
-  },
+
   nextVaccine: {
     name: 'Antinfluenzale',
     date: '15 Gen 2025',
     daysLeft: 16,
   },
-  mood: {
-    current: 'good', // good, neutral, bad
-    label: 'Buono',
-    emoji: '😊',
-  },
+}
 }
 

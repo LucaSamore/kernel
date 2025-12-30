@@ -42,38 +42,10 @@ const availableWidgets = ref<WidgetOption[]>([
     category: 'quick',
   },
   {
-    id: 'daily-steps',
-    name: 'Passi giornalieri',
-    description: 'Conteggio passi di oggi con obiettivo',
-    icon: '👟',
-    category: 'quick',
-  },
-  {
-    id: 'sleep-hours',
-    name: 'Ore di sonno',
-    description: 'Qualità del sonno della scorsa notte',
-    icon: '😴',
-    category: 'quick',
-  },
-  {
-    id: 'water-intake',
-    name: 'Idratazione',
-    description: 'Bicchieri d\'acqua bevuti oggi',
-    icon: '💧',
-    category: 'quick',
-  },
-  {
     id: 'next-vaccine',
     name: 'Prossimo vaccino',
     description: 'Giorni al prossimo richiamo vaccinale',
     icon: '💉',
-    category: 'quick',
-  },
-  {
-    id: 'mood-tracker',
-    name: 'Umore giornaliero',
-    description: 'Traccia il tuo stato d\'animo',
-    icon: '😊',
     category: 'quick',
   },
   
@@ -144,20 +116,6 @@ const availableWidgets = ref<WidgetOption[]>([
     category: 'health-chart',
   },
   {
-    id: 'blood-pressure-dia-chart',
-    name: 'Grafico pressione diastolica',
-    description: 'Trend pressione minima',
-    icon: '📊',
-    category: 'health-chart',
-  },
-  {
-    id: 'weight-chart',
-    name: 'Grafico peso',
-    description: 'Andamento peso corporeo',
-    icon: '⚖️',
-    category: 'health-chart',
-  },
-  {
     id: 'cholesterol-chart',
     name: 'Grafico colesterolo',
     description: 'Trend colesterolo totale',
@@ -166,11 +124,11 @@ const availableWidgets = ref<WidgetOption[]>([
   },
 ])
 
-// Widget attivi
+// Widget attivi ordinati secondo l'ordine di availableWidgets
 const activeWidgets = computed(() => {
-  return selectedWidgetIds.value.map(id => {
-    return availableWidgets.value.find(w => w.id === id)
-  }).filter(Boolean) as WidgetOption[]
+  return availableWidgets.value.filter(widget => 
+    selectedWidgetIds.value.includes(widget.id)
+  )
 })
 
 // Helper per ottenere il titolo e parametri del grafico
@@ -268,58 +226,6 @@ onMounted(() => {
             <div class="flex-1 min-w-0">
               <div class="text-sm text-gray-600">{{ WIDGET_DATA.nextMedicationReminder.medication }}</div>
               <div class="text-lg font-semibold text-gray-900">{{ WIDGET_DATA.nextMedicationReminder.time }}</div>
-            </div>
-          </div>
-        </div>
-
-        <div v-else-if="widget.id === 'daily-steps'" class="widget-card">
-          <div class="flex items-center gap-3">
-            <div class="icon-pill text-xl">👟</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm text-gray-600">Passi oggi</div>
-              <div class="text-lg font-semibold text-gray-900">
-                {{ WIDGET_DATA.dailySteps.current.toLocaleString() }} / {{ WIDGET_DATA.dailySteps.goal.toLocaleString() }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div v-else-if="widget.id === 'sleep-hours'" class="widget-card">
-          <div class="flex items-center gap-3">
-            <div class="icon-pill text-xl">😴</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm text-gray-600">Sonno scorsa notte</div>
-              <div class="text-lg font-semibold text-gray-900">{{ WIDGET_DATA.sleepHours.lastNight }}h</div>
-            </div>
-          </div>
-        </div>
-
-        <div v-else-if="widget.id === 'water-intake'" class="widget-card">
-          <div class="flex items-center gap-3">
-            <div class="icon-pill text-xl">💧</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm text-gray-600">Bicchieri d'acqua</div>
-              <div class="text-lg font-semibold text-gray-900">{{ WIDGET_DATA.waterIntake.glasses }} / {{ WIDGET_DATA.waterIntake.goal }}</div>
-            </div>
-          </div>
-        </div>
-
-        <div v-else-if="widget.id === 'next-vaccine'" class="widget-card">
-          <div class="flex items-center gap-3">
-            <div class="icon-pill text-xl">💉</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm text-gray-600">{{ WIDGET_DATA.nextVaccine.name }}</div>
-              <div class="text-lg font-semibold text-gray-900">{{ WIDGET_DATA.nextVaccine.daysLeft }} giorni</div>
-            </div>
-          </div>
-        </div>
-
-        <div v-else-if="widget.id === 'mood-tracker'" class="widget-card">
-          <div class="flex items-center gap-3">
-            <div class="icon-pill text-2xl">{{ WIDGET_DATA.mood.emoji }}</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm text-gray-600">Umore oggi</div>
-              <div class="text-lg font-semibold text-gray-900">{{ WIDGET_DATA.mood.label }}</div>
             </div>
           </div>
         </div>
