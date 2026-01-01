@@ -256,7 +256,7 @@ onMounted(() => {
 
     <!-- Widget Selector Modal -->
     <WidgetSelector
-      v-if="isWidgetSelectorOpen"
+      :is-open="isWidgetSelectorOpen"
       :available-widgets="availableWidgets"
       :selected-widget-ids="selectedWidgetIds"
       @close="isWidgetSelectorOpen = false"

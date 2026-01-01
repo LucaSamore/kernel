@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
+import BaseModal from './shared/BaseModal.vue'
 
 export interface WidgetOption {
   id: string
@@ -12,6 +12,7 @@ export interface WidgetOption {
 }
 
 interface Props {
+  isOpen: boolean
   availableWidgets: WidgetOption[]
   selectedWidgetIds: string[]
 }
@@ -69,24 +70,13 @@ const getCategoryName = (category: string) => {
 </script>
 
 <template>
-  <Teleport to="body">
-    <div class="modal-overlay" @click.self="emit('close')">
-      <div class="modal-container">
-        <div class="modal-header">
-          <div>
-            <h2 class="modal-title">{{ $t('widgets.selector.title') }}</h2>
-            <p class="modal-subtitle">{{ $t('widgets.selector.subtitle', { count: localSelection.length, total: availableWidgets.length }) }}</p>
-          </div>
-          <button 
-            class="close-button"
-            @click="emit('close')"
-            :aria-label="$t('widgets.selector.close')"
-          >
-            <XMarkIcon class="w-6 h-6" />
-          </button>
-        </div>
-
-        <div class="modal-body">
+  <BaseModal
+    :is-open="isOpen"
+    :title="$t('widgets.selector.title')"
+    :subtitle="$t('widgets.selector.subtitle')"
+    max-width="lg"
+    @close="emit('close')"
+  >
           <div 
             v-for="(widgets, category) in categorizedWidgets" 
             :key="category"
@@ -121,119 +111,19 @@ const getCategoryName = (category: string) => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="modal-footer">
-          <button class="button button-secondary" @click="emit('close')">
-            {{ $t('widgets.selector.cancel') }}
-          </button>
-          <button class="button button-primary" @click="handleSave">
-            {{ $t('widgets.selector.save') }}
-          </button>
-        </div>
-      </div>
-    </div>
-  </Teleport>
+    
+    <template #footer>
+      <button class="button button-secondary" @click="emit('close')">
+        {{ $t('widgets.selector.cancel') }}
+      </button>
+      <button class="button button-primary" @click="handleSave">
+        {{ $t('widgets.selector.save') }}
+      </button>
+    </template>
+  </BaseModal>
 </template>
 
 <style scoped>
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.10) 0%, rgba(221, 214, 254, 0.10) 50%, rgba(252, 231, 243, 0.10) 100%);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 1rem;
-  animation: fadeIn 0.2s ease-out;
-}
-
-.modal-overlay::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.modal-container {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  max-width: 42rem;
-  width: 100%;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  animation: slideUp 0.3s cubic-bezier(0, 0, 0.2, 1);
-  position: relative;
-  z-index: 1;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.modal-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #171717;
-  margin: 0;
-}
-
-.modal-subtitle {
-  font-size: 0.875rem;
-  color: #737373;
-  margin: 0.25rem 0 0 0;
-}
-
-.close-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #525252;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.close-button:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-.modal-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem 2rem;
-}
-
 .category-section {
   margin-bottom: 2rem;
 }
@@ -384,14 +274,6 @@ const getCategoryName = (category: string) => {
   line-height: 1.5;
 }
 
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  padding: 1.5rem 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 .button {
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
@@ -428,39 +310,9 @@ const getCategoryName = (category: string) => {
   transform: translateY(-1px);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (max-width: 768px) {
-  .modal-container {
-    max-height: 95vh;
-  }
-
   .widget-grid {
     grid-template-columns: 1fr;
-  }
-
-  .modal-header,
-  .modal-body,
-  .modal-footer {
-    padding: 1.25rem 1.5rem;
   }
 }
 </style>

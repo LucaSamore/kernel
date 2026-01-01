@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { XMarkIcon, ArrowDownTrayIcon, ShareIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline'
+import { ArrowDownTrayIcon, ShareIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline'
 import { CalendarIcon, UserIcon, BuildingOfficeIcon } from '@heroicons/vue/24/solid'
 import type { Document } from './DocumentCard.vue'
+import BaseModal from './shared/BaseModal.vue'
 
 // Import delle immagini del referto
 import referto1 from '../assets/documents/referto_ECG_1.jpg'
@@ -61,25 +62,27 @@ const handleBackdropClick = (event: MouseEvent) => {
 </script>
 
 <template>
-  <Transition name="modal">
-    <div
-      v-if="isOpen && document"
-      class="modal-backdrop"
-      @click="handleBackdropClick"
-    >
-      <div class="modal-container" @click.stop>
-        <!-- Header -->
-        <div class="modal-header">
-          <h2 class="modal-title">
-            {{ document.title }}
-          </h2>
-          <button class="close-button" @click="$emit('close')">
-            <XMarkIcon class="w-6 h-6" />
-          </button>
+  <BaseModal
+    v-if="document"
+    :is-open="isOpen"
+    :title="document.title"
+    max-width="md"
+    @close="emit('close')"
+  >
+    <template #header>
+      <div class="document-header">
+        <h2 class="document-title">{{ document.title }}</h2>
+        <div class="tags-container-header">
+          <span
+            v-for="(tag, index) in document.tags"
+            :key="index"
+            class="tag"
+          >
+            {{ tag }}
+          </span>
         </div>
-
-        <!-- Content -->
-        <div class="modal-content">
+      </div>
+    </template>
           <!-- Document Preview -->
           <div class="document-preview">
             <button
@@ -112,17 +115,6 @@ const handleBackdropClick = (event: MouseEvent) => {
             <span class="page-text">Pagina {{ currentPage }} di {{ totalPages }}</span>
           </div>
 
-          <!-- Tags -->
-          <div class="tags-container">
-            <span
-              v-for="(tag, index) in document.tags"
-              :key="index"
-              class="tag"
-            >
-              {{ tag }}
-            </span>
-          </div>
-
           <!-- Description -->
           <div class="description-section">
             <p class="description-label">{{ $t('documentModal.descriptionLabel') }}</p>
@@ -144,120 +136,36 @@ const handleBackdropClick = (event: MouseEvent) => {
               <span>{{ document.hospital }}</span>
             </div>
           </div>
-        </div>
 
-        <!-- Footer Actions -->
-        <div class="modal-footer">
-          <button class="action-button download-button" @click="handleDownload">
-            <ArrowDownTrayIcon class="w-5 h-5" />
-            {{ $t('documentModal.download') }}
-          </button>
-          <button class="action-button share-button" @click="handleShare">
-            <ShareIcon class="w-5 h-5" />
-            {{ $t('documentModal.share') }}
-          </button>
-        </div>
-      </div>
-    </div>
-  </Transition>
+    <template #footer>
+      <button class="action-button download-button" @click="handleDownload">
+        <ArrowDownTrayIcon class="w-5 h-5" />
+        {{ $t('documentModal.download') }}
+      </button>
+      <button class="action-button share-button" @click="handleShare">
+        <ShareIcon class="w-5 h-5" />
+        {{ $t('documentModal.share') }}
+      </button>
+    </template>
+  </BaseModal>
 </template>
 
 <style scoped>
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.30) 0%, rgba(221, 214, 254, 0.30) 50%, rgba(252, 231, 243, 0.30) 100%);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.modal-backdrop::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 30% 40%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.modal-container {
+.document-header {
   width: 100%;
-  max-width: 32rem;
-  max-height: 92vh;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  border-radius: 1.5rem;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  z-index: 1;
 }
 
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.3) 0%, rgba(221, 214, 254, 0.3) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.modal-title {
+.document-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
-  margin: 0;
+  margin: 0 0 0.75rem 0;
 }
 
-.close-button {
+.tags-container-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  color: #64748b;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.close-button:hover {
-  background: linear-gradient(135deg, rgba(252, 231, 243, 0.6) 0%, rgba(221, 214, 254, 0.6) 100%);
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
-  color: #a855f7;
-}
-
-.modal-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .document-preview {
@@ -487,112 +395,13 @@ const handleBackdropClick = (event: MouseEvent) => {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* Transitions */
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
-}
-
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-active .modal-container {
-  animation: modalSlideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
-}
-
-.modal-leave-active .modal-container {
-  animation: modalSlideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
-}
-
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes modalSlideOut {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-30px) scale(0.95);
-  }
-}
-
-/* Scrollbar personalizzata */
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-  .modal-backdrop {
-    padding: 1rem;
-  }
-
-  .modal-container {
-    max-height: 95vh;
-    border-radius: 1.25rem;
-  }
-
-  .modal-header {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .modal-title {
-    font-size: 1.25rem;
-  }
-
-  .modal-content {
-    padding: 1.5rem;
-  }
-
-  .preview-area {
-    height: 35vh;
-    padding: 0.75rem;
-    margin: 0 0.5rem;
-  }
-
-  .document-image {
-    border-radius: 0.5rem;
-  }
-
-  .nav-button {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .modal-footer {
-    padding: 1.25rem 1.5rem;
-    flex-direction: column;
-  }
-
   .metadata-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .action-button {
+    width: 100%;
   }
 }
 </style>
