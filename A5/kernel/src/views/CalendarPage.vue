@@ -8,16 +8,19 @@ import TagBar, { type Tag } from '../components/shared/TagBar.vue'
 import AppointmentCard, { type Appointment } from '../components/AppointmentCard.vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
 import { MOCK_APPOINTMENTS } from '../constants/mockData'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 // Appuntamenti centralizzati
 const appointments = ref<Appointment[]>(MOCK_APPOINTMENTS)
 
 // Tags per la TagBar
-const tags = ref<Tag[]>([
-  { id: 'all', label: 'Tutti', count: appointments.value.length },
-  { id: 'cardiologia', label: 'Cardiologia', count: appointments.value.filter(a => a.tags?.includes('Cardiologia')).length },
-  { id: 'analisi', label: 'Analisi', count: appointments.value.filter(a => a.tags?.includes('Analisi')).length },
-  { id: 'pediatria', label: 'Pediatria', count: appointments.value.filter(a => a.tags?.includes('Pediatria')).length }
+const tags = computed<Tag[]>(() => [
+  { id: 'all', label: t('calendar.categories.all'), count: appointments.value.length },
+  { id: 'cardiologia', label: t('calendar.categories.cardiologia'), count: appointments.value.filter(a => a.tags?.includes('Cardiologia')).length },
+  { id: 'analisi', label: t('calendar.categories.analisi'), count: appointments.value.filter(a => a.tags?.includes('Analisi')).length },
+  { id: 'pediatria', label: t('calendar.categories.pediatria'), count: appointments.value.filter(a => a.tags?.includes('Pediatria')).length }
 ])
 
 const selectedTag = ref('all')
@@ -176,12 +179,12 @@ function parseDateToISO(dateString: string): string {
     <div class="header-section">
       <div class="header-content">
         <div>
-          <h1 class="page-title">Calendario</h1>
-          <p class="page-subtitle">Calendario condiviso della tua famiglia</p>
+          <h1 class="page-title">{{ $t('calendar.title') }}</h1>
+          <p class="page-subtitle">{{ $t('calendar.subtitle') }}</p>
         </div>
         <button class="new-appointment-btn" @click="handleNewAppointment">
           <PlusIcon class="w-5 h-5" />
-          Nuovo appuntamento
+          {{ $t('calendar.newAppointment') }}
         </button>
       </div>
     </div>
@@ -200,7 +203,7 @@ function parseDateToISO(dateString: string): string {
 
       <!-- Appointments List -->
       <div class="appointments-container">
-        <h2 class="appointments-title">Appuntamenti</h2>
+        <h2 class="appointments-title">{{ $t('calendar.appointments') }}</h2>
         <div class="appointments-list">
           <AppointmentCard
             v-for="appointment in filteredAppointments"
@@ -214,7 +217,7 @@ function parseDateToISO(dateString: string): string {
           />
           
           <div v-if="filteredAppointments.length === 0" class="empty-state">
-            <p class="text-gray-500">Nessun appuntamento trovato</p>
+            <p class="text-gray-500">{{ $t('calendar.noAppointments') }}</p>
           </div>
         </div>
       </div>

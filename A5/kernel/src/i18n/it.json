@@ -47,6 +47,12 @@
     "today": "Oggi",
     "month": "Mese",
     "week": "Settimana",
+    "categories": {
+      "all": "Tutti",
+      "cardiologia": "Cardiologia",
+      "analisi": "Analisi",
+      "pediatria": "Pediatria"
+    },
     "tags": {
       "all": "Tutti",
       "health": "Salute",
