@@ -1,14 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '../../authentication/useAuth'
 import { COLORS } from '../../constants/constants'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
 const { currentUser, logout: authLogout } = useAuth()
 const showUserMenu = ref(false)
+const showLanguageMenu = ref(false)
+
+const toggleLanguageMenu = () => {
+  showLanguageMenu.value = !showLanguageMenu.value
+}
+
+const changeLanguage = (lang: string) => {
+  locale.value = lang
+  showLanguageMenu.value = false
+}
+
+const currentLanguage = computed(() => {
+  return locale.value === 'it' ? 'ITA' : 'ENG'
+})
 
 const toggleUserMenu = () => {
   showUserMenu.value = !showUserMenu.value
@@ -39,6 +53,39 @@ const logout = () => {
           1
         </span>
       </button>
+      
+      <!-- Language Selector -->
+      <div class="relative">
+        <button 
+          class="glass-button flex items-center gap-1.5 px-2.5 py-1.5 rounded-md"
+          @click="toggleLanguageMenu"
+        >
+          <span class="text-[clamp(0.75rem,2vw,0.875rem)] font-semibold text-gray-900">{{ currentLanguage }}</span>
+          <svg class="text-gray-600 w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div 
+          v-if="showLanguageMenu" 
+          class="glass-menu absolute top-[calc(100%+0.5vh)] right-0 rounded-lg min-w-24 z-50 overflow-hidden"
+        >
+          <button
+            class="w-full flex items-center justify-center px-4 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer"
+            :class="{ 'bg-blue-50': locale === 'it' }"
+            @click="changeLanguage('it')"
+          >
+            <span class="text-sm font-semibold" :style="{ color: COLORS.primary }">ITA</span>
+          </button>
+          <button
+            class="w-full flex items-center justify-center px-4 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer"
+            :class="{ 'bg-blue-50': locale === 'en' }"
+            @click="changeLanguage('en')"
+          >
+            <span class="text-sm font-semibold" :style="{ color: COLORS.primary }">ENG</span>
+          </button>
+        </div>
+      </div>
+      
       <div class="relative">
         <button 
           class="glass-button flex items-center gap-2 px-3 py-1.5 rounded-md"
