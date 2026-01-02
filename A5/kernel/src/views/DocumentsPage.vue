@@ -15,6 +15,7 @@ const isModalOpen = ref(false)
 
 const tags = computed<Tag[]>(() => [
   { id: 'tutti', label: 'Tutti', count: MOCK_DOCUMENTS.length },
+  { id: 'prescrizione', label: 'Prescrizione', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Prescrizione')).length },
   { id: 'cardiologia', label: 'Cardiologia', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Cardiologia')).length },
   { id: 'analisi', label: 'Analisi', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Analisi')).length },
   { id: 'diagnostica', label: 'Diagnostica', count: MOCK_DOCUMENTS.filter(d => d.tags.includes('Diagnostica')).length }
@@ -98,7 +99,7 @@ const handleCloseModal = () => {
         v-for="doc in filteredDocuments"
         :key="doc.id"
         :document="doc"
-        @click="handleDocumentClick(doc)"
+        @click="() => handleDocumentClick(doc)"
       />
     </div>
 

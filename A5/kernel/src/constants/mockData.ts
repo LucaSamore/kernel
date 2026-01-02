@@ -9,7 +9,7 @@ export const MOCK_DOCUMENTS: Document[] = [
     title: 'Referto ECG - Controllo cardiologico',
     description: 'Elettrocardiogramma completo con esito nella norma. Ritmo sinusale regolare, frequenza cardiaca 72 bpm. Nessuna alterazione significativa riscontrata.',
     tags: ['Cardiologia', 'Esami'],
-    date: '15 Dic 2024',
+    date: '7 Gen 2026',
     doctor: 'Dr. Mario Rossi',
     hospital: 'Ospedale San Raffaele'
   },
@@ -18,25 +18,50 @@ export const MOCK_DOCUMENTS: Document[] = [
     title: 'Esami del sangue - Emocromo completo',
     description: 'Analisi ematochimiche complete. Valori nella norma per globuli rossi, bianchi e piastrine. Glicemia 92 mg/dL, colesterolo totale 185 mg/dL.',
     tags: ['Analisi', 'Laboratorio'],
-    date: '10 Dic 2024',
+    date: '29 Dic 2025',
     doctor: 'Dr.ssa Laura Bianchi',
     hospital: 'Laboratorio Analisi Medicon'
+  },
+  {
+    id: 'prescription-1',
+    title: 'Prescrizione farmaci - Antibiotico',
+    description: 'Prescrizione medica per terapia antibiotica. Amoxicillina 1g, 3 volte al giorno per 7 giorni. Ritirare in farmacia.',
+    tags: ['Prescrizione', 'Farmaci'],
+    date: '27 Dic 2025',
+    doctor: 'Dr. Mario Rossi',
+    hospital: 'Ospedale San Raffaele',
+    isPrescription: true,
+    prescriptionCode: '8234567890123',
+    expirationDays: 20,
   },
   {
     id: '3',
     title: 'Visita oculistica - Controllo vista',
     description: 'Esame della vista completo con valutazione del fondo oculare. Visus 10/10 occhio destro, 9/10 occhio sinistro. Prescrizione nuovi occhiali da vista.',
     tags: ['Oculistica', 'Visita'],
-    date: '5 Dic 2024',
+    date: '5 Nov 2025',
     doctor: 'Dr. Giuseppe Verdi',
     hospital: 'Centro Oculistico Vista Chiara'
+  },
+  {
+    id: 'prescription-2',
+    title: 'Prescrizione visita specialistica - Cardiologia',
+    description: 'Richiesta visita cardiologica specialistica con ECG sotto sforzo. Prenotare entro 30 giorni.',
+    tags: ['Prescrizione', 'Cardiologia'],
+    date: '1 Nov 2025',
+    doctor: 'Dr. Antonio Ferrari',
+    hospital: 'Poliambulatorio Salute',
+    isPrescription: true,
+    prescriptionCode: '8234567890123',
+    expirationDays: 20,
+    usedDate : '10 Nov 2025'
   },
   {
     id: '4',
     title: 'Ecografia addominale completa',
     description: 'Esame ecografico dell\'addome superiore e inferiore. Fegato, milza, reni e vescica nella norma. Nessuna formazione patologica evidenziata.',
     tags: ['Diagnostica', 'Ecografia'],
-    date: '28 Nov 2024',
+    date: '28 Ott 2025',
     doctor: 'Dr. Antonio Ferrari',
     hospital: 'Centro Diagnostico San Marco'
   },
@@ -45,16 +70,28 @@ export const MOCK_DOCUMENTS: Document[] = [
     title: 'Radiografia torace - RX standard',
     description: 'Radiografia del torace in 2 proiezioni. Polmoni ben espansi, non addensamenti parenchimali. Cuore di normali dimensioni. Esito negativo.',
     tags: ['Radiologia', 'Esami'],
-    date: '20 Nov 2024',
+    date: '20 Ott 2025',
     doctor: 'Dr.ssa Maria Colombo',
     hospital: 'Ospedale San Raffaele'
+  },
+  {
+    id: 'prescription-3',
+    title: 'Prescrizione esami del sangue',
+    description: 'Richiesta esami ematochimici: emocromo, glicemia, profilo lipidico, funzionalità epatica e renale. Presentarsi a digiuno.',
+    tags: ['Prescrizione', 'Analisi'],
+    date: '20 Ott 2025',
+    doctor: 'Dr.ssa Laura Bianchi',
+    hospital: 'Laboratorio Analisi Medicon',
+    isPrescription: true,
+    prescriptionCode: '8234567890123',
+    expirationDays: 20
   },
   {
     id: '6',
     title: 'Visita dermatologica - Controllo nei',
     description: 'Mappatura completa dei nei con dermatoscopio digitale. Tutti i nevi esaminati presentano caratteristiche benigne. Consigliato controllo annuale.',
     tags: ['Dermatologia', 'Visita'],
-    date: '12 Nov 2024',
+    date: '12 Ott 2025',
     doctor: 'Dr. Francesco Russo',
     hospital: 'Centro Dermatologico Milano'
   },
@@ -63,7 +100,7 @@ export const MOCK_DOCUMENTS: Document[] = [
     title: 'Esami funzionalità tiroidea - TSH, FT3, FT4',
     description: 'Dosaggio ormoni tiroidei. TSH 2.1 mU/L, FT3 3.2 pg/mL, FT4 1.1 ng/dL. Funzionalità tiroidea nella norma.',
     tags: ['Analisi', 'Endocrinologia'],
-    date: '8 Nov 2024',
+    date: '8 Ott 2025',
     doctor: 'Dr.ssa Laura Bianchi',
     hospital: 'Laboratorio Analisi Medicon'
   },
@@ -72,7 +109,7 @@ export const MOCK_DOCUMENTS: Document[] = [
     title: 'Visita ortopedica - Dolore ginocchio',
     description: 'Valutazione clinica del ginocchio destro. Lieve condropatia rotulea. Consigliata fisioterapia e rinforzo muscolare quadricipite.',
     tags: ['Ortopedia', 'Visita'],
-    date: '1 Nov 2024',
+    date: '1 Ott 2025',
     doctor: 'Dr. Luca Moretti',
     hospital: 'Poliambulatorio Salute'
   }
