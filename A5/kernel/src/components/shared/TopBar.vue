@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useAuth } from '../composables/useAuth'
-import { COLORS } from '../constants/constants'
+import { useAuth } from '../../authentication/useAuth'
+import { COLORS } from '../../constants/constants'
 
 const { t } = useI18n()
 const router = useRouter()

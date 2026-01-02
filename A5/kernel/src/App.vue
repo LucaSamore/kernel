@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import TopBar from './components/TopBar.vue'
-import BottomBar from './components/BottomBar.vue'
+import TopBar from './components/shared/TopBar.vue'
+import BottomBar from './components/shared/BottomBar.vue'
 
 const route = useRoute()
 

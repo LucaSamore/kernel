@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import HealthAlert from '../components/HealthAlert.vue'
-import HealthMetricWidget from '../components/HealthMetricWidget.vue'
+import HealthMetricWidget from '../components/widgets/HealthMetricWidget.vue'
 import HealthChart from '../components/HealthChart.vue'
 import { 
   HEALTH_PARAMETERS, 

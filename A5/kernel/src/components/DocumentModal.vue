@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { ArrowDownTrayIcon, ShareIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/outline'
 import { CalendarIcon, UserIcon, BuildingOfficeIcon } from '@heroicons/vue/24/solid'
-import type { Document } from './DocumentCard.vue'
+import type { Document } from './shared/DocumentCard.vue'
 import BaseModal from './shared/BaseModal.vue'
 
 // Import delle immagini del referto

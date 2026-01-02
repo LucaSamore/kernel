@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import SearchBar from '../components/SearchBar.vue'
+import SearchBar from '../components/shared/SearchBar.vue'
 import QuickActions from '../components/QuickActions.vue'
 import UpcomingAppointments from '../components/UpcomingAppointments.vue'
-import DocumentCard from '../components/DocumentCard.vue'
+import DocumentCard from '../components/shared/DocumentCard.vue'
 import WidgetPanel from '../components/WidgetPanel.vue'
 import AppointmentBooking from '../components/AppointmentBooking.vue'
 import { getRecentDocuments, getUpcomingAppointments } from '../constants/mockData'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { DocumentIcon, MapPinIcon, UserIcon, CalendarIcon } from '@heroicons/vue/24/outline'
-import BaseCard, { type CardMetadata } from './BaseCard.vue'
+import BaseCard, { type CardMetadata } from '../shared/BaseCard.vue'
 
 export interface Document {
   id: string

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import BaseModal from './shared/BaseModal.vue'
-import VisitTypeSelector from './appointment/VisitTypeSelector.vue'
-import DateSelector from './appointment/DateSelector.vue'
-import TimeSlotSelector from './appointment/TimeSlotSelector.vue'
+import VisitTypeSelector from './bookingAppointment/VisitTypeSelector.vue'
+import DateSelector from './bookingAppointment/DateSelector.vue'
+import TimeSlotSelector from './bookingAppointment/TimeSlotSelector.vue'
 
 interface Props {
   isOpen: boolean

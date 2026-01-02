@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { COLORS } from '../constants/constants'
+import { COLORS } from '../../constants/constants'
 
 export interface Tag {
   id: string

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import ProfileCard from '../components/ProfileCard.vue'
-import { useAuth } from '../composables/useAuth'
+import { useAuth } from '../authentication/useAuth'
 
 const { t } = useI18n()
 const router = useRouter()

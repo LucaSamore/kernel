@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue'
 import { TagIcon } from '@heroicons/vue/24/outline'
-import { COLORS } from '../constants/constants'
+import { COLORS } from '../../constants/constants'
 
 export interface CardMetadata {
   icon: FunctionalComponent

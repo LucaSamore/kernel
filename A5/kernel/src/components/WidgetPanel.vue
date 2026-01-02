@@ -6,7 +6,7 @@ import {
   BellIcon,
   PlusIcon
 } from '@heroicons/vue/24/outline'
-import WidgetSelector, { type WidgetOption } from './WidgetSelector.vue'
+import WidgetSelector, { type WidgetOption } from './widgets/WidgetSelector.vue'
 import CompactHealthMetric from './CompactHealthMetric.vue'
 import CompactHealthChart from './CompactHealthChart.vue'
 import { 

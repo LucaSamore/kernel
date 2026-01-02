@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import SearchBar from '../components/SearchBar.vue'
-import TagBar from '../components/TagBar.vue'
-import DocumentCard from '../components/DocumentCard.vue'
+import SearchBar from '../components/shared/SearchBar.vue'
+import TagBar from '../components/shared/TagBar.vue'
+import DocumentCard from '../components/shared/DocumentCard.vue'
 import DocumentModal from '../components/DocumentModal.vue'
-import type { Tag } from '../components/TagBar.vue'
-import type { Document } from '../components/DocumentCard.vue'
+import type { Tag } from '../components/shared/TagBar.vue'
+import type { Document } from '../components/shared/DocumentCard.vue'
 import { MOCK_DOCUMENTS } from '../constants/mockData'
 
 const searchQuery = ref('')

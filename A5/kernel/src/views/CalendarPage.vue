@@ -4,7 +4,7 @@ import type { CalendarOptions, EventClickArg, DateSelectArg } from '@fullcalenda
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import TagBar, { type Tag } from '../components/TagBar.vue'
+import TagBar, { type Tag } from '../components/shared/TagBar.vue'
 import AppointmentCard, { type Appointment } from '../components/AppointmentCard.vue'
 import { PlusIcon } from '@heroicons/vue/24/outline'
 import { MOCK_APPOINTMENTS } from '../constants/mockData'

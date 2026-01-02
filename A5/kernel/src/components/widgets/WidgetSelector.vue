@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import BaseModal from './shared/BaseModal.vue'
+import BaseModal from '../shared/BaseModal.vue'
 
 export interface WidgetOption {
   id: string
