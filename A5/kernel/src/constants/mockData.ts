@@ -142,16 +142,6 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
   }
 ]
 
-// Funzione helper per ottenere gli ultimi N documenti
-export const getRecentDocuments = (count: number = 3): Document[] => {
-  return MOCK_DOCUMENTS.slice(0, count)
-}
-
-// Funzione helper per ottenere i prossimi N appuntamenti
-export const getUpcomingAppointments = (count: number = 3): Appointment[] => {
-  return MOCK_APPOINTMENTS.slice(0, count)
-}
-
 export const HEALTH_PARAMETERS: HealthParameter[] = [
   {
     id: 'cholesterol',

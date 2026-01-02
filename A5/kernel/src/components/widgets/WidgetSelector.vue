@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseModal from '../shared/BaseModal.vue'
 
@@ -26,6 +26,13 @@ const emit = defineEmits<{
 }>()
 
 const localSelection = ref<string[]>([...props.selectedWidgetIds])
+
+// Sincronizza localSelection quando la modale si apre
+watch(() => props.isOpen, (isOpen) => {
+  if (isOpen) {
+    localSelection.value = [...props.selectedWidgetIds]
+  }
+})
 
 const toggleWidget = (widgetId: string) => {
   const index = localSelection.value.indexOf(widgetId)
@@ -73,7 +80,7 @@ const getCategoryName = (category: string) => {
   <BaseModal
     :is-open="isOpen"
     :title="$t('widgets.selector.title')"
-    :subtitle="$t('widgets.selector.subtitle')"
+    :subtitle="$t('widgets.selector.subtitle', { count: localSelection.length, total: availableWidgets.length })"
     max-width="lg"
     @close="emit('close')"
   >

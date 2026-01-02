@@ -7,12 +7,12 @@ import DocumentCard from '../components/shared/DocumentCard.vue'
 import DocumentModal from '../components/DocumentModal.vue'
 import WidgetPanel from '../components/WidgetPanel.vue'
 import AppointmentBooking from '../components/AppointmentBooking.vue'
-import { getRecentDocuments, getUpcomingAppointments } from '../constants/mockData'
+import { MOCK_DOCUMENTS, MOCK_APPOINTMENTS } from '../constants/mockData'
 import type { Document } from '../components/shared/DocumentCard.vue'
 
 const searchQuery = ref('')
-const appointments = computed(() => getUpcomingAppointments(2))
-const recentDocuments = computed(() => getRecentDocuments(2))
+const appointments = computed(() => MOCK_APPOINTMENTS.slice(0, 2))
+const recentDocuments = computed(() => MOCK_DOCUMENTS.slice(0, 2))
 const isBookingOpen = ref(false)
 const selectedDocument = ref<Document | null>(null)
 const isDocumentModalOpen = ref(false)
