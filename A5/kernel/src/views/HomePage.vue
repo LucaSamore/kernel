@@ -77,7 +77,7 @@ const handleCloseDocumentModal = () => {
         </div>
 
         <div class="section-card space-y-3">
-          <h3 class="font-hand font-semiboldtext-2xl">{{ $t('home.recentDocuments') }}</h3>
+          <h3 class="font-hand font-semibold text-2xl">{{ $t('home.recentDocuments') }}</h3>
           <div class>
             <DocumentCard
               v-for="doc in recentDocuments.slice(0, 2)"
