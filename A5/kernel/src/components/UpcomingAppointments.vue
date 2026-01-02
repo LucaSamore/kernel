@@ -27,9 +27,3 @@ const emit = defineEmits<{
     </div>
   </div>
 </template>
-
-<style scoped>
-.font-hand {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-</style>

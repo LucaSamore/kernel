@@ -53,7 +53,7 @@ const handleBookingConfirm = (appointment: any) => {
         </div>
 
         <div class="section-card">
-          <h3 class="font-hand text-2xl">{{ $t('home.upcomingAppointments') }}</h3>
+          <h3 class="font-hand font-semibold text-2xl">{{ $t('home.upcomingAppointments') }}</h3>
           <UpcomingAppointments 
             :appointments="appointments"
             @appointment-click="handleAppointmentClick"
@@ -61,7 +61,7 @@ const handleBookingConfirm = (appointment: any) => {
         </div>
 
         <div class="section-card space-y-3">
-          <h3 class="font-hand text-2xl">{{ $t('home.recentDocuments') }}</h3>
+          <h3 class="font-hand font-semiboldtext-2xl">{{ $t('home.recentDocuments') }}</h3>
           <div class>
             <DocumentCard
               v-for="doc in recentDocuments.slice(0, 2)"
@@ -168,10 +168,6 @@ const handleBookingConfirm = (appointment: any) => {
   animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);
   animation-delay: 0.2s;
   animation-fill-mode: both;
-}
-
-.font-hand {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 @media (min-width: 1024px) {

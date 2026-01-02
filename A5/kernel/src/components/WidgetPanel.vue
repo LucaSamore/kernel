@@ -266,10 +266,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.font-hand {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-
 .widget-panel {
   display: flex;
   flex-direction: column;
