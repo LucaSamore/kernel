@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { ChevronDownIcon } from '@heroicons/vue/24/outline'
 import { useI18n } from 'vue-i18n'
-import type { Document } from '../shared/DocumentCard.vue'
+import type { Document } from '../../shared/DocumentCard.vue'
 
 interface Props {
   selectedDocId: string | null

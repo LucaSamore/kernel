@@ -1,5 +1,5 @@
 import type { Document } from '../components/shared/DocumentCard.vue'
-import type { Appointment } from '../components/AppointmentCard.vue'
+import type { Appointment } from '../components/bookingAppointment/AppointmentCard.vue'
 import type { HealthParameter, HealthAlert, HealthMetricHistory } from '../types/health'
 
 // Documenti centralizzati

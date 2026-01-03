@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import BaseModal from '../shared/BaseModal.vue'
+import BaseModal from '../../shared/BaseModal.vue'
 import DocumentSelector from './DocumentSelector.vue'
-import DocumentViewer from './DocumentViewer.vue'
-import type { Document } from '../shared/DocumentCard.vue'
+import DocumentViewer from '../DocumentViewer.vue'
+import type { Document } from '../../shared/DocumentCard.vue'
 
 interface Props {
   isOpen: boolean

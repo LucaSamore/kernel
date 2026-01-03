@@ -6,14 +6,14 @@ import {
   BellIcon,
   PlusIcon
 } from '@heroicons/vue/24/outline'
-import WidgetSelector, { type WidgetOption } from './widgets/WidgetSelector.vue'
+import WidgetSelector, { type WidgetOption } from './WidgetSelector.vue'
 import CompactHealthMetric from './CompactHealthMetric.vue'
 import CompactHealthChart from './CompactHealthChart.vue'
 import { 
   getHealthParameter,
   getHealthHistory,
   WIDGET_DATA 
-} from '../constants/mockData'
+} from '../../constants/mockData'
 
 const { t } = useI18n()
 const isWidgetSelectorOpen = ref(false)
