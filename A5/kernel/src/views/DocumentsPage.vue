@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { ArrowsRightLeftIcon } from '@heroicons/vue/24/outline'
 import SearchBar from '../components/shared/SearchBar.vue'
 import TagBar from '../components/shared/TagBar.vue'
 import DocumentCard from '../components/shared/DocumentCard.vue'
-import DocumentModal from '../components/DocumentModal.vue'
+import DocumentModal from '../components/documents/DocumentModal.vue'
+import DocumentComparisonModal from '../components/documents/DocumentComparisonModal.vue'
 import type { Tag } from '../components/shared/TagBar.vue'
 import type { Document } from '../components/shared/DocumentCard.vue'
 import { MOCK_DOCUMENTS } from '../constants/mockData'
@@ -12,6 +14,7 @@ const searchQuery = ref('')
 const selectedTag = ref('tutti')
 const selectedDocument = ref<Document | null>(null)
 const isModalOpen = ref(false)
+const isComparisonModalOpen = ref(false)
 
 const tags = computed<Tag[]>(() => [
   { id: 'tutti', label: 'Tutti', count: MOCK_DOCUMENTS.length },
@@ -65,18 +68,29 @@ const handleCloseModal = () => {
     selectedDocument.value = null
   }, 300)
 }
+
+const handleOpenComparison = () => {
+  isComparisonModalOpen.value = true
+}
+
+const handleCloseComparison = () => {
+  isComparisonModalOpen.value = false
+}
 </script>
 
 <template>
   <div class="documents-page">
-    <!-- Header -->
-    <div class="page-header">
-      <h1 class="text-2xl font-bold text-gray-900">
-        {{ $t('documents.title') }}
-      </h1>
-      <p class="text-base text-gray-500">
-        {{ $t('documents.subtitle') }}
-      </p>
+    <div class="header-section">
+      <div class="header-content">
+        <div>
+          <h1 class="page-title">{{ $t('documents.title') }}</h1>
+          <p class="page-subtitle">{{ $t('documents.subtitle') }}</p>
+        </div>
+        <button class="comparison-btn" @click="handleOpenComparison">
+          <ArrowsRightLeftIcon class="w-5 h-5" />
+          {{ $t('documents.documentComparison') }}
+        </button>
+      </div>
     </div>
 
     <!-- Search Bar -->
@@ -117,9 +131,75 @@ const handleCloseModal = () => {
       @close="handleCloseModal"
     />
   </Teleport>
+
+  <!-- Document Comparison Modal -->
+  <DocumentComparisonModal
+    :is-open="isComparisonModalOpen"
+    :documents="documents"
+    @close="handleCloseComparison"
+  />
 </template>
 
 <style scoped>
+
+.header-section {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #171717;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #525252;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.comparison-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.comparison-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
 .documents-page {
   width: 100%;
   min-height: 100vh;
