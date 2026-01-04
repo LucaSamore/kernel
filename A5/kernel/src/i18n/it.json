@@ -279,7 +279,13 @@
     }
   },
   "health": {
+    "title": "Salute",
+    "subtitle": "Monitora i tuoi parametri vitali e ricevi consigli personalizzati per mantenerti in salute.",
+    "alerts": {
+      "title": "⚠️ Avvisi importanti"
+    },
     "parameters": {
+      "title": "📊 I tuoi parametri",
       "cholesterol": "Colesterolo",
       "bloodPressureSys": "Pressione sistolica",
       "bloodPressureDia": "Pressione diastolica",
@@ -287,6 +293,20 @@
       "glucose": "Glicemia",
       "oxygen": "Saturazione O₂"
     },
-    "normalRange": "Range normale"
+    "charts": {
+      "title": "📈 Andamento storico"
+    },
+    "normalRange": "Range normale",
+    "info": {
+      "title": "Informazioni sui dati",
+      "description": "I dati mostrati provengono dai tuoi dispositivi connessi e dalle misurazioni registrate. Ricorda di consultare sempre il tuo medico per una valutazione professionale."
+    },
+    "sourceDocuments": {
+      "title": "Documenti sorgente",
+      "showDetails": "Mostra dettagli",
+      "hideDetails": "Nascondi dettagli",
+      "description": "Questi valori sono stati estratti dai seguenti documenti:",
+      "noDocuments": "Nessun documento collegato"
+    }
   }
 }

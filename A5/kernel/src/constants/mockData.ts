@@ -197,6 +197,18 @@ export const HEALTH_PARAMETERS: HealthParameter[] = [
     unit: 'mg/dL',
     normalRange: { min: 120, max: 200 },
     trend: 'up',
+    sourceDocuments: [
+      {
+        id: '2',
+        title: 'Esami del sangue - Emocromo completo',
+        date: '29 Dic 2025',
+      },
+      {
+        id: '7',
+        title: 'Esami funzionalità tiroidea - TSH, FT3, FT4',
+        date: '8 Ott 2025',
+      }
+    ],
   },
   {
     id: 'blood-pressure-sys',
@@ -205,6 +217,13 @@ export const HEALTH_PARAMETERS: HealthParameter[] = [
     unit: 'mmHg',
     normalRange: { min: 90, max: 120 },
     trend: 'stable',
+    sourceDocuments: [
+      {
+        id: '1',
+        title: 'Referto ECG - Controllo cardiologico',
+        date: '7 Gen 2026',
+      }
+    ],
   },
   {
     id: 'blood-pressure-dia',
@@ -213,6 +232,13 @@ export const HEALTH_PARAMETERS: HealthParameter[] = [
     unit: 'mmHg',
     normalRange: { min: 60, max: 80 },
     trend: 'stable',
+    sourceDocuments: [
+      {
+        id: '1',
+        title: 'Referto ECG - Controllo cardiologico',
+        date: '7 Gen 2026',
+      }
+    ],
   },
   {
     id: 'heart-rate',
@@ -221,6 +247,13 @@ export const HEALTH_PARAMETERS: HealthParameter[] = [
     unit: 'bpm',
     normalRange: { min: 60, max: 100 },
     trend: 'down',
+    sourceDocuments: [
+      {
+        id: '1',
+        title: 'Referto ECG - Controllo cardiologico',
+        date: '7 Gen 2026',
+      }
+    ],
   },
   {
     id: 'glucose',
@@ -229,6 +262,13 @@ export const HEALTH_PARAMETERS: HealthParameter[] = [
     unit: 'mg/dL',
     normalRange: { min: 70, max: 100 },
     trend: 'up',
+    sourceDocuments: [
+      {
+        id: '2',
+        title: 'Esami del sangue - Emocromo completo',
+        date: '29 Dic 2025',
+      }
+    ],
   },
   {
     id: 'oxygen',
@@ -237,6 +277,13 @@ export const HEALTH_PARAMETERS: HealthParameter[] = [
     unit: '%',
     normalRange: { min: 95, max: 100 },
     trend: 'stable',
+    sourceDocuments: [
+      {
+        id: '1',
+        title: 'Referto ECG - Controllo cardiologico',
+        date: '7 Gen 2026',
+      }
+    ],
   }
 ]
 
@@ -262,6 +309,18 @@ export const CHOLESTEROL_HISTORY: HealthMetricHistory = {
     { date: '29 Nov', value: 178 },
     { date: '6 Dic', value: 185 },
   ],
+  sourceDocuments: [
+    {
+      id: '2',
+      title: 'Esami del sangue - Emocromo completo',
+      date: '29 Dic 2025',
+    },
+    {
+      id: '7',
+      title: 'Esami funzionalità tiroidea - TSH, FT3, FT4',
+      date: '8 Ott 2025',
+    }
+  ],
 }
 
 export const BLOOD_PRESSURE_SYS_HISTORY: HealthMetricHistory = {
@@ -273,6 +332,13 @@ export const BLOOD_PRESSURE_SYS_HISTORY: HealthMetricHistory = {
     { date: '22 Nov', value: 119 },
     { date: '29 Nov', value: 121 },
     { date: '6 Dic', value: 120 },
+  ],
+  sourceDocuments: [
+    {
+      id: '1',
+      title: 'Referto ECG - Controllo cardiologico',
+      date: '7 Gen 2026',
+    }
   ],
 }
 
@@ -286,6 +352,13 @@ export const HEART_RATE_HISTORY: HealthMetricHistory = {
     { date: '29 Nov', value: 73 },
     { date: '6 Dic', value: 72 },
   ],
+  sourceDocuments: [
+    {
+      id: '1',
+      title: 'Referto ECG - Controllo cardiologico',
+      date: '7 Gen 2026',
+    }
+  ],
 }
 
 export const GLUCOSE_HISTORY: HealthMetricHistory = {
@@ -297,6 +370,13 @@ export const GLUCOSE_HISTORY: HealthMetricHistory = {
     { date: '22 Nov', value: 102 },
     { date: '29 Nov', value: 103 },
     { date: '6 Dic', value: 105 },
+  ],
+  sourceDocuments: [
+    {
+      id: '2',
+      title: 'Esami del sangue - Emocromo completo',
+      date: '29 Dic 2025',
+    }
   ],
 }
 

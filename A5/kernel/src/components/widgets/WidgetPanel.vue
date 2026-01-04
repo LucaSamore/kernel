@@ -7,8 +7,8 @@ import {
   PlusIcon
 } from '@heroicons/vue/24/outline'
 import WidgetSelector, { type WidgetOption } from './WidgetSelector.vue'
-import CompactHealthMetric from './CompactHealthMetric.vue'
-import CompactHealthChart from './CompactHealthChart.vue'
+import HealthMetricWidget from '../health/HealthMetricWidget.vue'
+import HealthChart from '../health/HealthChart.vue'
 import { 
   getHealthParameter,
   getHealthHistory,
@@ -236,14 +236,14 @@ onMounted(() => {
         </div>
 
         <!-- Health Metric Widgets -->
-        <CompactHealthMetric
+        <HealthMetricWidget
           v-else-if="widget.category === 'health-metric' && getHealthParameter(widget.id)"
           :parameter="getHealthParameter(widget.id)!"
           :compact="true"
         />
 
         <!-- Health Chart Widgets -->
-        <CompactHealthChart
+        <HealthChart
           v-else-if="widget.category === 'health-chart' && getChartData(widget.id)"
           :title="getChartData(widget.id)!.title"
           :data="getChartData(widget.id)!.data"

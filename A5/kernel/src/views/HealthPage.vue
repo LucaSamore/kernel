@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import HealthAlert from '../components/health/HealthAlert.vue'
-import HealthMetricWidget from '../components/widgets/HealthMetricWidget.vue'
+import HealthMetricWidget from '../components/health/HealthMetricWidget.vue'
 import HealthChart from '../components/health/HealthChart.vue'
 import { 
   HEALTH_PARAMETERS, 
@@ -24,16 +24,16 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
   <div class="health-page">
     <!-- Header Section -->
     <div class="page-header">
-      <h1 class="text-2xl font-bold text-gray-900">Salute</h1>
+      <h1 class="text-2xl font-bold text-gray-900">{{ $t('health.title') }}</h1>
       <p class="text-base text-gray-500">
-        Monitora i tuoi parametri vitali e ricevi consigli personalizzati per mantenerti in salute.
+        {{ $t('health.subtitle') }}
       </p>
     </div>
 
     <!-- Alerts Section -->
     <div v-if="alerts.length > 0" class="section-spacing">
       <h2 class="section-title">
-        ⚠️ Avvisi importanti
+        {{ $t('health.alerts.title') }}
       </h2>
       <div class="space-y-3">
         <HealthAlert v-for="alert in alerts" :key="alert.id" :alert="alert" />
@@ -43,7 +43,7 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
     <!-- Metrics Overview Section -->
     <div class="section-spacing">
       <h2 class="section-title">
-        📊 I tuoi parametri
+        {{ $t('health.parameters.title') }}
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <HealthMetricWidget
@@ -57,29 +57,29 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
     <!-- Charts Section -->
     <div class="section-spacing">
       <h2 class="section-title">
-        📈 Andamento storico
+        {{ $t('health.charts.title') }}
       </h2>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <HealthChart
-          title="Colesterolo totale"
+          :title="$t('health.parameters.cholesterol')"
           :data="cholesterolHistory"
           unit="mg/dL"
           :normal-range="{ min: 120, max: 200 }"
         />
         <HealthChart
-          title="Pressione sistolica"
+          :title="$t('health.parameters.bloodPressureSys')"
           :data="bloodPressureSysHistory"
           unit="mmHg"
           :normal-range="{ min: 90, max: 120 }"
         />
         <HealthChart
-          title="Frequenza cardiaca"
+          :title="$t('health.parameters.heartRate')"
           :data="heartRateHistory"
           unit="bpm"
           :normal-range="{ min: 60, max: 100 }"
         />
         <HealthChart
-          title="Glicemia"
+          :title="$t('health.parameters.glucose')"
           :data="glucoseHistory"
           unit="mg/dL"
           :normal-range="{ min: 70, max: 100 }"
@@ -105,11 +105,10 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
         </div>
         <div class="ml-3">
           <h3 class="text-sm font-semibold text-gray-800 mb-1">
-            Informazioni sui dati
+            {{ $t('health.info.title') }}
           </h3>
           <p class="text-sm text-gray-700">
-            I dati mostrati provengono dai tuoi dispositivi connessi e dalle misurazioni registrate.
-            Ricorda di consultare sempre il tuo medico per una valutazione professionale.
+            {{ $t('health.info.description') }}
           </p>
         </div>
       </div>

@@ -8,6 +8,7 @@ export interface HealthParameter {
     max: number;
   };
   trend: 'up' | 'down' | 'stable';
+  sourceDocuments?: SourceDocument[];
 }
 
 export interface HealthAlert {
@@ -24,7 +25,14 @@ export interface ChartDataPoint {
   value: number;
 }
 
+export interface SourceDocument {
+  id: string;
+  title: string;
+  date: string;
+}
+
 export interface HealthMetricHistory {
   parameterId: string;
   data: ChartDataPoint[];
+  sourceDocuments?: SourceDocument[];
 }
