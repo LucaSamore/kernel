@@ -18,6 +18,8 @@ import {
 const { t } = useI18n()
 const isWidgetSelectorOpen = ref(false)
 const selectedWidgetIds = ref<string[]>([])
+const isLoadingWidgets = ref(false)
+const loadingProgress = ref(0)
 
 // Widget disponibili (configurazione base, testi da i18n)
 const availableWidgets = computed<WidgetOption[]>(() => [
@@ -149,9 +151,27 @@ const getChartData = (id: string) => {
   }
 }
 
-const handleSaveWidgets = (newSelection: string[]) => {
+const handleSaveWidgets = async (newSelection: string[]) => {
+  isWidgetSelectorOpen.value = false
+  isLoadingWidgets.value = true
+  loadingProgress.value = 0
+  
+  // Simula caricamento dati dai documenti
+  const totalSteps = newSelection.length
+  
+  for (let i = 0; i < totalSteps; i++) {
+    // Simula lettura documenti per ogni widget
+    await new Promise(resolve => setTimeout(resolve, 300 + Math.random() * 200))
+    loadingProgress.value = ((i + 1) / totalSteps) * 100
+  }
+  
+  // Piccolo delay finale per mostrare il completamento
+  await new Promise(resolve => setTimeout(resolve, 200))
+  
   selectedWidgetIds.value = newSelection
   localStorage.setItem('selectedWidgets', JSON.stringify(newSelection))
+  isLoadingWidgets.value = false
+  loadingProgress.value = 0
 }
 
 onMounted(() => {
@@ -182,7 +202,22 @@ onMounted(() => {
       </button>
     </div>
 
-    <div v-if="activeWidgets.length === 0" class="empty-state">
+    <!-- Loading State -->
+    <div v-if="isLoadingWidgets" class="loading-state">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">
+          <p class="text-sm font-medium text-gray-700">{{ $t('widgets.loading.title') }}</p>
+          <p class="text-xs text-gray-500">{{ $t('widgets.loading.description') }}</p>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" :style="{ width: loadingProgress + '%' }"></div>
+        </div>
+        <div class="text-xs text-gray-500 text-center">{{ Math.round(loadingProgress) }}%</div>
+      </div>
+    </div>
+
+    <div v-else-if="activeWidgets.length === 0" class="empty-state">
       <p class="text-sm text-gray-500 text-center">
         {{ $t('widgets.emptyState.title') }}
       </p>
@@ -381,5 +416,61 @@ onMounted(() => {
   border-color: rgba(59, 130, 246, 0.6);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 0.25rem;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 </style>

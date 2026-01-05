@@ -209,6 +209,10 @@
       "selected": "Selezionato",
       "select": "Seleziona"
     },
+    "loading": {
+      "title": "Caricamento widget...",
+      "description": "Recupero dati dai documenti"
+    },
     "categories": {
       "quick": "Widget rapidi",
       "healthMetric": "Parametri vitali",
