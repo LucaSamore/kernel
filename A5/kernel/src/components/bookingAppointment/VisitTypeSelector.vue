@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 import { VISIT_TYPES } from '../../constants/mockData'
@@ -23,6 +23,24 @@ const emit = defineEmits<{
 
 const searchQuery = ref('')
 const showDropdown = ref(false)
+
+// Initialize searchQuery if modelValue is already set (preselected)
+const initializeSearchQuery = () => {
+  if (props.modelValue) {
+    const visit = VISIT_TYPES.find(v => v.id === props.modelValue)
+    if (visit) {
+      searchQuery.value = t(`appointmentBooking.visitTypes.${visit.key}`)
+    }
+  }
+}
+
+onMounted(() => {
+  initializeSearchQuery()
+})
+
+watch(() => props.modelValue, () => {
+  initializeSearchQuery()
+})
 
 // Filtra tipi di visite in base alla ricerca
 const filteredVisits = computed(() => {

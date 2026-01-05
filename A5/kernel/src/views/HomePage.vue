@@ -2,14 +2,16 @@
 import { ref, computed } from 'vue'
 import { DocumentPlusIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import SearchBar from '../components/shared/SearchBar.vue'
+import SearchSuggestionCard from '../components/shared/SearchSuggestionCard.vue'
 import UpcomingAppointments from '../components/bookingAppointment/UpcomingAppointments.vue'
 import DocumentCard from '../components/shared/DocumentCard.vue'
 import DocumentModal from '../components/documents/DocumentModal.vue'
 import WidgetPanel from '../components/widgets/WidgetPanel.vue'
 import AppointmentBooking from '../components/bookingAppointment/AppointmentBooking.vue'
-import { MOCK_DOCUMENTS, MOCK_APPOINTMENTS } from '../constants/mockData'
+import { MOCK_DOCUMENTS, MOCK_APPOINTMENTS, SYMPTOM_SUGGESTIONS } from '../constants/mockData'
 import { COLORS } from '../constants/constants'
 import type { Document } from '../components/shared/DocumentCard.vue'
+import type { SymptomSuggestion } from '../constants/mockData'
 
 const searchQuery = ref('')
 const appointments = computed(() => MOCK_APPOINTMENTS.slice(0, 2))
@@ -17,16 +19,37 @@ const recentDocuments = computed(() => MOCK_DOCUMENTS.slice(0, 2))
 const isBookingOpen = ref(false)
 const selectedDocument = ref<Document | null>(null)
 const isDocumentModalOpen = ref(false)
+const preselectedVisitType = ref<string | null>(null)
+
+// Intelligent search suggestions (multiple results)
+const searchSuggestions = computed<SymptomSuggestion[]>(() => {
+  if (!searchQuery.value || searchQuery.value.length < 3) return []
+  
+  const query = searchQuery.value.toLowerCase().trim()
+  
+  // Find all matching suggestions based on keywords
+  return SYMPTOM_SUGGESTIONS.filter(suggestion => 
+    suggestion.keywords.some(keyword => query.includes(keyword)) ||
+    suggestion.symptom.toLowerCase().includes(query)
+  )
+})
 
 const handleSearch = (query: string) => {
   searchQuery.value = query
-  console.log('Searching for:', query)
 }
+
 const handleUpload = () => {
   console.log('Upload document')
 }
 
 const handleNewAppointment = () => {
+  preselectedVisitType.value = null
+  isBookingOpen.value = true
+}
+
+const handleSuggestionBooking = (suggestion: SymptomSuggestion) => {
+  // Open booking modal with pre-filled visit type
+  preselectedVisitType.value = suggestion.visitTypeId
   isBookingOpen.value = true
 }
 
@@ -60,6 +83,16 @@ const handleCloseDocumentModal = () => {
           <p class="search-hint text-xs text-gray-500 font-hand text-center">
             {{ $t('home.searchHint') }}
           </p>
+        </div>
+
+        <!-- Intelligent Search Suggestions (Multiple Results) -->
+        <div v-if="searchSuggestions.length > 0" class="search-suggestions-wrapper">
+          <SearchSuggestionCard 
+            v-for="suggestion in searchSuggestions"
+            :key="suggestion.id"
+            :suggestion="suggestion"
+            @book-appointment="handleSuggestionBooking"
+          />
         </div>
 
         <div class="quick-actions">
@@ -112,6 +145,7 @@ const handleCloseDocumentModal = () => {
     <!-- Appointment Booking Modal -->
     <AppointmentBooking
       :is-open="isBookingOpen"
+      :preselected-visit="preselectedVisitType"
       @close="isBookingOpen = false"
       @confirm="handleBookingConfirm"
     />
@@ -164,6 +198,14 @@ const handleCloseDocumentModal = () => {
 
 .search-hint {
   margin-top: 0.5rem;
+}
+
+.search-suggestions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem;
+  animation: fadeIn 0.4s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .main-column {

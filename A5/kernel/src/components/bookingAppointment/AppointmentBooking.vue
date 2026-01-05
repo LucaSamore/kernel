@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import BaseModal from '../shared/BaseModal.vue'
 import VisitTypeSelector from './VisitTypeSelector.vue'
 import DateSelector from './DateSelector.vue'
@@ -7,9 +7,10 @@ import TimeSlotSelector from './TimeSlotSelector.vue'
 
 interface Props {
   isOpen: boolean
+  preselectedVisit?: string | null
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   close: []
@@ -17,11 +18,26 @@ const emit = defineEmits<{
 }>()
 
 // Stati del componente
-const selectedVisit = ref<string | null>(null)
+const selectedVisit = ref<string | null>(props.preselectedVisit || null)
 const selectedDate = ref<string | null>(null)
 const selectedTime = ref<string | null>(null)
 const isLoadingDates = ref(false)
 const isLoadingTimes = ref(false)
+
+// Watch for preselected visit to auto-load dates
+watch(() => props.preselectedVisit, (newValue) => {
+  if (newValue && props.isOpen) {
+    selectedVisit.value = newValue
+    // Auto-load dates when visit is preselected
+    selectedDate.value = null
+    selectedTime.value = null
+    isLoadingDates.value = true
+    
+    setTimeout(() => {
+      isLoadingDates.value = false
+    }, 1500)
+  }
+}, { immediate: true })
 
 // Funzione per resettare tutti i campi
 const resetFields = () => {
