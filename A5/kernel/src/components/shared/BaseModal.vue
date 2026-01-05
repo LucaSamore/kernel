@@ -180,7 +180,7 @@ const handleBackdropClick = () => {
 
 .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 0.75rem;
   padding: 1.5rem 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
