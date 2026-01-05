@@ -537,3 +537,39 @@ export const TIME_SLOTS = [
   '16:00', '16:30', '17:00', '17:30', '18:00', '18:30'
 ]
 
+// Dettagli appuntamento per data/ora
+export interface AppointmentDetails {
+  doctor: string
+  location: string
+}
+
+// Mock function per ottenere dettagli appuntamento basati su data e ora
+export function getAppointmentDetails(date: string, time: string): AppointmentDetails {
+  // Array di medici e location disponibili
+  const doctors = [
+    'Dr.ssa Maria Rossi',
+    'Dr. Giuseppe Verdi',
+    'Dr. Luca Bianchi',
+    'Dr.ssa Laura Ferrari',
+    'Dr. Marco Colombo',
+    'Dr.ssa Anna Ricci'
+  ]
+  
+  const locations = [
+    'Ospedale San Raffaele - Via Olgettina 60, Milano',
+    'Poliambulatorio Salute - Via Roma 15, Milano',
+    'Centro Medico San Marco - Corso Garibaldi 42, Milano',
+    'Clinica Villa Maria - Via Manzoni 8, Milano'
+  ]
+  
+  // Usa data e ora come seed per generare risultati consistenti
+  const seed = (date + time).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+  const doctorIndex = seed % doctors.length
+  const locationIndex = (seed * 7) % locations.length
+  
+  return {
+    doctor: doctors[doctorIndex]!,
+    location: locations[locationIndex]!
+  }
+}
+
