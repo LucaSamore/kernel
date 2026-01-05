@@ -19,6 +19,68 @@ export interface Document {
   usedDate?: string
 }
 
+export type DocumentType = 'prescription' | 'report' | 'analysis' | 'visit' | 'diagnostic' | 'other'
+
+export interface DocumentCategory {
+  type: DocumentType
+  label: string
+  icon: string
+  color: string
+  bgColor: string
+  borderColor: string
+}
+
+const DOCUMENT_CATEGORIES: Record<DocumentType, DocumentCategory> = {
+  prescription: {
+    type: 'prescription',
+    label: 'Prescrizione',
+    icon: '💊',
+    color: '#8b5cf6',
+    bgColor: 'rgba(139, 92, 246, 0.12)',
+    borderColor: 'rgba(139, 92, 246, 0.3)'
+  },
+  report: {
+    type: 'report',
+    label: 'Referto',
+    icon: '📋',
+    color: '#0ea5e9',
+    bgColor: 'rgba(14, 165, 233, 0.12)',
+    borderColor: 'rgba(14, 165, 233, 0.3)'
+  },
+  analysis: {
+    type: 'analysis',
+    label: 'Analisi',
+    icon: '🧪',
+    color: '#06b6d4',
+    bgColor: 'rgba(6, 182, 212, 0.12)',
+    borderColor: 'rgba(6, 182, 212, 0.3)'
+  },
+  visit: {
+    type: 'visit',
+    label: 'Visita',
+    icon: '👨‍⚕️',
+    color: '#10b981',
+    bgColor: 'rgba(16, 185, 129, 0.12)',
+    borderColor: 'rgba(16, 185, 129, 0.3)'
+  },
+  diagnostic: {
+    type: 'diagnostic',
+    label: 'Diagnostica',
+    icon: '🔬',
+    color: '#f59e0b',
+    bgColor: 'rgba(245, 158, 11, 0.12)',
+    borderColor: 'rgba(245, 158, 11, 0.3)'
+  },
+  other: {
+    type: 'other',
+    label: 'Altro',
+    icon: '📄',
+    color: '#64748b',
+    bgColor: 'rgba(100, 116, 139, 0.12)',
+    borderColor: 'rgba(100, 116, 139, 0.3)'
+  }
+}
+
 interface Props {
   document: Document
 }
@@ -29,6 +91,37 @@ const emit = defineEmits<{
 }>()
 
 const showBarcodeModal = ref(false)
+
+// Detect document category based on tags and content
+const documentCategory = computed<DocumentCategory>(() => {
+  if (props.document.isPrescription) {
+    return DOCUMENT_CATEGORIES.prescription
+  }
+  
+  const tags = props.document.tags.map(t => t.toLowerCase())
+  const title = props.document.title.toLowerCase()
+  
+  if (tags.some(t => t.includes('analisi') || t.includes('laboratorio')) || 
+      title.includes('esami del sangue') || title.includes('emocromo')) {
+    return DOCUMENT_CATEGORIES.analysis
+  }
+  
+  if (tags.some(t => t.includes('visita')) || title.includes('visita')) {
+    return DOCUMENT_CATEGORIES.visit
+  }
+  
+  if (tags.some(t => t.includes('diagnostica') || t.includes('ecografia') || 
+                      t.includes('radiologia') || t.includes('radiografia'))) {
+    return DOCUMENT_CATEGORIES.diagnostic
+  }
+  
+  if (tags.some(t => t.includes('referto') || t.includes('esami')) || 
+      title.includes('referto') || title.includes('controllo')) {
+    return DOCUMENT_CATEGORIES.report
+  }
+  
+  return DOCUMENT_CATEGORIES.other
+})
 
 // Metadata per BaseCard
 const metadata = computed<CardMetadata[]>(() => {
@@ -149,19 +242,31 @@ const handleDownloadBarcode = () => {
       :title="document.title"
       :description="document.description"
       :icon="DocumentIcon"
-      :tags="document.tags"
       :metadata="metadata"
-    />
-    
-    <!-- Bottone prescrizione -->
-    <button
-      v-if="document.isPrescription"
-      class="prescription-button"
-      :aria-label="$t('documents.showBarcode')"
-      @click="handleShowBarcode"
     >
-      <Bars4Icon class="w-5 h-5 barcode-icon" />
-    </button>
+      <!-- Barcode Button (inline with title) -->
+      <template v-if="document.isPrescription" #title-actions>
+        <button
+          class="barcode-action-button"
+          @click="handleShowBarcode"
+        >
+          <Bars4Icon class="w-4 h-4" />
+          <span>Mostra Codice</span>
+        </button>
+      </template>
+
+      <!-- Document Type Badge (after title) -->
+      <template #after-title>
+        <div class="document-type-badge" :style="{
+          backgroundColor: documentCategory.bgColor,
+          borderColor: documentCategory.borderColor,
+          color: documentCategory.color
+        }">
+          <span class="badge-icon">{{ documentCategory.icon }}</span>
+          <span class="badge-label">{{ documentCategory.label }}</span>
+        </div>
+      </template>
+    </BaseCard>
   </div>
 
   <!-- Modal Codice a Barre -->
@@ -227,36 +332,75 @@ const handleDownloadBarcode = () => {
   cursor: pointer;
 }
 
-.prescription-button {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+/* Document Type Badge (inline under title) */
+.document-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1.5px solid;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.75rem;
+  width: fit-content;
+  animation: fadeInScale 0.4s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.badge-icon {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.badge-label {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* Barcode Action Button (inline with title) */
+.barcode-action-button {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: rgba(139, 92, 246, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
-  color: #8b5cf6;
+  color: white;
+  font-weight: 700;
+  font-size: 0.8125rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  z-index: 10;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.prescription-button:hover {
-  background: rgba(139, 92, 246, 0.25);
-  border-color: rgba(139, 92, 246, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+.barcode-action-button:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-.barcode-icon {
-  transform: rotate(90deg);
+.barcode-action-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .barcode-container {

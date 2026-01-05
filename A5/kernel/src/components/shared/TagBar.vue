@@ -72,15 +72,16 @@ const selectTag = (tagId: string) => {
 }
 
 .tag-button.tag-active {
-  background: rgba(2, 132, 199, 0.9);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   backdrop-filter: blur(16px);
-  border-color: rgba(2, 132, 199, 0.95);
+  border-color: rgba(255, 255, 255, 0.3);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .tag-button.tag-active:hover {
-  background: rgba(2, 132, 199, 0.95);
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 </style>

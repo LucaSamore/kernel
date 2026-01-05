@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue'
-import { TagIcon } from '@heroicons/vue/24/outline'
 import { COLORS } from '../../constants/constants'
 
 export interface CardMetadata {
@@ -12,7 +11,6 @@ interface Props {
   title: string
   description: string
   icon: FunctionalComponent
-  tags?: string[]
   metadata: CardMetadata[]
   selected?: boolean
 }
@@ -39,27 +37,21 @@ const emit = defineEmits<{
 
       <!-- Content -->
       <div class="flex-1 min-w-0 content-wrapper">
-        <!-- Title -->
-        <h3 class="text-lg font-semibold mb-2" :style="{ color: COLORS.primary }">
-          {{ title }}
-        </h3>
+        <!-- Title Row with Actions -->
+        <div class="title-row">
+          <h3 class="text-lg font-semibold" :style="{ color: COLORS.primary }">
+            {{ title }}
+          </h3>
+          <slot name="title-actions" />
+        </div>
+
+        <!-- Custom content slot (e.g., badges) -->
+        <slot name="after-title" />
 
         <!-- Description -->
         <p class="text-sm" :style="{ color: COLORS.textPrimary }">
           {{ description }}
         </p>
-
-        <!-- Tags -->
-        <div v-if="tags && tags.length > 0" class="tags-container">
-          <span
-            v-for="tag in tags"
-            :key="tag"
-            class="tag-badge"
-          >
-            <TagIcon class="w-3 h-3" />
-            {{ tag }}
-          </span>
-        </div>
 
         <!-- Metadata (date, doctor, location, etc.) -->
         <div class="flex items-center flex-wrap gap-4 text-sm text-gray-500 metadata-row">
@@ -120,6 +112,19 @@ const emit = defineEmits<{
   min-height: 6rem;
 }
 
+.title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.title-row h3 {
+  flex: 1;
+  min-width: 0;
+}
+
 .metadata-row {
   margin-top: 0.5rem;
   padding-right: 18rem;
@@ -132,29 +137,6 @@ const emit = defineEmits<{
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.tag-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.625rem;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
-  color: v-bind('COLORS.textPrimary');
-  font-size: 0.75rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 640px) {

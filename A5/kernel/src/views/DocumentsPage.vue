@@ -46,8 +46,38 @@ const filteredDocuments = computed(() => {
     )
   }
 
+  // Always sort by newest first
+  filtered.sort((a, b) => {
+    const dateA = parseItalianDate(a.date)
+    const dateB = parseItalianDate(b.date)
+    
+    if (!dateA || !dateB) return 0
+    
+    return dateB.getTime() - dateA.getTime()
+  })
+
   return filtered
 })
+
+// Parse Italian date format "GG Mese AAAA"
+function parseItalianDate(dateStr: string): Date | null {
+  const months: Record<string, number> = {
+    'Gen': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'Mag': 4, 'Giu': 5,
+    'Lug': 6, 'Ago': 7, 'Set': 8, 'Ott': 9, 'Nov': 10, 'Dic': 11
+  }
+  
+  const parts = dateStr.split(' ')
+  if (parts.length !== 3) return null
+  
+  const day = parseInt(parts[0] || '')
+  const monthKey = parts[1] || ''
+  const month = months[monthKey]
+  const year = parseInt(parts[2] || '')
+  
+  if (isNaN(day) || month === undefined || isNaN(year)) return null
+  
+  return new Date(year, month, day)
+}
 
 const handleSearch = (query: string) => {
   searchQuery.value = query
