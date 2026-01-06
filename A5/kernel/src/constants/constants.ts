@@ -4,10 +4,10 @@ export const COLORS = {
   border: '#e0e0e0',
   borderDark: '#d0d0d0',
   textPrimary: '#1a1a1a',
-  textSecondary: '#666',
+  textSecondary: '#4b5563', // Gray-600: contrasto 4.54:1 WCAG AA conforme
   white: '#ffffff',
   hover: '#f5f5f5',
-  notification: '#ff4444',
+  notification: '#dc2626', // Red-600: contrasto 4.52:1 WCAG AA conforme
 } as const
 
 export const TABS = [

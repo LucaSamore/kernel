@@ -52,11 +52,14 @@ const setActiveTab = (tabId: string) => {
         v-for="tab in tabsData"
         :key="tab.id"
         :class="['tab-button', { active: activeTab === tab.id }]"
+        :aria-label="`Vai alla sezione ${tab.label}`"
+        :aria-current="activeTab === tab.id ? 'page' : undefined"
         @click="setActiveTab(tab.id)"
       >
         <component 
           :is="activeTab === tab.id ? tab.icon.solid : tab.icon.outline" 
           class="tab-icon"
+          aria-hidden="true"
         />
         <span class="tab-label">{{ tab.label }}</span>
       </button>

@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import TopBar from './components/shared/TopBar.vue'
 import BottomBar from './components/shared/BottomBar.vue'
+import LegalFooter from './components/shared/LegalFooter.vue'
 
 const route = useRoute()
 
@@ -16,6 +17,7 @@ const hideNavigation = computed(() => route.meta.hideNavigation === true)
       <router-view />
     </main>
     <BottomBar v-if="!hideNavigation" />
+    <LegalFooter v-if="!hideNavigation" />
   </div>
 </template>
 
@@ -23,10 +25,9 @@ const hideNavigation = computed(() => route.meta.hideNavigation === true)
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
   position: relative;
-  overflow: hidden;
 }
 
 .app-container::before {
@@ -46,7 +47,7 @@ const hideNavigation = computed(() => route.meta.hideNavigation === true)
 .main-content {
   flex: 1;
   overflow-y: auto;
-  padding: 1.25rem 1.5rem 6rem;
+  padding: 1.25rem 1.5rem;
   position: relative;
   z-index: 1;
 }
