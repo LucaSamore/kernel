@@ -12,8 +12,15 @@ const hideNavigation = computed(() => route.meta.hideNavigation === true)
 
 <template>
   <div class="app-container">
+    <!-- Skip link per accessibilità WCAG 2.4.1 -->
+    <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+    
     <TopBar v-if="!hideNavigation" />
-    <main :class="hideNavigation ? 'h-screen' : 'main-content'">  
+    <main 
+      id="main-content"
+      :class="hideNavigation ? 'h-screen' : 'main-content'"
+      tabindex="-1"
+    >  
       <router-view />
     </main>
     <BottomBar v-if="!hideNavigation" />
@@ -50,5 +57,31 @@ const hideNavigation = computed(() => route.meta.hideNavigation === true)
   padding: 1.25rem 1.5rem;
   position: relative;
   z-index: 1;
+}
+
+/* Skip link per accessibilità - visibile solo al focus */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #171717;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 10000;
+  border-radius: 0 0 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+main:focus {
+  outline: none;
 }
 </style>

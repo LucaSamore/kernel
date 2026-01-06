@@ -5,10 +5,12 @@ interface Props {
   message: string
   show: boolean
   duration?: number
+  type?: 'success' | 'error' | 'info' | 'warning'
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  duration: 3000
+  duration: 3000,
+  type: 'success'
 })
 
 const emit = defineEmits<{
@@ -21,19 +23,32 @@ if (props.show && props.duration > 0) {
     emit('close')
   }, props.duration)
 }
+
+// Determine aria-live based on type
+const ariaLive = props.type === 'error' ? 'assertive' : 'polite'
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="toast">
-      <div v-if="show" class="toast-container">
+      <div 
+        v-if="show" 
+        class="toast-container"
+        role="status"
+        :aria-live="ariaLive"
+        aria-atomic="true"
+      >
         <div class="toast-content">
-          <div class="toast-icon">
-            <CheckCircleIcon class="w-6 h-6" />
+          <div class="toast-icon" :class="`toast-icon-${type}`">
+            <CheckCircleIcon class="w-6 h-6" aria-hidden="true" />
           </div>
           <p class="toast-message">{{ message }}</p>
-          <button class="toast-close" @click="emit('close')">
-            <XMarkIcon class="w-5 h-5" />
+          <button 
+            class="toast-close" 
+            @click="emit('close')"
+            aria-label="Chiudi notifica"
+          >
+            <XMarkIcon class="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -71,12 +86,38 @@ if (props.show && props.duration > 0) {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  background: rgba(16, 185, 129, 0.12);
   border-radius: 0.75rem;
-  color: #10b981;
   flex-shrink: 0;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid;
+  box-shadow: 0 2px 8px;
+}
+
+.toast-icon-success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.3);
   box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+}
+
+.toast-icon-error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+}
+
+.toast-icon-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+}
+
+.toast-icon-info {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0ea5e9;
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.15);
 }
 
 .toast-message {

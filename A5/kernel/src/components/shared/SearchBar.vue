@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 import { COLORS } from '../../constants/constants'
 
+const { t } = useI18n()
 const searchQuery = ref('')
 
 const emit = defineEmits<{
@@ -17,12 +19,15 @@ const handleSearch = () => {
 <template>
   <div class="search-bar-wrapper">
     <div class="search-bar-container">
+      <label for="search-input" class="visually-hidden">
+        {{ $t('documents.searchPlaceholder') }}
+      </label>
       <input
+        id="search-input"
         v-model="searchQuery"
-        type="text"
+        type="search"
         :placeholder="$t('documents.searchPlaceholder')"
         class="search-input"
-        :aria-label="$t('documents.searchPlaceholder')"
         @input="handleSearch"
       />
       <MagnifyingGlassIcon class="search-icon" aria-hidden="true" />
@@ -36,6 +41,19 @@ const handleSearch = () => {
 </template>
 
 <style scoped>
+/* Classe per nascondere visivamente ma mantenere accessibile agli screen reader */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .search-bar-wrapper {
   position: relative;
   width: 100%;

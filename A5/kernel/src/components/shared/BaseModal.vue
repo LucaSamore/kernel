@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 
 interface Props {
@@ -20,6 +21,9 @@ const emit = defineEmits<{
   close: []
 }>()
 
+const modalRef = ref<HTMLElement | null>(null)
+const previousActiveElement = ref<HTMLElement | null>(null)
+
 const maxWidthClasses = {
   sm: 'max-w-md',
   md: 'max-w-2xl',
@@ -32,19 +36,95 @@ const handleBackdropClick = () => {
     emit('close')
   }
 }
+
+// Focus trap implementation per WCAG 2.1.2
+const trapFocus = (e: KeyboardEvent) => {
+  if (e.key !== 'Tab' || !modalRef.value) return
+
+  const focusableElements = modalRef.value.querySelectorAll<HTMLElement>(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  )
+  
+  const firstElement = focusableElements[0]
+  const lastElement = focusableElements[focusableElements.length - 1]
+
+  if (e.shiftKey) {
+    if (document.activeElement === firstElement) {
+      e.preventDefault()
+      lastElement?.focus()
+    }
+  } else {
+    if (document.activeElement === lastElement) {
+      e.preventDefault()
+      firstElement?.focus()
+    }
+  }
+}
+
+// Gestione apertura/chiusura modal
+watch(() => props.isOpen, (newValue) => {
+  if (newValue) {
+    // Salva elemento attivo prima di aprire modal
+    previousActiveElement.value = document.activeElement as HTMLElement
+    
+    // Aggiungi focus trap
+    document.addEventListener('keydown', trapFocus)
+    
+    // Focus sul modal dopo apertura
+    setTimeout(() => {
+      const firstFocusable = modalRef.value?.querySelector<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+      firstFocusable?.focus()
+    }, 100)
+  } else {
+    // Rimuovi focus trap
+    document.removeEventListener('keydown', trapFocus)
+    
+    // Ripristina focus precedente
+    previousActiveElement.value?.focus()
+  }
+})
+
+// Gestione tasto ESC
+const handleEscape = (e: KeyboardEvent) => {
+  if (e.key === 'Escape' && props.isOpen) {
+    emit('close')
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', handleEscape)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleEscape)
+  document.removeEventListener('keydown', trapFocus)
+})
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="modal">
-      <div v-if="isOpen" class="modal-overlay" @click.self="handleBackdropClick">
-        <div class="modal-container" :class="maxWidthClasses[maxWidth]">
+      <div 
+        v-if="isOpen" 
+        class="modal-overlay" 
+        role="dialog"
+        aria-modal="true"
+        :aria-labelledby="title ? 'modal-title' : undefined"
+        @click.self="handleBackdropClick"
+      >
+        <div 
+          ref="modalRef"
+          class="modal-container" 
+          :class="maxWidthClasses[maxWidth]"
+        >
           <!-- Header -->
           <div class="modal-header">
             <div v-if="$slots.header || title" class="header-content">
               <slot name="header">
                 <div>
-                  <h2 v-if="title" class="modal-title">{{ title }}</h2>
+                  <h2 v-if="title" id="modal-title" class="modal-title">{{ title }}</h2>
                   <p v-if="subtitle" class="modal-subtitle">{{ subtitle }}</p>
                 </div>
               </slot>
@@ -52,7 +132,7 @@ const handleBackdropClick = () => {
             <button 
               class="close-button"
               @click="emit('close')"
-              aria-label="Chiudi"
+              aria-label="Chiudi finestra modale"
             >
               <XMarkIcon class="w-6 h-6" />
             </button>
