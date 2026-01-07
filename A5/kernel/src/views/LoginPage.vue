@@ -73,7 +73,7 @@ const addProfile = () => {
   justify-content: center;
   gap: 1.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
   position: relative;
 }
 
@@ -107,7 +107,7 @@ const addProfile = () => {
   left: 0;
   width: 100%;
   height: 4px;
-  background: #171717;
+  background: var(--gray-171717);
   animation: expandWidth 0.8s cubic-bezier(0, 0, 0.2, 1);
 }
 

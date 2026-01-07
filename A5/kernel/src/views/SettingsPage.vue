@@ -192,7 +192,7 @@ const handleChangeProfile = () => {
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
   position: relative;
 }
 
@@ -319,7 +319,7 @@ const handleChangeProfile = () => {
 .settings-account-avatar span {
   font-size: 1.375rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .settings-account-info {
@@ -353,7 +353,7 @@ const handleChangeProfile = () => {
 }
 
 .settings-account-button:hover {
-  color: #ffffff;
+  color: var(--white);
   background: var(--sky-0ea5e9-80);
   border-color: transparent;
   transform: translateY(-1px);

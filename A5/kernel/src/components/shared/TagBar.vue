@@ -96,7 +96,7 @@ const selectTag = (tagId: string) => {
   background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   backdrop-filter: blur(16px);
   border-color: var(--white-30);
-  color: #ffffff;
+  color: var(--white);
   box-shadow: 0 4px 16px var(--blue-3b82f6-30), inset 0 1px 0 var(--white-20);
 }
 

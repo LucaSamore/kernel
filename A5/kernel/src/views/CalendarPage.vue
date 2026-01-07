@@ -41,8 +41,8 @@ const calendarEvents = computed(() => {
   
   // Crea un evento per ogni giorno con appuntamenti
   const events: any[] = []
-  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6').trim() || '#3b82f6'
-  const selectedColor = getComputedStyle(document.documentElement).getPropertyValue('--gray-171717').trim() || '#000'
+  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6').trim() || getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6')
+  const selectedColor = getComputedStyle(document.documentElement).getPropertyValue('--gray-171717').trim() || getComputedStyle(document.documentElement).getPropertyValue('--black')
   
   appointmentsByDate.forEach((apts, date) => {
     apts.forEach((apt, index) => {
@@ -234,7 +234,7 @@ function parseDateToISO(dateString: string): string {
   flex-direction: column;
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 50%, #fce7f3 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
   position: relative;
 }
 

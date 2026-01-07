@@ -59,6 +59,18 @@
   
   /* Heading and title text */
   --text-heading: rgb(26, 26, 26);
+  --text-heading-dark: #1a1a1a;
+  
+  /* Background colors */
+  --bg-light: #f8f8f8;
+  --bg-hover: #f5f5f5;
+  
+  /* Border colors */
+  --border-light: #e0e0e0;
+  --border-medium: #d0d0d0;
+  
+  /* Notification colors */
+  --notification-red: #dc2626;
   
   /* White variations */
   --white-90: rgba(255, 255, 255, 0.9);
@@ -131,6 +143,7 @@
   --white-90: rgba(255, 255, 255, 0.9);
   --white-95: rgba(255, 255, 255, 0.95);
   --white-100: rgba(255, 255, 255, 1);
+  --white: #ffffff;
   
   /* Widget colors - black variations */
   --black-2: rgba(0, 0, 0, 0.02);
@@ -144,6 +157,8 @@
   --black-20: rgba(0, 0, 0, 0.2);
   --black-80: rgba(0, 0, 0, 0.8);
   --black-90: rgba(0, 0, 0, 0.9);
+  --black-100: rgba(0, 0, 0, 1);
+  --black: #000000;
   
   /* Widget colors - gray variations */
   --gray-171717: #171717;
@@ -266,7 +281,7 @@
   --bg-gradient-end: #831843;
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
-  --accent-primary: #38bdf8;
+  --accent-primary: #ffffff;
   --accent-secondary: #c084fc;
   --accent-tertiary: #f472b6;
   --border-color: #374151;
@@ -310,21 +325,21 @@
   /* White/Dark variations for dark theme */
   --white-90: rgba(17, 24, 39, 0.9);
   
-  --accent-primary-8: rgba(56, 189, 248, 0.08);
-  --accent-primary-25: rgba(56, 189, 248, 0.25);
-  --accent-primary-5: rgba(56, 189, 248, 0.05);
-  --accent-primary-10: rgba(56, 189, 248, 0.1);
-  --accent-primary-15: rgba(56, 189, 248, 0.15);
-  --accent-primary-20: rgba(56, 189, 248, 0.2);
-  --accent-primary-30: rgba(56, 189, 248, 0.3);
-  --accent-primary-40: rgba(56, 189, 248, 0.4);
-  --accent-primary-50: rgba(56, 189, 248, 0.5);
-  --accent-primary-60: rgba(56, 189, 248, 0.6);
-  --accent-primary-70: rgba(56, 189, 248, 0.7);
-  --accent-primary-80: rgba(56, 189, 248, 0.8);
-  --accent-primary-85-black: #2a98cc;
-  --accent-primary-8-on-bg: rgba(56, 189, 248, 0.08);
-  --accent-primary-95-black: #31a4d8;
+  --accent-primary-8: rgba(255, 255, 255, 0.08);
+  --accent-primary-25: rgba(255, 255, 255, 0.25);
+  --accent-primary-5: rgba(255, 255, 255, 0.05);
+  --accent-primary-10: rgba(255, 255, 255, 0.1);
+  --accent-primary-15: rgba(255, 255, 255, 0.15);
+  --accent-primary-20: rgba(255, 255, 255, 0.2);
+  --accent-primary-30: rgba(255, 255, 255, 0.3);
+  --accent-primary-40: rgba(255, 255, 255, 0.4);
+  --accent-primary-50: rgba(255, 255, 255, 0.5);
+  --accent-primary-60: rgba(255, 255, 255, 0.6);
+  --accent-primary-70: rgba(255, 255, 255, 0.7);
+  --accent-primary-80: rgba(255, 255, 255, 0.8);
+  --accent-primary-85-black: #e6e6e6;
+  --accent-primary-8-on-bg: rgba(255, 255, 255, 0.08);
+  --accent-primary-95-black: #f2f2f2;
   
   --accent-secondary-15: rgba(192, 132, 252, 0.15);
   --accent-secondary-20: rgba(192, 132, 252, 0.2);
@@ -382,7 +397,7 @@
   /* Widget colors - gray variations for dark theme */
   --gray-171717: #e5e7eb;
   --gray-404040: #d1d5db;
-  --gray-525252: #9ca3af;
+  --gray-525252: #d1d5db;
   --gray-737373: #9ca3af;
   --gray-a3a3a3: #6b7280;
   --gray-d1d5db-80: rgba(107, 114, 128, 0.8);

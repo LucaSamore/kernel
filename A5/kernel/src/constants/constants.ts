@@ -1,13 +1,13 @@
 export const COLORS = {
-  primary: '#1a1a1a',
-  background: '#f8f8f8',
-  border: '#e0e0e0',
-  borderDark: '#d0d0d0',
-  textPrimary: '#1a1a1a',
-  textSecondary: '#4b5563', // Gray-600: contrasto 4.54:1 WCAG AA conforme
-  white: '#ffffff',
-  hover: '#f5f5f5',
-  notification: '#dc2626', // Red-600: contrasto 4.52:1 WCAG AA conforme
+  primary: 'var(--text-heading-dark)',
+  background: 'var(--bg-light)',
+  border: 'var(--border-light)',
+  borderDark: 'var(--border-medium)',
+  textPrimary: 'var(--text-heading-dark)',
+  textSecondary: 'var(--text-gray-600)', // Gray-600: contrasto 4.54:1 WCAG AA conforme
+  white: 'var(--white)',
+  hover: 'var(--bg-hover)',
+  notification: 'var(--notification-red)', // Red-600: contrasto 4.52:1 WCAG AA conforme
 } as const
 
 export const TABS = [

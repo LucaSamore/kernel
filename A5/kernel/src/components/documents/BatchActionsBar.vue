@@ -45,7 +45,7 @@ const allSelected = computed(() => {
       <div class="bar-content">
         <div class="selection-info">
           <div class="selection-header">
-            <CheckIcon class="w-5 h-5" style="color: #3b82f6" />
+            <CheckIcon class="w-5 h-5" :style="{ color: 'var(--blue-3b82f6)' }" />
             <span class="selection-count">
               {{ selectedDocuments.length }} 
               {{ selectedDocuments.length === 1 ? $t('documents.batch.documentSelected') : $t('documents.batch.documentsSelected') }}
