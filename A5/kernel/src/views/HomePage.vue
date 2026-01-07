@@ -195,8 +195,8 @@ const handleCloseToast = () => {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-20) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-20) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -319,20 +319,20 @@ const handleCloseToast = () => {
   gap: 0.5rem;
   padding: 1rem 1.5rem;
   border-radius: 0.75rem;
-  color: v-bind('COLORS.textPrimary');
+  color: var(--text-primary);
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-60);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px var(--black-8), inset 0 1px 0 var(--white-80);
 }
 
 .quick-action-btn:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: var(--white-80);
+  box-shadow: 0 8px 24px var(--black-12), inset 0 1px 0 var(--white-90);
 }
 </style>

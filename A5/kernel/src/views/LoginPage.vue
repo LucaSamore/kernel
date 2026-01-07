@@ -85,8 +85,8 @@ const addProfile = () => {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-15) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -95,7 +95,7 @@ const addProfile = () => {
   font-size: clamp(3rem, 8vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #171717;
+  color: var(--gray-171717);
   position: relative;
   z-index: 1;
   animation: fadeInDown 0.6s cubic-bezier(0, 0, 0.2, 1);
@@ -112,7 +112,7 @@ const addProfile = () => {
 }
 
 .login-subtitle {
-  color: #525252;
+  color: var(--gray-525252);
   font-size: 1.25rem;
   font-weight: 500;
   position: relative;

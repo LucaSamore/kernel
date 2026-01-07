@@ -35,49 +35,49 @@ const DOCUMENT_CATEGORIES: Record<DocumentType, DocumentCategory> = {
     type: 'prescription',
     label: 'Prescrizione',
     icon: '💊',
-    color: '#8b5cf6',
-    bgColor: 'rgba(139, 92, 246, 0.12)',
-    borderColor: 'rgba(139, 92, 246, 0.3)'
+    color: 'var(--doc-prescription)',
+    bgColor: 'var(--doc-prescription-bg)',
+    borderColor: 'var(--doc-prescription-border)'
   },
   report: {
     type: 'report',
     label: 'Referto',
     icon: '📋',
-    color: '#0ea5e9',
-    bgColor: 'rgba(14, 165, 233, 0.12)',
-    borderColor: 'rgba(14, 165, 233, 0.3)'
+    color: 'var(--doc-report)',
+    bgColor: 'var(--doc-report-bg)',
+    borderColor: 'var(--doc-report-border)'
   },
   analysis: {
     type: 'analysis',
     label: 'Analisi',
     icon: '🧪',
-    color: '#06b6d4',
-    bgColor: 'rgba(6, 182, 212, 0.12)',
-    borderColor: 'rgba(6, 182, 212, 0.3)'
+    color: 'var(--doc-analysis)',
+    bgColor: 'var(--doc-analysis-bg)',
+    borderColor: 'var(--doc-analysis-border)'
   },
   visit: {
     type: 'visit',
     label: 'Visita',
     icon: '👨‍⚕️',
-    color: '#10b981',
-    bgColor: 'rgba(16, 185, 129, 0.12)',
-    borderColor: 'rgba(16, 185, 129, 0.3)'
+    color: 'var(--doc-visit)',
+    bgColor: 'var(--doc-visit-bg)',
+    borderColor: 'var(--doc-visit-border)'
   },
   diagnostic: {
     type: 'diagnostic',
     label: 'Diagnostica',
     icon: '🔬',
-    color: '#f59e0b',
-    bgColor: 'rgba(245, 158, 11, 0.12)',
-    borderColor: 'rgba(245, 158, 11, 0.3)'
+    color: 'var(--doc-diagnostic)',
+    bgColor: 'var(--doc-diagnostic-bg)',
+    borderColor: 'var(--doc-diagnostic-border)'
   },
   other: {
     type: 'other',
     label: 'Altro',
     icon: '📄',
-    color: '#64748b',
-    bgColor: 'rgba(100, 116, 139, 0.12)',
-    borderColor: 'rgba(100, 116, 139, 0.3)'
+    color: 'var(--doc-other)',
+    bgColor: 'var(--doc-other-bg)',
+    borderColor: 'var(--doc-other-border)'
   }
 }
 
@@ -372,9 +372,9 @@ const handleDownloadBarcode = () => {
   transform: translateY(-50%);
   width: 1.75rem;
   height: 1.75rem;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--text-primary-20);
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--bg-secondary-80);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -384,9 +384,9 @@ const handleDownloadBarcode = () => {
 }
 
 .selection-checkbox.checked {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   border-color: transparent;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px var(--accent-primary-40);
 }
 
 /* Document Type Badge (inline under title) */
@@ -401,7 +401,7 @@ const handleDownloadBarcode = () => {
   -webkit-backdrop-filter: blur(12px);
   font-weight: 700;
   font-size: 0.8125rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 8px var(--badge-shadow), inset 0 1px 0 var(--white-40);
   margin-bottom: 0.75rem;
   width: fit-content;
   animation: fadeInScale 0.4s cubic-bezier(0, 0, 0.2, 1);
@@ -425,28 +425,28 @@ const handleDownloadBarcode = () => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
+  border: 1px solid var(--white-20);
   border-radius: 0.75rem;
   color: white;
   font-weight: 700;
   font-size: 0.8125rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px var(--blue-3b82f6-25), inset 0 1px 0 var(--white-20);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .barcode-action-button:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, var(--blue-2563eb) 0%, var(--blue-7c3aed) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px var(--blue-3b82f6-30), inset 0 1px 0 var(--white-30);
 }
 
 .barcode-action-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 6px var(--blue-3b82f6-30);
 }
 
 @keyframes fadeInScale {
@@ -474,19 +474,19 @@ const handleDownloadBarcode = () => {
 .prescription-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
 
 .prescription-date {
   font-size: 0.875rem;
-  color: #737373;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .prescription-expiration {
   font-size: 0.875rem;
-  color: #525252;
+  color: var(--text-secondary);
   margin: 0.25rem 0 0 0;
   text-decoration: underline;
   font-style: italic;
@@ -496,9 +496,9 @@ const handleDownloadBarcode = () => {
   display: flex;
   justify-content: center;
   padding: 1.5rem;
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 1rem;
-  border: 2px dashed #e5e7eb;
+  border: 2px dashed var(--border-color);
 }
 
 .barcode-placeholder {
@@ -507,9 +507,9 @@ const handleDownloadBarcode = () => {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: rgba(249, 250, 251, 0.8);
+  background: var(--bg-secondary-80);
   border-radius: 1rem;
-  border: 2px dashed #d1d5db;
+  border: 2px dashed var(--border-color);
   min-height: 120px;
 }
 
@@ -520,17 +520,17 @@ const handleDownloadBarcode = () => {
 }
 
 .placeholder-icon.expired {
-  color: #f59e0b;
+  color: var(--warning);
 }
 
 .placeholder-icon.used {
-  color: #10b981;
+  color: var(--success);
 }
 
 .placeholder-text {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--text-secondary);
   text-align: center;
   margin: 0;
 }
@@ -545,13 +545,13 @@ const handleDownloadBarcode = () => {
 }
 
 .status-message.used-message {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: var(--success-10);
+  border: 1px solid var(--success-30);
 }
 
 .status-message.expired-message {
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: var(--warning-10);
+  border: 1px solid var(--warning-30);
 }
 
 .status-icon {
@@ -561,11 +561,11 @@ const handleDownloadBarcode = () => {
 }
 
 .used-message .status-icon {
-  color: #10b981;
+  color: var(--doc-visit);
 }
 
 .expired-message .status-icon {
-  color: #f59e0b;
+  color: var(--doc-diagnostic);
 }
 
 .status-text {
@@ -575,17 +575,17 @@ const handleDownloadBarcode = () => {
 }
 
 .used-message .status-text {
-  color: #065f46;
+  color: var(--success-text-dark);
 }
 
 .expired-message .status-text {
-  color: #92400e;
+  color: var(--warning-text-dark);
 }
 
 .barcode-instruction {
   text-align: center;
   font-size: 0.875rem;
-  color: #525252;
+  color: var(--gray-525252);
   margin: 0;
   line-height: 1.5;
 }
@@ -604,30 +604,30 @@ const handleDownloadBarcode = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--bg-secondary-30);
+  box-shadow: 0 4px 16px var(--accent-primary-30), inset 0 1px 0 var(--bg-secondary-20);
 }
 
 .button-primary:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, var(--bg-gradient-start-85-black) 0%, var(--bg-gradient-end-85-black) 100%);
+  box-shadow: 0 6px 20px var(--accent-primary-40), inset 0 1px 0 var(--bg-secondary-30);
   transform: translateY(-1px);
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--bg-secondary-30);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: #525252;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--bg-secondary-50);
+  color: var(--text-secondary);
+  box-shadow: 0 2px 8px var(--text-primary-6), inset 0 1px 0 var(--bg-secondary-50);
 }
 
 .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: var(--bg-secondary-40);
+  box-shadow: 0 4px 16px var(--text-primary-10), inset 0 1px 0 var(--bg-secondary-70);
   transform: translateY(-1px);
 }
 </style>

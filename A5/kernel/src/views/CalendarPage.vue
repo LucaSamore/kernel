@@ -41,6 +41,9 @@ const calendarEvents = computed(() => {
   
   // Crea un evento per ogni giorno con appuntamenti
   const events: any[] = []
+  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6').trim() || '#3b82f6'
+  const selectedColor = getComputedStyle(document.documentElement).getPropertyValue('--gray-171717').trim() || '#000'
+  
   appointmentsByDate.forEach((apts, date) => {
     apts.forEach((apt, index) => {
       if (index < 3) { // Max 3 pallini visibili
@@ -53,7 +56,7 @@ const calendarEvents = computed(() => {
           classNames: selectedAppointmentId.value === apt.id ? ['appointment-dot', 'selected'] : ['appointment-dot'],
           backgroundColor: 'transparent',
           borderColor: 'transparent',
-          textColor: selectedAppointmentId.value === apt.id ? '#000' : '#3b82f6'
+          textColor: selectedAppointmentId.value === apt.id ? selectedColor : primaryColor
         })
       }
     })
@@ -69,7 +72,7 @@ const calendarEvents = computed(() => {
         classNames: ['appointment-dot-more'],
         backgroundColor: 'transparent',
         borderColor: 'transparent',
-        textColor: '#3b82f6'
+        textColor: primaryColor
       })
     }
   })
@@ -243,8 +246,8 @@ function parseDateToISO(dateString: string): string {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-20) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-20) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -261,25 +264,25 @@ function parseDateToISO(dateString: string): string {
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .page-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   margin: 0;
   line-height: 1.25;
 }
 
 .page-subtitle {
   font-size: 1rem;
-  color: #525252;
+  color: var(--gray-525252);
   margin-top: 0.5rem;
   line-height: 1.5;
 }
@@ -289,22 +292,22 @@ function parseDateToISO(dateString: string): string {
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--black-80);
   backdrop-filter: blur(12px);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-15);
   border-radius: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px var(--black-15);
 }
 
 .new-appointment-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--black-90);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 24px var(--black-20);
 }
 
 .tag-bar-container {
@@ -333,30 +336,30 @@ function parseDateToISO(dateString: string): string {
   background: white;
   border-radius: 0.75rem;
   padding: 1.5rem;
-  border: 2px solid #e5e7eb;
-  box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 0.5rem 1.875rem var(--black-8);
 }
 
 .appointments-container {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .appointments-container:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 40px var(--black-12), inset 0 1px 0 var(--white-90);
 }
 
 .appointments-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   margin-bottom: 1rem;
   line-height: 1.25;
 }
@@ -375,12 +378,12 @@ function parseDateToISO(dateString: string): string {
   align-items: center;
   padding: 3rem;
   text-align: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-15);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-20);
   border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  color: #525252;
+  box-shadow: 0 4px 16px var(--black-8);
+  color: var(--gray-525252);
 }
 
 /* FullCalendar customization */
@@ -389,26 +392,26 @@ function parseDateToISO(dateString: string): string {
 }
 
 :deep(.fc-button) {
-  background-color: #000 !important;
-  border-color: #000 !important;
+  background-color: var(--fc-button-bg) !important;
+  border-color: var(--fc-button-bg) !important;
   text-transform: capitalize;
 }
 
 :deep(.fc-button:hover) {
-  background-color: #1f2937 !important;
+  background-color: var(--fc-button-hover-bg) !important;
 }
 
 :deep(.fc-button-active) {
-  background-color: #1f2937 !important;
+  background-color: var(--fc-button-hover-bg) !important;
 }
 
 :deep(.fc-daygrid-day-number) {
-  color: #374151;
+  color: var(--fc-day-number);
   font-weight: 500;
 }
 
 :deep(.fc-col-header-cell-cushion) {
-  color: #111827;
+  color: var(--fc-header-text);
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
@@ -419,7 +422,7 @@ function parseDateToISO(dateString: string): string {
 }
 
 :deep(.fc-daygrid-day.fc-day-today) {
-  background-color: #fef3c7 !important;
+  background-color: var(--fc-today-bg) !important;
 }
 
 /* Header sticky per i giorni della settimana */

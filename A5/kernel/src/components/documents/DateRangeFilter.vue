@@ -208,38 +208,38 @@ const clearRange = () => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.625rem 1rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-50);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--white-40);
   border-radius: 0.75rem;
-  color: #525252;
+  color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px var(--shadow), inset 0 1px 0 var(--white-60);
   white-space: nowrap;
   position: relative;
   z-index: 201;
 }
 
 .range-button:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--white-70);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px var(--shadow), inset 0 1px 0 var(--white-80);
 }
 
 .range-button-active {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  color: white;
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: var(--bg-primary);
+  border-color: var(--white-30);
+  box-shadow: 0 4px 16px var(--accent-primary-30);
 }
 
 .range-button-active:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--accent-primary-40);
 }
 
 .clear-icon {
@@ -256,13 +256,13 @@ const clearRange = () => {
   top: calc(100% + 0.5rem);
   right: 0;
   min-width: 320px;
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--bg-secondary-98);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--text-primary-10);
   border-radius: 1rem;
   padding: 1rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 40px var(--black-20), inset 0 1px 0 var(--bg-secondary-90);
   z-index: 210;
   pointer-events: auto;
   isolation: isolate;
@@ -277,7 +277,7 @@ const clearRange = () => {
 .section-title {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #404040;
+  color: var(--text-secondary);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -291,10 +291,10 @@ const clearRange = () => {
 
 .preset-button {
   padding: 0.625rem;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: var(--accent-primary-8);
+  border: 1px solid var(--accent-primary-20);
   border-radius: 0.5rem;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
@@ -303,14 +303,14 @@ const clearRange = () => {
 }
 
 .preset-button:hover {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--accent-primary-15);
+  border-color: var(--accent-primary-40);
   transform: translateY(-1px);
 }
 
 .picker-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--border-color) 50%, transparent 100%);
   margin: 1rem 0;
 }
 
@@ -329,43 +329,43 @@ const clearRange = () => {
 .input-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #525252;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .date-input {
   padding: 0.625rem;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--white-60);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   font-size: 0.875rem;
-  color: #171717;
+  color: var(--text-primary);
   transition: all 0.2s;
 }
 
 .date-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-primary-10);
 }
 
 .apply-button {
   padding: 0.625rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   border: none;
   border-radius: 0.5rem;
-  color: white;
+  color: var(--bg-primary);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px var(--accent-primary-30);
 }
 
 .apply-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px var(--accent-primary-40);
 }
 
 /* Dropdown transition */

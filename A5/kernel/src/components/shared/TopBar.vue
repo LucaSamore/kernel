@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '../../authentication/useAuth'
-import { COLORS } from '../../constants/constants'
 
 const { t, locale } = useI18n()
 const router = useRouter()
@@ -38,7 +37,7 @@ const logout = () => {
 <template>
   <div class="topbar-container">
     <div class="flex items-center">
-      <h1 class="text-[clamp(1rem,2.5vw,1.25rem)] font-semibold m-0" :style="{ color: COLORS.primary }">{{ t('app.title') }}</h1>
+      <h1 class="topbar-title text-[clamp(1rem,2.5vw,1.25rem)] font-semibold m-0">{{ t('app.title') }}</h1>
     </div>
     <div class="flex items-center gap-6">
       <button 
@@ -79,7 +78,7 @@ const logout = () => {
             :aria-current="locale === 'it' ? 'true' : undefined"
             @click="changeLanguage('it')"
           >
-            <span class="text-sm font-semibold" :style="{ color: COLORS.primary }">ITA</span>
+            <span class="text-sm font-semibold lang-menu-text">ITA</span>
           </button>
           <button
             class="w-full flex items-center justify-center px-4 py-2.5 hover:bg-gray-50 transition-colors cursor-pointer"
@@ -88,7 +87,7 @@ const logout = () => {
             :aria-current="locale === 'en' ? 'true' : undefined"
             @click="changeLanguage('en')"
           >
-            <span class="text-sm font-semibold" :style="{ color: COLORS.primary }">ENG</span>
+            <span class="text-sm font-semibold lang-menu-text">ENG</span>
           </button>
         </div>
       </div>
@@ -122,8 +121,8 @@ const logout = () => {
                 </svg>
               </div>
               <div>
-                <div class="text-sm font-semibold" :style="{ color: COLORS.primary }">{{ currentUser?.name }}</div>
-                <div class="text-xs" :style="{ color: COLORS.textSecondary }">{{ currentUser?.role }}</div>
+                <div class="text-sm font-semibold text-gray-900">{{ currentUser?.name }}</div>
+                <div class="text-xs text-gray-600">{{ currentUser?.role }}</div>
               </div>
             </div>
           </div>
@@ -141,7 +140,7 @@ const logout = () => {
                 <line x1="21" y1="12" x2="9" y2="12"/>
               </svg>
             </div>
-            <span class="text-sm font-medium" :style="{ color: COLORS.primary }">{{ t('userMenu.logout') }}</span>
+            <span class="text-sm font-medium user-menu-text">{{ t('userMenu.logout') }}</span>
           </button>
         </div>
       </div>
@@ -154,11 +153,11 @@ const logout = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.4) !important;
+  background: var(--white-40) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  border-bottom: 1px solid var(--white-60) !important;
+  box-shadow: 0 4px 24px var(--black-8), inset 0 1px 0 var(--white-80) !important;
   height: 8vh;
   width: 100%;
   padding-left: clamp(2rem, 1.5vw, 3rem);
@@ -168,30 +167,39 @@ const logout = () => {
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
+.topbar-title {
+  color: var(--accent-primary);
+}
+
+.lang-menu-text,
+.user-menu-text {
+  color: var(--accent-primary);
+}
+
 .glass-button {
-  background: rgba(255, 255, 255, 0.6) !important;
+  background: var(--white-60) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid var(--white-50) !important;
+  box-shadow: 0 2px 8px var(--black-5), inset 0 1px 0 var(--white-80) !important;
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1) !important;
 }
 
 .glass-button:hover {
-  background: rgba(255, 255, 255, 0.8) !important;
+  background: var(--white-80) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 16px var(--black-12), inset 0 1px 0 var(--white-90) !important;
 }
 
 .glass-menu {
-  background: rgba(255, 255, 255, 0.95) !important;
+  background: var(--white-95) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid var(--white-60) !important;
+  box-shadow: 0 8px 32px var(--black-12), inset 0 1px 0 var(--white-80) !important;
 }
 
 .glass-menu button:hover {
-  background: rgba(14, 165, 233, 0.08) !important;
+  background: var(--sky-0ea5e9-08) !important;
 }
 </style>

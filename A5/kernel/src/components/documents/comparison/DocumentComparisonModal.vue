@@ -166,13 +166,13 @@ watch(() => props.isOpen, (newVal) => {
 .comparison-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
 
 .comparison-subtitle {
   font-size: 0.875rem;
-  color: #737373;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -207,17 +207,17 @@ watch(() => props.isOpen, (newVal) => {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: #525252;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
+  color: var(--text-secondary);
+  box-shadow: 0 2px 8px var(--shadow), inset 0 1px 0 var(--white-50);
 }
 
 .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: var(--white-40);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
   transform: translateY(-1px);
 }
 

@@ -16,26 +16,26 @@ const emit = defineEmits<{
 const urgencyColor = computed(() => {
   switch (props.suggestion.urgency) {
     case 'high':
-      return 'rgba(239, 68, 68, 0.15)'
+      return 'var(--error-15)'
     case 'medium':
-      return 'rgba(251, 191, 36, 0.15)'
+      return 'var(--warning-15)'
     case 'low':
-      return 'rgba(34, 197, 94, 0.15)'
+      return 'var(--success-green-15)'
     default:
-      return 'rgba(0, 0, 0, 0.05)'
+      return 'var(--black-5)'
   }
 })
 
 const urgencyBorderColor = computed(() => {
   switch (props.suggestion.urgency) {
     case 'high':
-      return 'rgba(239, 68, 68, 0.3)'
+      return 'var(--error-30)'
     case 'medium':
-      return 'rgba(251, 191, 36, 0.3)'
+      return 'var(--warning-30)'
     case 'low':
-      return 'rgba(34, 197, 94, 0.3)'
+      return 'var(--success-green-30)'
     default:
-      return 'rgba(0, 0, 0, 0.1)'
+      return 'var(--black-10)'
   }
 })
 
@@ -98,11 +98,11 @@ const handleBookAppointment = () => {
 <style scoped>
 .suggestion-card {
   padding: 1.25rem;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6-08) 0%, var(--blue-8b5cf6-08) 100%);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid var(--blue-3b82f6-20);
   border-radius: 1.25rem;
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px var(--blue-3b82f6-12), inset 0 1px 0 var(--white-50);
   animation: slideInUp 0.4s cubic-bezier(0, 0, 0.2, 1);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   position: relative;
@@ -116,13 +116,13 @@ const handleBookAppointment = () => {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(90deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   opacity: 0.6;
 }
 
 .suggestion-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 40px var(--blue-3b82f6-18), inset 0 1px 0 var(--white-60);
 }
 
 .suggestion-header {
@@ -138,8 +138,8 @@ const handleBookAppointment = () => {
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  background: rgba(59, 130, 246, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: var(--blue-3b82f6-15);
+  border: 1px solid var(--blue-3b82f6-30);
   border-radius: 0.75rem;
   flex-shrink: 0;
 }
@@ -151,14 +151,14 @@ const handleBookAppointment = () => {
 .suggestion-title {
   font-size: 0.875rem;
   font-weight: 700;
-  color: #1e40af;
+  color: var(--blue-1e40af);
   margin: 0;
   line-height: 1.2;
 }
 
 .suggestion-subtitle {
   font-size: 0.75rem;
-  color: #3b82f6;
+  color: var(--blue-3b82f6);
   margin: 0.25rem 0 0 0;
   line-height: 1.2;
 }
@@ -173,10 +173,10 @@ const handleBookAppointment = () => {
   display: flex;
   gap: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: var(--white-60);
+  border: 1px solid var(--white-80);
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px var(--black-4);
 }
 
 .visit-icon {
@@ -193,14 +193,14 @@ const handleBookAppointment = () => {
 .visit-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
 }
 
 .visit-description {
   font-size: 0.875rem;
-  color: #525252;
+  color: var(--gray-525252);
   margin: 0 0 0.75rem 0;
   line-height: 1.5;
 }
@@ -223,13 +223,13 @@ const handleBookAppointment = () => {
 }
 
 .visit-type-badge {
-  background: rgba(14, 165, 233, 0.15);
-  color: #0369a1;
-  border-color: rgba(14, 165, 233, 0.3);
+  background: var(--sky-0ea5e9-15);
+  color: var(--sky-0369a1);
+  border-color: var(--sky-0ea5e9-30);
 }
 
 .urgency-badge {
-  color: #171717;
+  color: var(--gray-171717);
 }
 
 .book-button {
@@ -238,7 +238,7 @@ const handleBookAppointment = () => {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   color: white;
   border: none;
   border-radius: 0.875rem;
@@ -246,13 +246,13 @@ const handleBookAppointment = () => {
   font-size: 0.9375rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 16px var(--blue-3b82f6-30);
 }
 
 .book-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  box-shadow: 0 6px 24px var(--blue-3b82f6-40);
+  background: linear-gradient(135deg, var(--blue-2563eb) 0%, var(--blue-7c3aed) 100%);
 }
 
 .book-button:active {

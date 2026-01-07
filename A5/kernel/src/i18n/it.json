@@ -198,7 +198,20 @@
       },
       "appearance": {
         "title": "Aspetto",
-        "subtitle": "Tema, colori e aspetto, dimensione testo"
+        "subtitle": "Tema, colori e aspetto, dimensione testo",
+        "theme": {
+          "title": "Tema",
+          "light": "Chiaro",
+          "dark": "Scuro"
+        },
+        "colorBlind": {
+          "title": "Modalità daltonici",
+          "subtitle": "Adatta i colori per una migliore visibilità",
+          "none": "Nessuna",
+          "deuteranopia": "Deuteranopia (rosso-verde)",
+          "protanopia": "Protanopia (rosso-verde)",
+          "tritanopia": "Tritanopia (blu-giallo)"
+        }
       }
     },
     "dataPrivacy": {

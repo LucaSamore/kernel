@@ -201,47 +201,47 @@ watch(() => props.disabled, (newDisabled) => {
 .section-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
 .placeholder-message {
   padding: 2rem;
   text-align: center;
-  color: #a3a3a3;
+  color: var(--text-secondary);
   font-size: 0.875rem;
-  background: rgba(248, 250, 252, 0.4);
+  background: var(--bg-secondary-40);
   border-radius: 12px;
-  border: 1px dashed rgba(203, 213, 225, 0.5);
+  border: 1px dashed var(--border-color);
 }
 
 /* Custom Date Picker */
 .custom-date-picker {
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--white-40);
 }
 
 .date-picker-label {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(31, 41, 55, 0.8);
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .date-picker-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-60);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
   border-radius: 8px;
   font-size: 0.9375rem;
-  color: #1f2937;
+  color: var(--text-primary);
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -251,14 +251,14 @@ watch(() => props.disabled, (newDisabled) => {
 }
 
 .date-picker-input:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(59, 130, 246, 0.5);
+  background: var(--white-70);
+  border-color: var(--accent-primary-50);
 }
 
 .date-picker-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-primary-10);
 }
 
 /* Dates Grid */
@@ -270,40 +270,40 @@ watch(() => props.disabled, (newDisabled) => {
 
 .date-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--white-50);
   border-radius: 0.75rem;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-60);
 }
 
 .date-card:hover {
-  background: rgba(255, 255, 255, 0.4);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--white-40);
+  border-color: var(--accent-primary-40);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
 }
 
 .date-selected {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-  border-color: rgba(59, 130, 246, 0.7);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: linear-gradient(135deg, var(--accent-primary-15) 0%, var(--accent-secondary-15) 100%);
+  border-color: var(--accent-primary-70);
+  box-shadow: 0 4px 20px var(--accent-primary-30), inset 0 1px 0 var(--white-70);
 }
 
 .date-selected:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
-  border-color: rgba(59, 130, 246, 0.8);
+  background: linear-gradient(135deg, var(--accent-primary-20) 0%, var(--accent-secondary-20) 100%);
+  border-color: var(--accent-primary-80);
 }
 
 .date-label {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   text-align: center;
   text-transform: capitalize;
 }
@@ -317,24 +317,24 @@ watch(() => props.disabled, (newDisabled) => {
 .load-more-button {
   flex: 1;
   padding: 0.875rem 1.5rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--white-50);
   border-radius: 0.75rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #3b82f6;
+  color: var(--accent-primary);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px var(--shadow), inset 0 1px 0 var(--white-60);
 }
 
 .load-more-button:hover {
-  background: rgba(255, 255, 255, 0.4);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--white-40);
+  border-color: var(--accent-primary-40);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
 }
 
 @media (max-width: 768px) {

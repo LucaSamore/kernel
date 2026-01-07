@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-import { COLORS } from '../../constants/constants'
 
 const { t } = useI18n()
 const searchQuery = ref('')
@@ -62,17 +61,17 @@ const handleSearch = () => {
 
 .search-bar-container {
   position: relative;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--bg-secondary-35);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--bg-secondary-50);
   border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px var(--text-primary-8), inset 0 1px 0 var(--bg-secondary-60);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .search-bar-container:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 24px var(--text-primary-12);
+  background: var(--bg-secondary-45);
 }
 
 .search-input {
@@ -82,12 +81,12 @@ const handleSearch = () => {
   border: none;
   background: transparent;
   font-size: 1rem;
-  color: v-bind('COLORS.textPrimary');
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 .search-input::placeholder {
-  color: v-bind('COLORS.textSecondary');
+  color: var(--text-secondary);
 }
 
 .search-input:focus {
@@ -95,8 +94,8 @@ const handleSearch = () => {
 }
 
 .search-bar-container:focus-within {
-  border-color: rgba(14, 165, 233, 0.5);
-  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  border-color: var(--accent-primary-50);
+  box-shadow: 0 0 0 3px var(--accent-primary-10);
 }
 
 .search-icon {
@@ -106,7 +105,7 @@ const handleSearch = () => {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: v-bind('COLORS.textSecondary');
+  color: var(--text-secondary);
 }
 
 .filter-button {
@@ -120,21 +119,21 @@ const handleSearch = () => {
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--bg-secondary-50);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--bg-secondary-30);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .filter-button:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--bg-secondary-80);
   transform: translateY(-50%) scale(1.05);
 }
 
 .filter-icon {
   width: 1.125rem;
   height: 1.125rem;
-  color: v-bind('COLORS.textSecondary');
+  color: var(--text-secondary);
 }
 </style>

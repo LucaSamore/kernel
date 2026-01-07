@@ -346,10 +346,10 @@ const currentYear = new Date().getFullYear()
   position: relative;
   width: 100%;
   min-height: calc(0.75rem + 6rem + 0.75rem);
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--bg-secondary-30);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid var(--bg-secondary-50);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: stretch;
@@ -367,7 +367,7 @@ const currentYear = new Date().getFullYear()
 .footer-brand {
   font-size: clamp(0.625rem, 2vw, 0.75rem);
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
@@ -396,7 +396,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer-link {
-  color: #4b5563;
+  color: var(--text-secondary);
   font-size: clamp(0.625rem, 2vw, 0.75rem);
   text-decoration: none;
   background: none;
@@ -409,18 +409,18 @@ const currentYear = new Date().getFullYear()
 
 .footer-link:hover,
 .footer-link:focus {
-  color: #0ea5e9;
+  color: var(--accent-primary);
   text-decoration: underline;
 }
 
 .footer-separator {
-  color: #d1d5db;
+  color: var(--border-color);
   font-size: clamp(0.625rem, 2vw, 0.75rem);
   user-select: none;
 }
 
 .footer-license {
-  color: #6b7280;
+  color: var(--text-secondary);
   font-size: clamp(0.6rem, 1.8vw, 0.7rem);
   font-weight: 500;
   white-space: nowrap;
@@ -471,10 +471,10 @@ const currentYear = new Date().getFullYear()
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--bg-secondary-98);
   backdrop-filter: blur(10px);
-  border-top: 2px solid #0ea5e9;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid var(--accent-primary);
+  box-shadow: 0 -4px 20px var(--text-primary-10);
   padding: 1.5rem;
   z-index: 10000;
 }
@@ -487,12 +487,12 @@ const currentYear = new Date().getFullYear()
 .cookie-content h3 {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .cookie-content p {
-  color: #4b5563;
+  color: var(--text-secondary);
   font-size: 0.875rem;
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -515,33 +515,33 @@ const currentYear = new Date().getFullYear()
 }
 
 .cookie-btn-primary {
-  background: #0ea5e9;
+  background: var(--accent-primary);
   color: white;
 }
 
 .cookie-btn-primary:hover {
-  background: #0284c7;
+  background: var(--accent-primary-85-black);
   transform: translateY(-1px);
 }
 
 .cookie-btn-secondary {
-  background: #f3f4f6;
-  color: #1a1a1a;
-  border: 1px solid #e5e7eb;
+  background: var(--bg-secondary-95);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
 }
 
 .cookie-btn-secondary:hover {
-  background: #e5e7eb;
+  background: var(--border-color);
 }
 
 .cookie-btn-link {
   background: transparent;
-  color: #0ea5e9;
+  color: var(--accent-primary);
   text-decoration: underline;
 }
 
 .cookie-btn-link:hover {
-  color: #0284c7;
+  color: var(--accent-primary-85-black);
 }
 
 /* Modal Styles */
@@ -551,7 +551,7 @@ const currentYear = new Date().getFullYear()
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--text-primary-50);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -562,14 +562,14 @@ const currentYear = new Date().getFullYear()
 }
 
 .modal-container {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 1rem;
   max-width: 800px;
   width: 100%;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px var(--text-primary-20);
 }
 
 .modal-header {
@@ -577,13 +577,13 @@ const currentYear = new Date().getFullYear()
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .modal-header h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -592,14 +592,14 @@ const currentYear = new Date().getFullYear()
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--text-secondary);
   transition: color 0.2s;
   border-radius: 0.5rem;
 }
 
 .modal-close:hover {
-  color: #1a1a1a;
-  background: #f3f4f6;
+  color: var(--text-primary);
+  background: var(--bg-secondary-95);
 }
 
 .modal-body {
@@ -615,21 +615,21 @@ const currentYear = new Date().getFullYear()
 .modal-body h3 {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .modal-body h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .modal-body p,
 .modal-body li {
-  color: #4b5563;
+  color: var(--text-secondary);
   font-size: 0.875rem;
   line-height: 1.6;
 }
@@ -644,23 +644,23 @@ const currentYear = new Date().getFullYear()
 }
 
 .modal-body a {
-  color: #0ea5e9;
+  color: var(--accent-primary);
   text-decoration: underline;
 }
 
 .modal-body a:hover {
-  color: #0284c7;
+  color: var(--accent-primary-85-black);
 }
 
 .modal-footer {
   padding: 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: flex-end;
 }
 
 .btn-primary {
-  background: #0ea5e9;
+  background: var(--accent-primary);
   color: white;
   padding: 0.625rem 1.5rem;
   border-radius: 0.5rem;
@@ -672,7 +672,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .btn-primary:hover {
-  background: #0284c7;
+  background: var(--accent-primary-85-black);
   transform: translateY(-1px);
 }
 

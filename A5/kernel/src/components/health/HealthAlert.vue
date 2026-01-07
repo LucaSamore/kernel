@@ -88,60 +88,60 @@ const textClasses = computed(() => {
 }
 
 .bg-red-50 {
-  background: rgba(254, 226, 226, 0.6);
+  background: var(--error-10-on-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(248, 113, 113, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--error-30);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-50);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .bg-red-50:hover {
-  background: rgba(254, 226, 226, 0.75);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: var(--error-15-on-bg);
+  box-shadow: 0 6px 20px var(--shadow), inset 0 1px 0 var(--white-60);
 }
 
 .border-red-500 {
-  border-left-color: #ef4444;
+  border-left-color: var(--error);
 }
 
 .bg-yellow-50 {
-  background: rgba(254, 249, 195, 0.6);
+  background: var(--warning-10-on-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--warning-30);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-50);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .bg-yellow-50:hover {
-  background: rgba(254, 249, 195, 0.75);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: var(--warning-15-on-bg);
+  box-shadow: 0 6px 20px var(--shadow), inset 0 1px 0 var(--white-60);
 }
 
 .border-yellow-500 {
-  border-left-color: #eab308;
+  border-left-color: var(--warning);
 }
 
 .text-red-600 {
-  color: #dc2626;
+  color: var(--error);
 }
 
 .text-red-700 {
-  color: #b91c1c;
+  color: var(--error);
 }
 
 .text-red-800 {
-  color: #991b1b;
+  color: var(--error);
 }
 
 .text-yellow-600 {
-  color: #ca8a04;
+  color: var(--warning);
 }
 
 .text-yellow-700 {
-  color: #a16207;
+  color: var(--warning);
 }
 
 .text-yellow-800 {
-  color: #854d0e;
+  color: var(--warning);
 }
 </style>

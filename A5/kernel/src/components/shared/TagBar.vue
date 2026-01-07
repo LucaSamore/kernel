@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { COLORS } from '../../constants/constants'
 
 export interface Tag {
   id: string
@@ -75,35 +74,35 @@ const selectTag = (tagId: string) => {
 .tag-button {
   min-height: 36px;
   padding: 0.5rem 1.25rem;
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--white-75);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 0.75rem;
-  color: v-bind('COLORS.textPrimary');
+  color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-40);
 }
 
 .tag-button:hover {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--white-85);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--black-10);
 }
 
 .tag-button.tag-active {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--white-30);
   color: #ffffff;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px var(--blue-3b82f6-30), inset 0 1px 0 var(--white-20);
 }
 
 .tag-button.tag-active:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, var(--blue-2563eb) 0%, var(--blue-7c3aed) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 20px var(--blue-3b82f6-40), inset 0 1px 0 var(--white-30);
 }
 </style>

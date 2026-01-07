@@ -41,28 +41,28 @@ const emit = defineEmits<{
 
 <style scoped>
 .profile-card {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--bg-secondary-30);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--text-primary-8), inset 0 1px 0 var(--bg-secondary-70);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .add-card {
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px dashed rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: var(--bg-secondary-15);
+  border: 2px dashed var(--text-primary-30);
+  box-shadow: 0 2px 8px var(--text-primary-6);
 }
 
 .add-card:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--bg-secondary-25);
 }
 
 .profile-card:hover {
   transform: translateY(-4px) !important;
-  background: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 0, 0, 0.65);
+  background: var(--bg-secondary-45);
+  box-shadow: 0 8px 24px var(--text-primary-12), inset 0 1px 0 var(--bg-secondary-80);
+  border-color: var(--text-primary-65);
 }
 </style>

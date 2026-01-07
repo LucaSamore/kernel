@@ -138,13 +138,13 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
 .document-panel {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-20);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--white-40);
   border-radius: 1.25rem;
   padding: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px var(--black-6), inset 0 1px 0 var(--white-50);
 }
 
 .document-viewer-standalone {
@@ -170,7 +170,7 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
 .placeholder-text {
   font-size: 1rem;
   font-weight: 600;
-  color: #737373;
+  color: var(--text-secondary);
   opacity: 0.6;
 }
 
@@ -189,10 +189,10 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
 }
 
 .preview-area {
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.4) 0%, rgba(221, 214, 254, 0.4) 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start-40) 0%, var(--bg-gradient-mid-40) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1rem;
   padding: 0.75rem;
   /* height rimossa - ora controllata via prop */
@@ -200,7 +200,7 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
   align-items: center;
   justify-content: center;
   flex: 1;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-60);
   overflow: hidden;
 }
 
@@ -218,21 +218,21 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.5) 0%, rgba(221, 214, 254, 0.5) 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start-50) 0%, var(--bg-gradient-mid-50) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  color: #0ea5e9;
+  color: var(--accent-primary);
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--accent-primary-20), inset 0 1px 0 var(--white-70);
 }
 
 .nav-button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-60);
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 20px var(--shadow), inset 0 1px 0 var(--white-80);
 }
 
 .nav-button:disabled {
@@ -247,15 +247,15 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
 .page-text {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #64748b;
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.4) 0%, rgba(221, 214, 254, 0.4) 100%);
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, var(--bg-gradient-start-40) 0%, var(--bg-gradient-mid-40) 100%);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 0.375rem 0.875rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
   display: inline-block;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .document-info {
@@ -263,12 +263,12 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.875rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--white-40);
   border-radius: 0.75rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px var(--black-5);
 }
 
 .info-row {
@@ -287,16 +287,16 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
 
 .info-label {
   font-weight: 600;
-  color: #525252;
+  color: var(--text-secondary);
 }
 
 .info-value {
-  color: #171717;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
 .description-text {
-  color: #171717;
+  color: var(--text-primary);
   line-height: 1.5;
 }
 
@@ -308,11 +308,11 @@ const canGoNext = computed(() => props.currentPageIndex < totalPages - 1)
 
 .info-tag {
   padding: 0.25rem 0.625rem;
-  background: rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--black-6);
+  border: 1px solid var(--text-primary-10);
   border-radius: 0.375rem;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #525252;
+  color: var(--text-secondary);
 }
 </style>

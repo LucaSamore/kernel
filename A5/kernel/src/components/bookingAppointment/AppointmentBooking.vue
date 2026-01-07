@@ -189,29 +189,29 @@ const appointmentDetails = computed(() => {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: #525252;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
+  border: 1px solid var(--white-50);
+  box-shadow: 0 2px 8px var(--shadow), inset 0 1px 0 var(--white-50);
 }
 
 .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
 }
 
 .button-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  color: white;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: var(--bg-primary);
+  box-shadow: 0 4px 16px var(--accent-primary-30), inset 0 1px 0 var(--white-20);
 }
 
 .button-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 24px var(--accent-primary-40), inset 0 1px 0 var(--white-30);
 }
 
 .button-primary:disabled {
@@ -223,17 +223,17 @@ const appointmentDetails = computed(() => {
 .appointment-details {
   margin-top: 1.5rem;
   padding: 1.5rem;
-  background: rgba(59, 130, 246, 0.08);
+  background: var(--accent-primary-8);
   backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(59, 130, 246, 0.2);
+  border: 1.5px solid var(--accent-primary-20);
   border-radius: 1.25rem;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px var(--accent-primary-10), inset 0 1px 0 var(--white-50);
 }
 
 .details-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
@@ -255,12 +255,12 @@ const appointmentDetails = computed(() => {
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  background: rgba(59, 130, 246, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: var(--accent-primary-15);
+  border: 1px solid var(--accent-primary-25);
   border-radius: 0.75rem;
-  color: #3b82f6;
+  color: var(--accent-primary);
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 2px 8px var(--accent-primary-10);
 }
 
 .detail-text {
@@ -271,7 +271,7 @@ const appointmentDetails = computed(() => {
 .detail-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #737373;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 0.25rem 0;
@@ -280,7 +280,7 @@ const appointmentDetails = computed(() => {
 .detail-value {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.4;
 }

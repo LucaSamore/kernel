@@ -305,13 +305,13 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
   padding: 1.25rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -331,20 +331,20 @@ onMounted(() => {
   height: 2.25rem;
   border-radius: 0.65rem;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  color: #525252;
+  border: 1px solid var(--white-60);
+  color: var(--gray-525252);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   position: relative;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-50);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-60);
 }
 
 .icon-button:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--white-70);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px var(--black-10), inset 0 1px 0 var(--white-80);
 }
 
 .widget-list {
@@ -354,35 +354,35 @@ onMounted(() => {
 }
 
 .widget-card {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-50);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 0.75rem;
   padding: 0.875rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--white-40);
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-60);
 }
 
 .widget-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px var(--black-12), inset 0 1px 0 var(--white-80);
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--white-70);
 }
 
 .icon-pill {
   width: 2.5rem;
   height: 2.5rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--white-80);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--white-30);
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px var(--black-5);
 }
 
 .empty-state {
@@ -398,24 +398,24 @@ onMounted(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.625rem 1.25rem;
-  background: rgba(59, 130, 246, 0.15);
+  background: var(--blue-3b82f6-15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  border: 1px solid var(--blue-3b82f6-40);
   border-radius: 0.75rem;
-  color: #3b82f6;
+  color: var(--blue-3b82f6);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px var(--blue-3b82f6-15), inset 0 1px 0 var(--white-30);
 }
 
 .add-widget-btn:hover {
-  background: rgba(59, 130, 246, 0.25);
-  border-color: rgba(59, 130, 246, 0.6);
+  background: var(--blue-3b82f6-25);
+  border-color: var(--blue-3b82f6-60);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px var(--blue-3b82f6-30), inset 0 1px 0 var(--white-50);
 }
 
 .loading-state {
@@ -437,8 +437,8 @@ onMounted(() => {
 .loading-spinner {
   width: 3rem;
   height: 3rem;
-  border: 3px solid rgba(59, 130, 246, 0.2);
-  border-top-color: #3b82f6;
+  border: 3px solid var(--blue-3b82f6-20);
+  border-top-color: var(--blue-3b82f6);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -460,17 +460,17 @@ onMounted(() => {
 .progress-bar {
   width: 100%;
   height: 0.5rem;
-  background: rgba(59, 130, 246, 0.15);
+  background: var(--blue-3b82f6-15);
   border-radius: 0.25rem;
   overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px var(--black-10);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   border-radius: 0.25rem;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 10px var(--accent-primary-50);
 }
 </style>

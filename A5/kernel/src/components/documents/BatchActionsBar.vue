@@ -101,15 +101,15 @@ const allSelected = computed(() => {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.25rem;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.12), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    0 8px 32px var(--shadow), 
+    inset 0 1px 0 var(--white-80),
+    0 0 0 1px var(--text-primary-10);
 }
 
 .selection-info {
@@ -129,16 +129,16 @@ const allSelected = computed(() => {
 .selection-count {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
 .all-badge {
   padding: 0.125rem 0.5rem;
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: var(--success-20);
+  border: 1px solid var(--success-40);
   border-radius: 0.375rem;
-  color: #10b981;
+  color: var(--success);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -153,10 +153,10 @@ const allSelected = computed(() => {
 
 .category-pill {
   padding: 0.25rem 0.625rem;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: var(--accent-primary-8);
+  border: 1px solid var(--accent-primary-20);
   border-radius: 0.5rem;
-  color: #3b82f6;
+  color: var(--accent-primary);
   font-size: 0.75rem;
   font-weight: 500;
   white-space: nowrap;
@@ -182,37 +182,37 @@ const allSelected = computed(() => {
 }
 
 .download-btn {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border: 1px solid var(--white-20);
+  color: var(--bg-primary);
+  box-shadow: 0 4px 16px var(--accent-primary-40);
 }
 
 .download-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 6px 20px var(--accent-primary-50);
 }
 
 .deselect-btn {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #525252;
+  background: var(--black-5);
+  border: 1px solid var(--text-primary-10);
+  color: var(--text-secondary);
 }
 
 .deselect-btn:hover {
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--black-8);
   transform: translateY(-2px);
 }
 
 .cancel-btn {
   padding: 0.625rem;
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #f87171;
+  background: var(--error-15);
+  border: 1px solid var(--error-30);
+  color: var(--error);
 }
 
 .cancel-btn:hover {
-  background: rgba(239, 68, 68, 0.25);
+  background: var(--error-25);
   transform: translateY(-2px);
 }
 

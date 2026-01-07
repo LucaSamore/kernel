@@ -84,7 +84,7 @@ const handleShare = () => {
 .document-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -104,33 +104,33 @@ const handleShare = () => {
 }
 
 .download-button {
-  background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: var(--bg-primary);
+  border: 1px solid var(--white-30);
+  box-shadow: 0 4px 16px var(--accent-primary-40), inset 0 1px 0 var(--white-30);
 }
 
 .download-button:hover {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.95) 0%, rgba(59, 130, 246, 1) 100%);
+  background: linear-gradient(135deg, var(--accent-primary-95-black) 0%, var(--accent-primary) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px var(--accent-primary-40), inset 0 1px 0 var(--white-30);
 }
 
 .share-button {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #171717;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: var(--text-primary);
+  border: 1px solid var(--white-50);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-60);
 }
 
 .share-button:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-60);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px var(--shadow), inset 0 1px 0 var(--white-80);
 }
 
 @media (max-width: 768px) {

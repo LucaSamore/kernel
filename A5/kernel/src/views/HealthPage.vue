@@ -133,8 +133,8 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-20) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-20) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -144,11 +144,11 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
   position: relative;
   z-index: 1;
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -156,14 +156,14 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
   margin: 0;
   font-size: 1.875rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   line-height: 1.25;
 }
 
 .page-header p {
   margin: 0.5rem 0 0 0;
   font-size: 1rem;
-  color: #525252;
+  color: var(--gray-525252);
   line-height: 1.5;
 }
 
@@ -179,17 +179,17 @@ const glucoseHistory = ref(GLUCOSE_HISTORY)
 .section-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--gray-171717);
   margin-bottom: 1rem;
 }
 
 .info-card {
   padding: 1.5rem;
-  background: rgba(224, 242, 254, 0.5);
+  background: var(--sky-e0f2fe-50);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(14, 165, 233, 0.3);
+  border: 1px solid var(--sky-0ea5e9-30);
   border-radius: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px var(--black-8);
   position: relative;
   z-index: 1;
   animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1);

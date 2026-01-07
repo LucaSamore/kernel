@@ -142,7 +142,7 @@ const getCategoryName = (category: string) => {
 .category-title {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #404040;
+  color: var(--gray-404040);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 1rem 0;
@@ -156,37 +156,37 @@ const getCategoryName = (category: string) => {
 }
 
 .widget-option {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--white-50);
   border-radius: 1.25rem;
   padding: 0;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--black-8), inset 0 1px 0 var(--white-70);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .widget-option:hover {
-  background: rgba(255, 255, 255, 0.4);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--white-40);
+  border-color: var(--blue-3b82f6-40);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px var(--black-12), inset 0 1px 0 var(--white-80);
 }
 
 .widget-selected {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-  border-color: rgba(59, 130, 246, 0.7);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: linear-gradient(135deg, var(--blue-3b82f6-15) 0%, var(--accent-secondary-15) 100%);
+  border-color: var(--accent-primary-70);
+  box-shadow: 0 4px 20px var(--blue-3b82f6-30), inset 0 1px 0 var(--white-70);
 }
 
 .widget-selected:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
-  border-color: rgba(59, 130, 246, 0.8);
-  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg, var(--blue-3b82f6-20) 0%, var(--accent-secondary-20) 100%);
+  border-color: var(--accent-primary-80);
+  box-shadow: 0 8px 28px var(--blue-3b82f6-40), inset 0 1px 0 var(--white-80);
 }
 
 .widget-option-main {
@@ -204,12 +204,12 @@ const getCategoryName = (category: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-50);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--white-40);
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-60);
   flex-shrink: 0;
 }
 
@@ -218,8 +218,8 @@ const getCategoryName = (category: string) => {
   align-items: center;
   justify-content: center;
   padding: 0.875rem 1.25rem;
-  background: rgba(0, 0, 0, 0.02);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--black-2);
+  border-top: 1px solid var(--white-30);
 }
 
 .checkbox-wrapper {
@@ -231,19 +231,19 @@ const getCategoryName = (category: string) => {
 .checkbox-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #525252;
+  color: var(--gray-525252);
   transition: color 0.3s;
 }
 
 .widget-selected .checkbox-label {
-  color: #3b82f6;
+  color: var(--blue-3b82f6);
 }
 
 .checkbox {
   width: 1.75rem;
   height: 1.75rem;
-  border: 2.5px solid rgba(209, 213, 219, 0.8);
-  background: rgba(255, 255, 255, 0.3);
+  border: 2.5px solid var(--gray-d1d5db-80);
+  background: var(--white-30);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 0.5rem;
@@ -251,14 +251,14 @@ const getCategoryName = (category: string) => {
   align-items: center;
   justify-content: center;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px var(--black-5), inset 0 1px 0 var(--white-30);
   flex-shrink: 0;
 }
 
 .checkbox-checked {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   border-color: transparent;
-  box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 12px var(--blue-3b82f6-40), inset 0 1px 0 var(--white-30);
 }
 
 .widget-option-content {
@@ -271,13 +271,13 @@ const getCategoryName = (category: string) => {
 .widget-option-name {
   font-size: 1rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   line-height: 1.3;
 }
 
 .widget-option-description {
   font-size: 0.8125rem;
-  color: #737373;
+  color: var(--gray-737373);
   line-height: 1.5;
 }
 
@@ -292,28 +292,28 @@ const getCategoryName = (category: string) => {
 }
 
 .button-secondary {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: #525252;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
+  color: var(--gray-525252);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-50);
 }
 
 .button-secondary:hover {
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: var(--white-40);
+  box-shadow: 0 4px 16px var(--black-10), inset 0 1px 0 var(--white-70);
   transform: translateY(-1px);
 }
 
 .button-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   color: white;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 16px var(--blue-3b82f6-30);
 }
 
 .button-primary:hover {
-  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 24px var(--blue-3b82f6-40);
   transform: translateY(-1px);
 }
 

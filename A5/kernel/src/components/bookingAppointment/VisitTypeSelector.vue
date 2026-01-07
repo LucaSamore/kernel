@@ -118,7 +118,7 @@ const handleInput = () => {
 .section-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
@@ -128,19 +128,19 @@ const handleInput = () => {
 
 .search-wrapper {
   position: relative;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--white-50);
   border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   cursor: text;
 }
 
 .search-wrapper:focus-within {
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border-color: var(--accent-primary-50);
+  box-shadow: 0 4px 20px var(--accent-primary-20), inset 0 1px 0 var(--white-70);
 }
 
 .search-icon {
@@ -150,7 +150,7 @@ const handleInput = () => {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #737373;
+  color: var(--text-secondary);
 }
 
 .search-input {
@@ -159,13 +159,13 @@ const handleInput = () => {
   border: none;
   background: transparent;
   font-size: 1rem;
-  color: #171717;
+  color: var(--text-primary);
   font-weight: 500;
   outline: none;
 }
 
 .search-input::placeholder {
-  color: #a3a3a3;
+  color: var(--text-secondary);
 }
 
 /* Visits Dropdown */
@@ -174,12 +174,12 @@ const handleInput = () => {
   top: calc(100% + 0.5rem);
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.60);
+  background: var(--white-60);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--shadow), inset 0 1px 0 var(--white-80);
   max-height: 20rem;
   overflow-y: auto;
   z-index: 10;
@@ -195,7 +195,7 @@ const handleInput = () => {
   background: transparent;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--white-20);
 }
 
 .visit-option:last-child {
@@ -203,17 +203,17 @@ const handleInput = () => {
 }
 
 .visit-option:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
 }
 
 .visit-option-selected {
-  background: rgba(59, 130, 246, 0.1);
+  background: var(--accent-primary-10);
 }
 
 .visit-name {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #171717;
+  color: var(--text-primary);
   text-align: left;
   flex: 1;
 }

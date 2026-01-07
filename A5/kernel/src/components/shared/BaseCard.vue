@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue'
-import { COLORS } from '../../constants/constants'
 
 export interface CardMetadata {
   icon: FunctionalComponent
@@ -39,7 +38,7 @@ const emit = defineEmits<{
       <div class="flex-1 min-w-0 content-wrapper">
         <!-- Title Row with Actions -->
         <div class="title-row">
-          <h3 class="text-lg font-semibold" :style="{ color: COLORS.primary }">
+          <h3 class="text-lg font-semibold card-title">
             {{ title }}
           </h3>
           <slot name="title-actions" />
@@ -49,7 +48,7 @@ const emit = defineEmits<{
         <slot name="after-title" />
 
         <!-- Description -->
-        <p class="text-sm" :style="{ color: COLORS.textPrimary }">
+        <p class="text-sm card-description">
           {{ description }}
         </p>
 
@@ -76,28 +75,28 @@ const emit = defineEmits<{
 
 <style scoped>
 .base-card {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--bg-secondary-25);
   backdrop-filter: blur(20px);
   border-radius: 1.25rem;
   padding: 1.5rem;
   margin: 0.75rem 0;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--bg-secondary-70);
+  box-shadow: var(--shadow), inset 0 1px 0 var(--bg-secondary-90);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .base-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
-  background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 40px var(--text-primary-15), inset 0 1px 0 var(--bg-secondary);
+  background: var(--bg-secondary-35);
+  border-color: var(--bg-secondary-90);
 }
 
 .card-selected {
-  border: 2px solid rgba(0, 0, 0, 0.6);
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border: 2px solid var(--text-primary-60);
+  background: var(--bg-secondary-40);
+  box-shadow: 0 12px 40px var(--text-primary-18), inset 0 1px 0 var(--bg-secondary);
 }
 
 .card-content {
@@ -123,6 +122,14 @@ const emit = defineEmits<{
 .title-row h3 {
   flex: 1;
   min-width: 0;
+}
+
+.card-title {
+  color: var(--accent-primary);
+}
+
+.card-description {
+  color: var(--text-primary);
 }
 
 .metadata-row {

@@ -49,14 +49,14 @@ const chartData = computed(() => ({
     {
       label: props.title,
       data: props.data.data.map((d) => d.value),
-      borderColor: '#3b82f6',
-      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+      borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-primary').trim() || getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6').trim(),
+      backgroundColor: (getComputedStyle(document.documentElement).getPropertyValue('--accent-primary-10').trim() || getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6-10').trim()),
       fill: true,
       tension: 0.4,
       pointRadius: props.compact ? 2 : 4,
       pointHoverRadius: props.compact ? 4 : 6,
-      pointBackgroundColor: '#3b82f6',
-      pointBorderColor: '#fff',
+      pointBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-primary').trim() || getComputedStyle(document.documentElement).getPropertyValue('--blue-3b82f6').trim(),
+      pointBorderColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || getComputedStyle(document.documentElement).getPropertyValue('--white-100').trim(),
       pointBorderWidth: 2,
     },
   ],
@@ -70,7 +70,7 @@ const chartOptions = computed<ChartOptions<'line'>>(() => ({
       display: false,
     },
     tooltip: {
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-tooltip-bg').trim() || getComputedStyle(document.documentElement).getPropertyValue('--black-80').trim(),
       padding: props.compact ? 8 : 12,
       titleFont: {
         size: props.compact ? 12 : 14,
@@ -99,7 +99,7 @@ const chartOptions = computed<ChartOptions<'line'>>(() => ({
     y: {
       beginAtZero: false,
       grid: {
-        color: 'rgba(0, 0, 0, 0.05)',
+        color: getComputedStyle(document.documentElement).getPropertyValue('--chart-grid').trim() || getComputedStyle(document.documentElement).getPropertyValue('--black-5').trim(),
       },
       ticks: {
         font: {
@@ -183,42 +183,42 @@ const toggleDetails = () => {
 .compact-chart {
   width: 100%;
   padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-50);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 0.75rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   align-self: start;
 }
 
 .compact-chart:hover {
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: var(--white-65);
+  box-shadow: 0 8px 24px var(--shadow), inset 0 1px 0 var(--white-80);
   transform: translateY(-2px);
 }
 
 .chart-widget {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-50);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 var(--white-70);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   align-self: start;
 }
 
 .chart-widget:hover {
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: var(--white-65);
+  box-shadow: 0 8px 24px var(--shadow), inset 0 1px 0 var(--white-80);
 }
 
 .source-documents-section {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid var(--border-color);
 }
 
 .details-toggle {
@@ -228,36 +228,36 @@ const toggleDetails = () => {
   padding: 0.5rem;
   background: transparent;
   border: none;
-  color: #0ea5e9;
+  color: var(--accent-primary);
   cursor: pointer;
   transition: color 0.2s;
   border-radius: 0.5rem;
 }
 
 .details-toggle:hover {
-  color: #0284c7;
-  background: rgba(14, 165, 233, 0.05);
+  color: var(--accent-primary-85-black);
+  background: var(--accent-primary-5);
 }
 
 .details-content {
   margin-top: 0.75rem;
   padding: 1rem;
-  background: rgba(224, 242, 254, 0.3);
+  background: var(--accent-primary-8-on-bg);
   border-radius: 0.75rem;
-  border: 1px solid rgba(14, 165, 233, 0.15);
+  border: 1px solid var(--accent-primary-15);
 }
 
 .document-item {
   padding: 0.625rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-60);
   border-radius: 0.5rem;
-  border: 1px solid rgba(14, 165, 233, 0.1);
+  border: 1px solid var(--accent-primary-10);
   transition: all 0.2s;
 }
 
 .document-item:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(14, 165, 233, 0.2);
+  background: var(--white-80);
+  border-color: var(--accent-primary-20);
   transform: translateX(2px);
 }
 

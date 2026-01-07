@@ -114,31 +114,31 @@ const handleCancel = (event: Event) => {
 }
 
 .edit-button {
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #1a1a1a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: var(--white-60);
+  border-color: var(--white-50);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px var(--shadow), inset 0 1px 0 var(--white-80);
 }
 
 .edit-button:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(255, 255, 255, 0.7);
+  background: var(--white-80);
+  border-color: var(--white-70);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px var(--shadow), inset 0 1px 0 var(--bg-secondary-90);
 }
 
 .cancel-button {
-  background: rgba(255, 255, 255, 0.5);
-  border-color: rgba(239, 68, 68, 0.4);
-  color: #dc2626;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: var(--white-50);
+  border-color: var(--error-40);
+  color: var(--error);
+  box-shadow: 0 2px 8px var(--error-10), inset 0 1px 0 var(--white-60);
 }
 
 .cancel-button:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(239, 68, 68, 0.6);
+  background: var(--white-70);
+  border-color: var(--error-60);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px var(--error-20), inset 0 1px 0 var(--white-80);
 }
 
 @media (max-width: 768px) {

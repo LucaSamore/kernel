@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import SettingsItem from '../components/SettingsItem.vue'
+import BaseModal from '../components/shared/BaseModal.vue'
+import AppearanceSettings from '../components/AppearanceSettings.vue'
 import {
   UserCircleIcon,
   UsersIcon,
@@ -18,9 +21,14 @@ import {
 
 const { t } = useI18n()
 const router = useRouter()
+const showAppearanceModal = ref(false)
 
 const handleItemClick = (item: string) => {
-  console.log('Clicked:', item)
+  if (item === 'appearance') {
+    showAppearanceModal.value = true
+  } else {
+    console.log('Clicked:', item)
+  }
 }
 
 const handleChangeProfile = () => {
@@ -167,6 +175,15 @@ const handleChangeProfile = () => {
     <div class="settings-footer">
       {{ t('settings.footer.version') }}
     </div>
+
+    <!-- Modal Aspetto -->
+    <BaseModal 
+      :is-open="showAppearanceModal" 
+      :title="t('settings.app.appearance.title')" 
+      @close="showAppearanceModal = false"
+    >
+      <AppearanceSettings />
+    </BaseModal>
   </div>
 </template>
 
@@ -187,8 +204,8 @@ const handleChangeProfile = () => {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-20) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-20) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -197,25 +214,25 @@ const handleChangeProfile = () => {
   position: relative;
   z-index: 1;
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   margin: 0;
   line-height: 1.25;
 }
 
 .settings-subtitle {
   font-size: 1rem;
-  color: #525252;
+  color: var(--gray-525252);
   margin: 0.5rem 0 0 0;
   line-height: 1.5;
 }
@@ -238,7 +255,7 @@ const handleChangeProfile = () => {
 .settings-section-header {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #404040;
+  color: var(--gray-404040);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 0 0 0.75rem;
@@ -246,17 +263,17 @@ const handleChangeProfile = () => {
 }
 
 .settings-list {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
   border-radius: 1.25rem;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 24px var(--black-8), inset 0 1px 0 var(--white-80);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-list > * {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--white-20);
 }
 
 .settings-list > *:last-child {
@@ -268,30 +285,30 @@ const handleChangeProfile = () => {
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--white-50);
   border-radius: 1.25rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 24px var(--black-8), inset 0 1px 0 var(--white-80);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-account:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-12), inset 0 1px 0 var(--white-80);
 }
 
 .settings-account-avatar {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
+  background: linear-gradient(135deg, var(--sky-0ea5e9) 0%, var(--purple-a855f7) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 16px var(--sky-0ea5e9-30);
   transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -312,13 +329,13 @@ const handleChangeProfile = () => {
 .settings-account-name {
   font-size: 1.0625rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--gray-171717);
   line-height: 1.4;
 }
 
 .settings-account-role {
   font-size: 0.875rem;
-  color: #525252;
+  color: var(--gray-525252);
   margin-top: 0.125rem;
   line-height: 1.3;
 }
@@ -326,9 +343,9 @@ const handleChangeProfile = () => {
 .settings-account-button {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #0ea5e9;
-  background: rgba(14, 165, 233, 0.1);
-  border: 1px solid rgba(14, 165, 233, 0.2);
+  color: var(--sky-0ea5e9);
+  background: var(--sky-0ea5e9-10);
+  border: 1px solid var(--sky-0ea5e9-20);
   border-radius: 0.75rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -337,17 +354,17 @@ const handleChangeProfile = () => {
 
 .settings-account-button:hover {
   color: #ffffff;
-  background: rgba(14, 165, 233, 0.8);
+  background: var(--sky-0ea5e9-80);
   border-color: transparent;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 12px var(--sky-0ea5e9-30);
 }
 
 .settings-footer {
   text-align: center;
   padding: 2rem 0;
   font-size: 0.8125rem;
-  color: #737373;
+  color: var(--gray-737373);
   position: relative;
   z-index: 1;
 }

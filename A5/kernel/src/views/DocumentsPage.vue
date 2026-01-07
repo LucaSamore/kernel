@@ -309,25 +309,25 @@ const handleCloseComparison = () => {
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .page-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   margin: 0;
   line-height: 1.25;
 }
 
 .page-subtitle {
   font-size: 1rem;
-  color: #525252;
+  color: var(--gray-525252);
   margin-top: 0.5rem;
   line-height: 1.5;
 }
@@ -349,42 +349,42 @@ const handleCloseComparison = () => {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
   white-space: nowrap;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-15);
   backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px var(--black-15);
 }
 
 .selection-btn {
-  background: rgba(255, 255, 255, 0.5);
-  color: #525252;
-  border-color: rgba(0, 0, 0, 0.1);
+  background: var(--white-50);
+  color: var(--gray-525252);
+  border-color: var(--black-10);
 }
 
 .selection-btn:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--white-70);
   transform: translateY(-2px);
 }
 
 .selection-btn.active {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--blue-3b82f6) 0%, var(--blue-8b5cf6) 100%);
   color: white;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--white-20);
 }
 
 .selection-btn.active:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px var(--blue-3b82f6-40);
 }
 
 .comparison-btn {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--black-80);
   color: white;
 }
 
 .comparison-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--black-90);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 24px var(--black-20);
 }
 
 .filters-row {
@@ -406,10 +406,10 @@ const handleCloseComparison = () => {
 
 .select-all-btn {
   padding: 0.625rem 1.25rem;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: var(--blue-3b82f6-10);
+  border: 1px solid var(--blue-3b82f6-30);
   border-radius: 0.75rem;
-  color: #3b82f6;
+  color: var(--blue-3b82f6);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
@@ -418,8 +418,8 @@ const handleCloseComparison = () => {
 }
 
 .select-all-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
+  background: var(--blue-3b82f6-20);
+  border-color: var(--blue-3b82f6-50);
   transform: translateY(-1px);
 }
 
@@ -439,8 +439,8 @@ const handleCloseComparison = () => {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-20) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-20) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -450,11 +450,11 @@ const handleCloseComparison = () => {
   position: relative;
   z-index: 1;
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   animation: slideInDown 0.5s cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -462,14 +462,14 @@ const handleCloseComparison = () => {
   margin: 0;
   font-size: 1.875rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   line-height: 1.25;
 }
 
 .page-header p {
   margin: 0.5rem 0 0 0;
   font-size: 1rem;
-  color: #525252;
+  color: var(--gray-525252);
   line-height: 1.5;
 }
 
@@ -496,12 +496,12 @@ const handleCloseComparison = () => {
   text-align: center;
   padding: 3rem 1rem;
   font-size: 1.125rem;
-  color: #737373;
-  background: rgba(255, 255, 255, 0.15);
+  color: var(--gray-737373);
+  background: var(--white-15);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--white-20);
   border-radius: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px var(--black-8);
   position: relative;
   z-index: 1;
 }

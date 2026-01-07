@@ -160,7 +160,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(224, 242, 254, 0.10) 0%, rgba(221, 214, 254, 0.10) 50%, rgba(252, 231, 243, 0.10) 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start-10) 0%, var(--bg-gradient-mid-10) 50%, var(--bg-gradient-end-10) 100%);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   display: flex;
@@ -179,18 +179,18 @@ onUnmounted(() => {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, var(--sky-0ea5e9-20) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, var(--purple-a855f7-20) 0%, transparent 50%);
   pointer-events: none;
 }
 
 .modal-container {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--white-60);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px var(--black-8), inset 0 1px 0 var(--white-80);
   width: 100%;
   max-height: 90vh;
   display: flex;
@@ -205,7 +205,7 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: flex-start;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid var(--white-30);
   flex-shrink: 0;
 }
 
@@ -216,14 +216,14 @@ onUnmounted(() => {
 .modal-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #171717;
+  color: var(--gray-171717);
   margin: 0;
   line-height: 1.25;
 }
 
 .modal-subtitle {
   font-size: 0.875rem;
-  color: #737373;
+  color: var(--gray-737373);
   margin: 0.25rem 0 0 0;
   line-height: 1.5;
 }
@@ -235,21 +235,21 @@ onUnmounted(() => {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--white-30);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: #525252;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--gray-525252);
+  border: 1px solid var(--white-50);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 8px var(--black-6), inset 0 1px 0 var(--white-50);
   flex-shrink: 0;
 }
 
 .close-button:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-40);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px var(--black-10), inset 0 1px 0 var(--white-70);
 }
 
 .modal-body {
@@ -263,7 +263,7 @@ onUnmounted(() => {
   justify-content: space-between;
   gap: 0.75rem;
   padding: 1.5rem 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid var(--white-30);
   flex-shrink: 0;
 }
 

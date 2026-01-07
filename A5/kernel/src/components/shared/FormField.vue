@@ -80,24 +80,24 @@ const ariaDescribedby = computed(() => {
 .form-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
 .form-label-required {
-  color: #171717;
+  color: var(--text-primary);
 }
 
 .required-indicator {
-  color: #dc2626;
+  color: var(--error);
   font-weight: 700;
 }
 
 .form-description {
   font-size: 0.8125rem;
-  color: #525252;
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.5;
 }
@@ -111,12 +111,12 @@ const ariaDescribedby = computed(() => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.625rem 0.875rem;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: var(--error-8);
+  border: 1px solid var(--error-20);
   border-radius: 0.5rem;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #dc2626;
+  color: var(--error);
   animation: slideDown 0.2s ease-out;
 }
 

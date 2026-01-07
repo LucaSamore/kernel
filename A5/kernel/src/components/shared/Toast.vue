@@ -70,12 +70,12 @@ const ariaLive = props.type === 'error' ? 'assertive' : 'polite'
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--white-95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--white-80);
   border-radius: 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 32px var(--black-12), inset 0 1px 0 var(--white-100);
   min-width: 320px;
   max-width: 480px;
 }
@@ -93,38 +93,38 @@ const ariaLive = props.type === 'error' ? 'assertive' : 'polite'
 }
 
 .toast-icon-success {
-  background: rgba(16, 185, 129, 0.12);
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+  background: var(--success-12);
+  color: var(--success);
+  border-color: var(--success-30);
+  box-shadow: 0 2px 8px var(--success-15);
 }
 
 .toast-icon-error {
-  background: rgba(239, 68, 68, 0.12);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.3);
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+  background: var(--error-12);
+  color: var(--error);
+  border-color: var(--error-30);
+  box-shadow: 0 2px 8px var(--error-15);
 }
 
 .toast-icon-warning {
-  background: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
-  border-color: rgba(245, 158, 11, 0.3);
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+  background: var(--warning-12);
+  color: var(--warning);
+  border-color: var(--warning-30);
+  box-shadow: 0 2px 8px var(--warning-15);
 }
 
 .toast-icon-info {
-  background: rgba(14, 165, 233, 0.12);
-  color: #0ea5e9;
-  border-color: rgba(14, 165, 233, 0.3);
-  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.15);
+  background: var(--sky-0ea5e9-12);
+  color: var(--sky-0ea5e9);
+  border-color: var(--sky-0ea5e9-30);
+  box-shadow: 0 2px 8px var(--sky-0ea5e9-15);
 }
 
 .toast-message {
   flex: 1;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #171717;
+  color: var(--gray-171717);
   margin: 0;
   line-height: 1.5;
 }
@@ -135,17 +135,17 @@ const ariaLive = props.type === 'error' ? 'assertive' : 'polite'
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--black-5);
+  border: 1px solid var(--black-10);
   border-radius: 0.5rem;
-  color: #525252;
+  color: var(--gray-525252);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
   flex-shrink: 0;
 }
 
 .toast-close:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--black-10);
   transform: scale(1.05);
 }
 

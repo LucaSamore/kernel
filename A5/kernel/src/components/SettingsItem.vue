@@ -68,7 +68,7 @@ const handleClick = () => {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(14, 165, 233, 0.05);
+  background: var(--accent-primary-5);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0, 0, 0.2, 1);
   border-radius: inherit;
@@ -79,42 +79,42 @@ const handleClick = () => {
 }
 
 .settings-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-15);
   transform: translateX(4px);
 }
 
 .settings-item__icon {
   width: 24px;
   height: 24px;
-  color: #0ea5e9;
+  color: var(--accent-primary);
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  filter: drop-shadow(0 2px 4px rgba(14, 165, 233, 0.2));
+  filter: drop-shadow(0 2px 4px var(--accent-primary-20));
 }
 
 .settings-item:hover .settings-item__icon {
-  color: #0284c7;
+  color: var(--accent-primary-85-black);
   transform: scale(1.1);
-  filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.3));
+  filter: drop-shadow(0 4px 8px var(--accent-primary-30));
 }
 
 .settings-item--danger .settings-item__icon {
-  color: #ef4444;
-  filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.2));
+  color: var(--error);
+  filter: drop-shadow(0 2px 4px var(--error-20));
 }
 
 .settings-item--danger::before {
-  background: rgba(239, 68, 68, 0.1);
+  background: var(--error-10);
 }
 
 .settings-item--danger:hover {
-  background: rgba(239, 68, 68, 0.15);
+  background: var(--error-15);
 }
 
 .settings-item--danger:hover .settings-item__icon {
-  color: #dc2626;
+  color: var(--error);
   transform: scale(1.1);
-  filter: drop-shadow(0 4px 8px rgba(239, 68, 68, 0.3));
+  filter: drop-shadow(0 4px 8px var(--error-30));
 }
 
 .settings-item__content {
@@ -125,45 +125,45 @@ const handleClick = () => {
 .settings-item__title {
   font-size: 1rem;
   font-weight: 500;
-  color: v-bind('COLORS.textPrimary');
+  color: var(--text-primary);
   line-height: 1.4;
   transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__title {
-  color: v-bind('COLORS.primary');
+  color: var(--accent-primary);
 }
 
 .settings-item--danger .settings-item__title {
-  color: #ef4444;
+  color: var(--error);
 }
 
 .settings-item--danger:hover .settings-item__title {
-  color: #dc2626;
+  color: var(--error);
 }
 
 .settings-item__subtitle {
   font-size: 0.875rem;
-  color: v-bind('COLORS.textSecondary');
+  color: var(--text-secondary);
   margin-top: 0.25rem;
   line-height: 1.3;
   transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__subtitle {
-  color: v-bind('COLORS.textPrimary');
+  color: var(--text-primary);
 }
 
 .settings-item__chevron {
   width: 20px;
   height: 20px;
-  color: #a3a3a3;
+  color: var(--gray-a3a3a3);
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .settings-item:hover .settings-item__chevron {
-  color: #525252;
+  color: var(--gray-525252);
   transform: translateX(4px);
 }
 </style>

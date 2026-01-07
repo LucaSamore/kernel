@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { TABS, COLORS } from '../../constants/constants'
+import { TABS } from '../../constants/constants'
 import { 
   HomeIcon, 
   DocumentTextIcon, 
@@ -86,15 +86,15 @@ const setActiveTab = (tabId: string) => {
   display: flex;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--bg-secondary-40);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--bg-secondary-60);
   border-radius: 2rem;
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.12), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    var(--shadow), 
+    inset 0 1px 0 var(--bg-secondary-80),
+    0 0 0 1px var(--bg-secondary-10);
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -111,21 +111,21 @@ const setActiveTab = (tabId: string) => {
   border: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
-  color: v-bind('COLORS.textSecondary');
+  color: var(--text-secondary);
   position: relative;
 }
 
 .tab-button:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--bg-secondary-50);
   transform: translateY(-2px);
 }
 
 .tab-button.active {
-  background: rgba(255, 255, 255, 0.8);
-  color: #0ea5e9;
+  background: var(--bg-secondary-80);
+  color: var(--accent-primary);
   box-shadow: 
-    0 4px 16px rgba(14, 165, 233, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 4px 16px var(--accent-primary-20),
+    inset 0 1px 0 var(--bg-secondary-90);
 }
 
 .tab-button.active::before {
@@ -134,7 +134,7 @@ const setActiveTab = (tabId: string) => {
   inset: -2px;
   border-radius: 1rem;
   padding: 2px;
-  background: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -157,7 +157,7 @@ const setActiveTab = (tabId: string) => {
 
 .tab-button.active .tab-label {
   font-weight: 600;
-  color: #0ea5e9;
+  color: var(--accent-primary);
 }
 
 .tab-button.active .tab-icon {

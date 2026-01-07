@@ -53,13 +53,13 @@ const textSizeClasses = {
   flex-direction: row;
   padding: 2rem;
   gap: 1rem;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--bg-secondary-30);
   border-radius: 12px;
 }
 
 .spinner {
-  border: 3px solid rgba(59, 130, 246, 0.2);
-  border-top-color: #3b82f6;
+  border: 3px solid var(--accent-primary-20);
+  border-top-color: var(--accent-primary);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -84,7 +84,7 @@ const textSizeClasses = {
 
 .loading-text {
   font-weight: 500;
-  color: #525252;
+  color: var(--text-secondary);
   margin: 0;
 }
 
