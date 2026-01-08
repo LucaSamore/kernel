@@ -32,6 +32,11 @@ const logout = () => {
   showUserMenu.value = false
   router.push('/login')
 }
+
+const changeUser = () => {
+  showUserMenu.value = false
+  router.push('/login')
+}
 </script>
 
 <template>
@@ -113,19 +118,23 @@ const logout = () => {
           v-if="showUserMenu" 
           class="glass-menu absolute top-[calc(100%+0.5vh)] right-0 rounded-lg min-w-50 z-50 overflow-hidden"
         >
-          <div class="py-3 px-4 border-b border-gray-200">
+          <button 
+            class="w-full py-3 px-4 border-b border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer"
+            :aria-label="`Profilo utente ${currentUser?.name || 'User'}. Clicca per cambiare utente`"
+            @click="changeUser"
+          >
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
                 </svg>
               </div>
-              <div>
+              <div class="text-left">
                 <div class="text-sm font-semibold text-gray-900">{{ currentUser?.name }}</div>
                 <div class="text-xs text-gray-600">{{ currentUser?.role }}</div>
               </div>
             </div>
-          </div>
+          </button>
           
           <!-- Logout Button -->
           <button
@@ -192,14 +201,22 @@ const logout = () => {
 }
 
 .glass-menu {
-  background: var(--white-95) !important;
+  background: var(--glass-menu-bg) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid var(--white-60) !important;
-  box-shadow: 0 8px 32px var(--black-12), inset 0 1px 0 var(--white-80) !important;
+  border: 1px solid var(--glass-menu-border) !important;
+  box-shadow: var(--glass-menu-shadow), var(--glass-menu-inset-shadow) !important;
 }
 
 .glass-menu button:hover {
-  background: var(--sky-0ea5e9-08) !important;
+  background: var(--glass-menu-hover-bg) !important;
+}
+
+.glass-menu .text-gray-900 {
+  color: var(--glass-menu-text-primary) !important;
+}
+
+.glass-menu .text-gray-600 {
+  color: var(--glass-menu-text-secondary) !important;
 }
 </style>

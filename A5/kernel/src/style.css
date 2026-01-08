@@ -335,6 +335,15 @@
   /* Chart colors */
   --chart-tooltip-bg: rgba(0, 0, 0, 0.8);
   --chart-grid: rgba(0, 0, 0, 0.05);
+  
+  /* Glass menu colors */
+  --glass-menu-bg: rgba(255, 255, 255, 0.95);
+  --glass-menu-border: rgba(255, 255, 255, 0.6);
+  --glass-menu-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --glass-menu-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --glass-menu-hover-bg: rgba(14, 165, 233, 0.08);
+  --glass-menu-text-primary: #111827;
+  --glass-menu-text-secondary: #4b5563;
 }
 
 /* Tema scuro */
@@ -497,6 +506,15 @@
   --purple-a855f7: #c084fc;
   --purple-a855f7-15: rgba(192, 132, 252, 0.15);
   --purple-a855f7-20: rgba(192, 132, 252, 0.2);
+  
+  /* Glass menu colors for dark theme */
+  --glass-menu-bg: rgba(31, 41, 55, 0.95);
+  --glass-menu-border: rgba(55, 65, 81, 0.6);
+  --glass-menu-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-menu-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-menu-hover-bg: rgba(56, 189, 248, 0.15);
+  --glass-menu-text-primary: #f9fafb;
+  --glass-menu-text-secondary: #d1d5db;
   
   --bg-gradient-mid-40: rgba(91, 33, 182, 0.4);
   --bg-gradient-mid-50: rgba(91, 33, 182, 0.5);
