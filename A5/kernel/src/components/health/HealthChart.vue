@@ -125,7 +125,7 @@ const toggleDetails = () => {
         {{ title }}
       </h3>
       <p v-if="normalRange" :class="compact ? 'text-xs text-gray-600' : 'text-sm text-gray-600'">
-        {{$t('health.normalRange')}}{{ normalRange.min }}-{{ normalRange.max }} {{ unit }}
+        {{$t('health.normalRange')}} {{ normalRange.min }}-{{ normalRange.max }} {{ unit }}
       </p>
     </div>
     <div :class="compact ? 'h-32' : 'h-64'">

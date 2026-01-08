@@ -286,7 +286,7 @@ export const MOCK_DOCUMENTS: Document[] = [
     title: 'Ecocolordoppler arti inferiori - Screening vascolare',
     description: 'Esame ecocolordoppler degli arti inferiori per screening complicanze vascolari diabete. Flusso arterioso conservato bilateralmente. Nessuna stenosi significativa.',
     tags: ['Diabete', 'Diagnostica', 'Vascolare'],
-    date: '25 Ago 2025',
+    date: '25 Gen 2025',
     doctor: 'Dr. Antonio Ferrari',
     hospital: 'Centro Diagnostico San Marco'
   }
@@ -479,12 +479,11 @@ export const HEALTH_ALERTS: HealthAlert[] = [
 export const CHOLESTEROL_HISTORY: HealthMetricHistory = {
   parameterId: 'cholesterol',
   data: [
-    { date: '1 Nov', value: 165 },
-    { date: '8 Nov', value: 170 },
-    { date: '15 Nov', value: 175 },
-    { date: '22 Nov', value: 180 },
-    { date: '29 Nov', value: 178 },
-    { date: '6 Dic', value: 185 },
+    { date: '15 Gen', value: 160 },
+    { date: '20 Apr', value: 168 },
+    { date: '18 Giu', value: 172 },
+    { date: '8 Ott', value: 182 },
+    { date: '29 Dic', value: 185 },
   ],
   sourceDocuments: [
     {
@@ -503,12 +502,14 @@ export const CHOLESTEROL_HISTORY: HealthMetricHistory = {
 export const BLOOD_PRESSURE_SYS_HISTORY: HealthMetricHistory = {
   parameterId: 'blood-pressure-sys',
   data: [
-    { date: '1 Nov', value: 118 },
-    { date: '8 Nov', value: 120 },
-    { date: '15 Nov', value: 122 },
-    { date: '22 Nov', value: 119 },
-    { date: '29 Nov', value: 121 },
-    { date: '6 Dic', value: 120 },
+    { date: '10 Gen', value: 122 },
+    { date: '18 Feb', value: 121 },
+    { date: '5 Apr', value: 120 },
+    { date: '28 Mag', value: 119 },
+    { date: '25 Lug', value: 118 },
+    { date: '15 Set', value: 122 },
+    { date: '20 Ott', value: 119 },
+    { date: '7 Dic', value: 120 },
   ],
   sourceDocuments: [
     {
@@ -522,12 +523,13 @@ export const BLOOD_PRESSURE_SYS_HISTORY: HealthMetricHistory = {
 export const HEART_RATE_HISTORY: HealthMetricHistory = {
   parameterId: 'heart-rate',
   data: [
-    { date: '1 Nov', value: 78 },
-    { date: '8 Nov', value: 76 },
-    { date: '15 Nov', value: 75 },
-    { date: '22 Nov', value: 74 },
-    { date: '29 Nov', value: 73 },
-    { date: '6 Dic', value: 72 },
+    { date: '20 Feb', value: 77 },
+    { date: '10 Apr', value: 77 },
+    { date: '15 Mag', value: 75 },
+    { date: '22 Giu', value: 76 },
+    { date: '5 Set', value: 73 },
+    { date: '12 Ott', value: 74 },
+    { date: '18 Nov', value: 73 },
   ],
   sourceDocuments: [
     {
@@ -541,12 +543,13 @@ export const HEART_RATE_HISTORY: HealthMetricHistory = {
 export const GLUCOSE_HISTORY: HealthMetricHistory = {
   parameterId: 'glucose',
   data: [
-    { date: '1 Nov', value: 92 },
-    { date: '8 Nov', value: 95 },
-    { date: '15 Nov', value: 98 },
-    { date: '22 Nov', value: 102 },
-    { date: '29 Nov', value: 103 },
-    { date: '6 Dic', value: 105 },
+    { date: '20 Gen', value: 88 },
+    { date: '25 Mar', value: 92 },
+    { date: '15 Apr', value: 94 },
+    { date: '5 Giu', value: 97 },
+    { date: '18 Lug', value: 98 },
+    { date: '12 Nov', value: 104 },
+    { date: '22 Dic', value: 105 },
   ],
   sourceDocuments: [
     {
