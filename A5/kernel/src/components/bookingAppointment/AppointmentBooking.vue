@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 import { UserIcon, MapPinIcon } from '@heroicons/vue/24/outline'
 import BaseModal from '../shared/BaseModal.vue'
 import VisitTypeSelector from './VisitTypeSelector.vue'
@@ -25,6 +25,7 @@ const selectedDate = ref<string | null>(null)
 const selectedTime = ref<string | null>(null)
 const isLoadingDates = ref(false)
 const isLoadingTimes = ref(false)
+const appointmentDetailsRef = ref<HTMLElement | null>(null)
 
 // Watch for preselected visit to auto-load dates
 watch(() => props.preselectedVisit, (newValue) => {
@@ -101,6 +102,25 @@ const appointmentDetails = computed(() => {
   if (!selectedDate.value || !selectedTime.value) return null
   return getAppointmentDetails(selectedDate.value, selectedTime.value)
 })
+
+// Watch appointment details to scroll into view when they appear
+watch(appointmentDetails, (newDetails) => {
+  if (newDetails) {
+    setTimeout(() => {
+      nextTick(() => {
+        // Find the modal body container
+        const modalBody = appointmentDetailsRef.value?.closest('.modal-body')
+        if (modalBody) {
+          // Scroll to bottom of the modal body
+          modalBody.scrollTo({
+            top: modalBody.scrollHeight,
+            behavior: 'smooth'
+          })
+        }
+      })
+    }, 250)
+  }
+})
 </script>
 
 <template>
@@ -132,7 +152,7 @@ const appointmentDetails = computed(() => {
 
     <!-- Appointment Details -->
     <Transition name="slide-fade">
-      <div v-if="appointmentDetails" class="appointment-details">
+      <div v-if="appointmentDetails" ref="appointmentDetailsRef" class="appointment-details">
         <h3 class="details-title">Dettagli appuntamento</h3>
         <div class="details-content">
           <div class="detail-item">
