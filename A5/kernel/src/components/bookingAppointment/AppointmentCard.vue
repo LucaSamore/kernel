@@ -100,6 +100,7 @@ const handleCancel = (event: Event) => {
 .action-button {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem 0.875rem;
   font-size: 0.75rem;
@@ -111,6 +112,7 @@ const handleCancel = (event: Event) => {
   white-space: nowrap;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  width: 100%;
 }
 
 .edit-button {

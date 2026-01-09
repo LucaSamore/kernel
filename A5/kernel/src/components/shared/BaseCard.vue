@@ -190,7 +190,8 @@ const emit = defineEmits<{
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  align-items: flex-end;
+  align-items: stretch;
+  min-width: 200px;
 }
 
 @media (max-width: 640px) {
@@ -204,6 +205,7 @@ const emit = defineEmits<{
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
+    min-width: auto;
   }
 
   .card-content {
