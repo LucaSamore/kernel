@@ -304,18 +304,18 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
     user: 'Sofia',
     location: 'Ospedale San Raffaele'
   },
-    {
-    id: '16',
-    title: 'Visita cardiologica di controllo',
-    description: 'Controllo annuale con ECG e misurazione pressione arteriosa',
-    tags: ['Cardiologia', 'Controllo'],
-    date: '13 Gen 2026',
-    time: '15:30',
-    user: 'Nonno Giulio',
-    location: 'Ospedale San Raffaele'
-  },
   {
     id: '2',
+    title: 'Visita geriatrica generale',
+    description: 'Valutazione periodica dello stato di salute generale e piano terapeutico',
+    tags: ['Geriatria', 'Check-up'],
+    date: '15 Gen 2026',
+    time: '09:30',
+    user: 'Nonno Giulio',
+    location: 'Clinica Sant\'Ambrogio'
+  },
+  {
+    id: '3',
     title: 'Prelievo esami del sangue',
     description: 'Emocromo completo, glicemia, colesterolo e funzionalità epatica',
     tags: ['Analisi', 'Laboratorio'],
@@ -325,7 +325,7 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
     location: 'Laboratorio Analisi Medicon'
   },
   {
-    id: '3',
+    id: '4',
     title: 'Seduta di fisioterapia',
     description: 'Trattamento riabilitativo ginocchio destro - 5° seduta',
     tags: ['Riabilitazione', 'Fisioterapia'],
@@ -335,7 +335,7 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
     location: 'Centro Fisioterapia Riabilita'
   },
   {
-    id: '4',
+    id: '5',
     title: 'Visita pediatrica',
     description: 'Controllo di crescita e sviluppo con valutazione peso e altezza',
     tags: ['Pediatria', 'Controllo'],
@@ -345,7 +345,7 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
     location: 'Ospedale Pediatrico Buzzi'
   },
   {
-    id: '5',
+    id: '6',
     title: 'Ecografia addominale',
     description: 'Ecografia addome completo prescritto dal medico curante',
     tags: ['Diagnostica', 'Ecografia'],
@@ -355,7 +355,7 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
     location: 'Centro Diagnostico San Marco'
   },
   {
-    id: '6',
+    id: '7',
     title: 'Visita oculistica - Controllo vista',
     description: 'Esame della vista completo con misurazione della pressione oculare',
     tags: ['Oculistica', 'Visita'],
