@@ -3,12 +3,19 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '../../authentication/useAuth'
+import TutorialButton from '../tutorial/TutorialButton.vue'
+import TutorialModal from '../tutorial/TutorialModal.vue'
+import { TUTORIALS } from '../../constants/tutorialData'
 
 const { t, locale } = useI18n()
 const router = useRouter()
 const { currentUser, logout: authLogout } = useAuth()
 const showUserMenu = ref(false)
 const showLanguageMenu = ref(false)
+
+// Tutorial state
+const showTutorialModal = ref(false)
+const completedTutorials = ref<Set<string>>(new Set())
 
 const toggleLanguageMenu = () => {
   showLanguageMenu.value = !showLanguageMenu.value
@@ -37,6 +44,14 @@ const changeUser = () => {
   showUserMenu.value = false
   router.push('/login')
 }
+
+const openTutorials = () => {
+  showTutorialModal.value = true
+}
+
+const closeTutorials = () => {
+  showTutorialModal.value = false
+}
 </script>
 
 <template>
@@ -58,6 +73,13 @@ const changeUser = () => {
           1
         </span>
       </button>
+
+      <!-- Tutorial Button -->
+      <TutorialButton 
+        :tutorials="TUTORIALS"
+        :completed-tutorials="completedTutorials"
+        @click="openTutorials"
+      />
       
       <!-- Language Selector -->
       <div class="relative">
@@ -154,6 +176,13 @@ const changeUser = () => {
         </div>
       </div>
     </div>
+
+    <!-- Tutorial Modal -->
+    <TutorialModal 
+      :is-open="showTutorialModal"
+      :tutorials="TUTORIALS"
+      @close="closeTutorials"
+    />
   </div>
 </template>
 

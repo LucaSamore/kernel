@@ -10,13 +10,20 @@ import { getAppointmentDetails } from '../../constants/mockData'
 interface Props {
   isOpen: boolean
   preselectedVisit?: string | null
+  tutorialMode?: boolean
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  tutorialMode: false
+})
 
 const emit = defineEmits<{
   close: []
   confirm: [appointment: any]
+  'tutorial:visit-selected': []
+  'tutorial:date-selected': []
+  'tutorial:time-selected': []
+  'tutorial:confirmed': []
 }>()
 
 // Stati del componente
@@ -31,7 +38,6 @@ const appointmentDetailsRef = ref<HTMLElement | null>(null)
 watch(() => props.preselectedVisit, (newValue) => {
   if (newValue && props.isOpen) {
     selectedVisit.value = newValue
-    // Auto-load dates when visit is preselected
     selectedDate.value = null
     selectedTime.value = null
     isLoadingDates.value = true
@@ -42,7 +48,6 @@ watch(() => props.preselectedVisit, (newValue) => {
   }
 }, { immediate: true })
 
-// Funzione per resettare tutti i campi
 const resetFields = () => {
   selectedVisit.value = null
   selectedDate.value = null
@@ -51,32 +56,45 @@ const resetFields = () => {
   isLoadingTimes.value = false
 }
 
-// Funzione per chiudere e resettare
 const handleClose = () => {
   resetFields()
   emit('close')
 }
 
 const handleVisitSelect = () => {
-  // Reset selezioni precedenti e mostra loading
   selectedDate.value = null
   selectedTime.value = null
   isLoadingDates.value = true
   
-  // Simula chiamata API
+  // Emit tutorial event
+  if (props.tutorialMode) {
+    emit('tutorial:visit-selected')
+  }
+  
   setTimeout(() => {
     isLoadingDates.value = false
   }, 1500)
 }
 
 const handleDateSelect = () => {
-  selectedTime.value = null // Reset orario quando si cambia data
+  selectedTime.value = null
   isLoadingTimes.value = true
   
-  // Simula chiamata API per caricare orari
+  // Emit tutorial event
+  if (props.tutorialMode) {
+    emit('tutorial:date-selected')
+  }
+  
   setTimeout(() => {
     isLoadingTimes.value = false
   }, 1000)
+}
+
+const handleTimeSelect = () => {
+  // Emit tutorial event
+  if (props.tutorialMode) {
+    emit('tutorial:time-selected')
+  }
 }
 
 const handleConfirm = () => {
@@ -88,6 +106,11 @@ const handleConfirm = () => {
     time: selectedTime.value,
   }
   
+  // Emit tutorial event BEFORE confirm
+  if (props.tutorialMode) {
+    emit('tutorial:confirmed')
+  }
+  
   emit('confirm', appointment)
   resetFields()
   emit('close')
@@ -97,21 +120,17 @@ const canConfirm = computed(() => {
   return selectedVisit.value && selectedDate.value && selectedTime.value
 })
 
-// Get appointment details when date and time are selected
 const appointmentDetails = computed(() => {
   if (!selectedDate.value || !selectedTime.value) return null
   return getAppointmentDetails(selectedDate.value, selectedTime.value)
 })
 
-// Watch appointment details to scroll into view when they appear
 watch(appointmentDetails, (newDetails) => {
   if (newDetails) {
     setTimeout(() => {
       nextTick(() => {
-        // Find the modal body container
         const modalBody = appointmentDetailsRef.value?.closest('.modal-body')
         if (modalBody) {
-          // Scroll to bottom of the modal body
           modalBody.scrollTo({
             top: modalBody.scrollHeight,
             behavior: 'smooth'
@@ -121,6 +140,13 @@ watch(appointmentDetails, (newDetails) => {
     }, 250)
   }
 })
+
+// Watch per emettere evento quando seleziona orario
+watch(selectedTime, (newTime) => {
+  if (newTime && props.tutorialMode) {
+    handleTimeSelect()
+  }
+})
 </script>
 
 <template>
@@ -128,6 +154,8 @@ watch(appointmentDetails, (newDetails) => {
     :is-open="isOpen"
     :title="$t('appointmentBooking.title')"
     max-width="lg"
+    :custom-z-index="tutorialMode ? 800 : undefined"
+    :disable-backdrop-blur="tutorialMode"
     @close="handleClose"
   >
     <!-- Body -->
@@ -197,7 +225,6 @@ watch(appointmentDetails, (newDetails) => {
 </template>
 
 <style scoped>
-/* Footer Buttons */
 .button {
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
@@ -239,7 +266,6 @@ watch(appointmentDetails, (newDetails) => {
   cursor: not-allowed;
 }
 
-/* Appointment Details */
 .appointment-details {
   margin-top: 1.5rem;
   padding: 1.5rem;
@@ -305,7 +331,6 @@ watch(appointmentDetails, (newDetails) => {
   line-height: 1.4;
 }
 
-/* Slide fade transition */
 .slide-fade-enter-active {
   animation: slideInUp 0.4s cubic-bezier(0, 0, 0.2, 1);
 }

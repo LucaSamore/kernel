@@ -357,5 +357,75 @@
       "description": "Questi valori sono stati estratti dai seguenti documenti:",
       "noDocuments": "Nessun documento collegato"
     }
+  },
+  "tutorial": {
+    "title": "Tutorial Interattivi",
+    "subtitle": "Impara ad usare l'app con guide interattive e guadagna badge!",
+    "close": "Chiudi",
+    "minimize": "Riduci guida",
+    "points": "Punti",
+    "badges": "Badge",
+    "progress": "Progresso",
+    "earnedBadges": "🏆 Badge ottenuti",
+    "steps": "step",
+    "pts": "pt",
+    "back": "Indietro",
+    "startTutorial": "Inizia Tutorial",
+    "virtualMode": "Modalità Virtuale",
+    "completeTutorial": "Completa questo tutorial",
+    "tutorials": {
+      "bookAppointment": {
+        "title": "Come prenoto una visita?",
+        "description": "Impara a prenotare una visita medica in pochi semplici passaggi",
+        "badge": "📅 Prenotatore Esperto",
+        "steps": {
+          "step1": {
+            "title": "Prenota visita",
+            "description": "Clicca sul pulsante 'Prenota visita' per aprire il modulo di prenotazione",
+            "action": "Tocca il pulsante 'Prenota visita'",
+            "imageHint": "Pulsante blu nella sezione prenotazioni"
+          },
+          "step2": {
+            "title": "Seleziona tipo visita",
+            "description": "Scegli il tipo di visita dall'elenco disponibile",
+            "action": "Seleziona il tipo di visita desiderato",
+            "imageHint": "Lista delle visite disponibili"
+          },
+          "step3": {
+            "title": "Scegli la data",
+            "description": "Seleziona una data disponibile per la tua visita",
+            "action": "Tocca una delle date disponibili",
+            "imageHint": "Calendario con date disponibili evidenziate"
+          },
+          "step4": {
+            "title": "Scegli l'orario",
+            "description": "Seleziona l'orario più comodo per te tra quelli disponibili",
+            "action": "Tocca uno degli orari disponibili",
+            "imageHint": "Griglia con gli orari disponibili"
+          },
+          "step5": {
+            "title": "Conferma prenotazione",
+            "description": "Rivedi i dettagli e conferma la tua prenotazione",
+            "action": "Tocca il pulsante 'Conferma prenotazione'",
+            "imageHint": "Pulsante verde di conferma in fondo alla schermata"
+          }
+        }
+      },
+      "uploadDocument": {
+        "title": "Come carico un documento?",
+        "description": "Impara a caricare e organizzare i tuoi documenti sanitari",
+        "badge": "📄 Archivista Pro"
+      },
+      "useWidgets": {
+        "title": "Come personalizzo i widget?",
+        "description": "Scopri come personalizzare la tua dashboard con i widget più utili",
+        "badge": "⚙️ Customizer"
+      },
+      "checkHealth": {
+        "title": "Come monitoro la mia salute?",
+        "description": "Impara a visualizzare e interpretare i tuoi parametri vitali",
+        "badge": "❤️ Health Guardian"
+      }
+    }
   }
 }

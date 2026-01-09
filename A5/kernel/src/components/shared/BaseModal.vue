@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted, computed } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 
 interface Props {
@@ -9,12 +9,15 @@ interface Props {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl'
   showFooter?: boolean
   closeOnBackdrop?: boolean
+  customZIndex?: number
+  disableBackdropBlur?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   maxWidth: 'md',
   showFooter: true,
-  closeOnBackdrop: true
+  closeOnBackdrop: true,
+  disableBackdropBlur: false
 })
 
 const emit = defineEmits<{
@@ -30,6 +33,13 @@ const maxWidthClasses = {
   lg: 'max-w-4xl',
   xl: 'max-w-6xl'
 }
+
+const overlayClasses = computed(() => {
+  return [
+    'modal-overlay',
+    props.disableBackdropBlur ? 'no-blur' : ''
+  ]
+})
 
 const handleBackdropClick = () => {
   if (props.closeOnBackdrop) {
@@ -108,7 +118,8 @@ onUnmounted(() => {
     <Transition name="modal">
       <div 
         v-if="isOpen" 
-        class="modal-overlay" 
+        :class="overlayClasses"
+        :style="customZIndex ? { zIndex: customZIndex } : {}"
         role="dialog"
         aria-modal="true"
         :aria-labelledby="title ? 'modal-title' : undefined"
@@ -166,7 +177,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 600;
   padding: 1rem;
   animation: fadeIn 0.2s ease-out;
 }
@@ -198,6 +209,16 @@ onUnmounted(() => {
   animation: slideUp 0.3s cubic-bezier(0, 0, 0.2, 1);
   position: relative;
   z-index: 1;
+}
+
+.modal-overlay.no-blur {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: linear-gradient(135deg, var(--bg-gradient-start-10) 0%, var(--bg-gradient-mid-10) 50%, var(--bg-gradient-end-10) 100%);
+}
+
+.modal-overlay.no-blur::before {
+  opacity: 0.5;
 }
 
 .modal-header {
